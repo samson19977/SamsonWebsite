@@ -1,833 +1,676 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Samson Niyizuruqero | Data Scientist & AI Researcher</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary: #2c3e50;
-            --secondary: #3498db;
-            --accent: #e74c3c;
-            --light: #ecf0f1;
-            --dark: #2c3e50;
-            --success: #2ecc71;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        body {
-            line-height: 1.6;
-            color: #333;
-            background-color: #f9f9f9;
-        }
-        
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-        
-        /* Header & Navigation */
-        header {
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-        }
-        
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-        
-        .nav-links li {
-            margin-left: 2rem;
-        }
-        
-        .nav-links a {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
-        .nav-links a:hover {
-            color: var(--secondary);
-        }
-        
-        .menu-btn {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-        
-        /* Hero Section */
-        .hero {
-            padding: 120px 0 80px;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-        }
-        
-        .hero-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 2rem;
-        }
-        
-        .hero-text {
-            flex: 1;
-        }
-        
-        .hero-text h1 {
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-        
-        .hero-text h2 {
-            font-size: 1.8rem;
-            color: var(--secondary);
-            margin-bottom: 1rem;
-        }
-        
-        .hero-text p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            color: #555;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 12px 24px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            margin: 5px;
-        }
-        
-        .btn-primary {
-            background-color: var(--secondary);
-            color: white;
-        }
-        
-        .btn-primary:hover {
-            background-color: #2980b9;
-            transform: translateY(-3px);
-        }
-        
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--secondary);
-            border: 2px solid var(--secondary);
-        }
-        
-        .btn-secondary:hover {
-            background-color: var(--secondary);
-            color: white;
-            transform: translateY(-3px);
-        }
-        
-        .hero-image {
-            flex: 1;
-            text-align: center;
-        }
-        
-        .hero-image img {
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid white;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        /* Sections */
-        section {
-            padding: 80px 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-            color: var(--primary);
-            font-size: 2.5rem;
-            position: relative;
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background-color: var(--secondary);
-        }
-        
-        /* About Section */
-        .about {
-            background-color: white;
-        }
-        
-        .about-content {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .about-content p {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-        }
-        
-        .skills-container {
-            display: flex;
-            gap: 2rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-        
-        .technical-skills, .business-skills {
-            flex: 1;
-            min-width: 300px;
-            background-color: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        .skills-container h3 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-        
-        .skills-container ul {
-            list-style-type: none;
-        }
-        
-        .skills-container li {
-            padding: 0.5rem 0;
-            border-bottom: 1px dashed #ddd;
-            position: relative;
-            padding-left: 1.5rem;
-        }
-        
-        .skills-container li:before {
-            content: "▹";
-            position: absolute;
-            left: 0;
-            color: var(--secondary);
-        }
-        
-        /* Projects Section */
-        .projects {
-            background-color: #f8f9fa;
-        }
-        
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .project-card {
-            background-color: white;
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s;
-        }
-        
-        .project-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .project-card h3 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-        
-        .project-card p {
-            margin-bottom: 1.5rem;
-        }
-        
-        .project-link {
-            color: var(--secondary);
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-block;
-            padding: 0.5rem 0;
-        }
-        
-        .project-link:hover {
-            color: var(--primary);
-        }
-        
-        /* Experience Section */
-        .experience {
-            background-color: white;
-        }
-        
-        .timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .timeline::after {
-            content: '';
-            position: absolute;
-            width: 6px;
-            background-color: var(--light);
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -3px;
-        }
-        
-        .timeline-item {
-            padding: 10px 40px;
-            position: relative;
-            width: 50%;
-            box-sizing: border-box;
-        }
-        
-        .timeline-item:nth-child(odd) {
-            left: 0;
-        }
-        
-        .timeline-item:nth-child(even) {
-            left: 50%;
-        }
-        
-        .timeline-content {
-            padding: 20px;
-            background-color: white;
-            position: relative;
-            border-radius: 6px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .timeline-content h3 {
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-        
-        .date {
-            display: block;
-            font-weight: 600;
-            color: var(--secondary);
-            margin-bottom: 0.5rem;
-        }
-        
-        .role {
-            display: block;
-            font-style: italic;
-            margin-bottom: 1rem;
-            color: #666;
-        }
-        
-        .timeline-content ul {
-            list-style-type: none;
-        }
-        
-        .timeline-content li {
-            padding: 0.3rem 0;
-            position: relative;
-            padding-left: 1.5rem;
-        }
-        
-        .timeline-content li:before {
-            content: "▹";
-            position: absolute;
-            left: 0;
-            color: var(--secondary);
-        }
-        
-        /* Certifications Section */
-        .certifications {
-            background-color: #f8f9fa;
-        }
-        
-        .certificates-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-        
-        .certificate-item {
-            background-color: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s;
-        }
-        
-        .certificate-item:hover {
-            transform: translateY(-5px);
-        }
-        
-        .certificate-img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-        
-        .certificate-info {
-            padding: 1rem;
-        }
-        
-        .certificate-info h3 {
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
-            color: var(--primary);
-        }
-        
-        .certificate-info p {
-            font-size: 0.9rem;
-            color: #666;
-        }
-        
-        /* Contact Section */
-        .contact {
-            background-color: white;
-        }
-        
-        .contact-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
-        
-        .contact-info {
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        .contact-info p {
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-        }
-        
-        .contact-info i {
-            margin-right: 10px;
-            color: var(--secondary);
-            width: 20px;
-        }
-        
-        .social-links {
-            margin-top: 1.5rem;
-        }
-        
-        .social-links a {
-            display: inline-block;
-            margin-right: 1rem;
-            color: var(--primary);
-            font-size: 1.5rem;
-            transition: color 0.3s;
-        }
-        
-        .social-links a:hover {
-            color: var(--secondary);
-        }
-        
-        .passport-photo {
-            flex: 1;
-            text-align: center;
-            min-width: 300px;
-        }
-        
-        .passport-photo img {
-            width: 250px;
-            height: 300px;
-            object-fit: cover;
-            border: 5px solid white;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        /* Footer */
-        footer {
-            background-color: var(--primary);
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-        }
-        
-        /* Responsive Design */
-        @media screen and (max-width: 768px) {
-            .menu-btn {
-                display: block;
-            }
-            
-            .nav-links {
-                position: fixed;
-                height: 100vh;
-                width: 100%;
-                flex-direction: column;
-                clip-path: circle(0px at top right);
-                transition: all 0.5s ease-out;
-                background-color: white;
-                top: 70px;
-                left: 0;
-                padding: 2rem 0;
-            }
-            
-            .nav-links.active {
-                clip-path: circle(1000px at top right);
-            }
-            
-            .nav-links li {
-                margin: 1.5rem 0;
-                text-align: center;
-            }
-            
-            .hero-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .hero-text h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero-text h2 {
-                font-size: 1.5rem;
-            }
-            
-            .skills-container {
-                flex-direction: column;
-            }
-            
-            .timeline::after {
-                left: 31px;
-            }
-            
-            .timeline-item {
-                width: 100%;
-                padding-left: 70px;
-                padding-right: 25px;
-            }
-            
-            .timeline-item:nth-child(even) {
-                left: 0;
-            }
-            
-            .contact-content {
-                flex-direction: column;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Samson Niyizurugero | Data Scientist & AI Researcher</title>
+  <meta name="description" content="Samson Niyizurugero – Data Scientist & AI Researcher in Kigali. Environmental AI, forecasting, NLP, and geospatial analytics. View projects, resume, and contact." />
+  <meta name="theme-color" content="#0066cc" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E🤖%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-Sa0Gg1G3jYg2r1Dq7xJYf88z/0d26LJp3bIH6g2c3Ywq3uAq2pJ2iQbU9dv5/8m4Nn5FJmUe0uQ8u0C1+7x2GQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Samson Niyizurugero | Data Scientist & AI Researcher" />
+  <meta property="og:description" content="AI for social impact: air quality forecasting, environmental tech, and public health analytics." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://placehold.co/1200x630/0066cc/ffffff?text=Samson+Niyizurugero" />
+
+  <!-- JSON-LD Profile -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Samson Niyizurugero",
+    "jobTitle": "Data Scientist & AI Researcher",
+    "address": {"@type":"PostalAddress","addressLocality":"Kigali","addressCountry":"RW"},
+    "email": "mailto:sniyizurugero@aimsric.org",
+    "url": "",
+    "sameAs": [
+      "https://www.linkedin.com/in/samson-niyizurugero-200a19260",
+      "https://github.com/samson19977",
+      "https://huggingface.co/NSamson1"
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --primary-color: #0066cc;
+      --secondary-color: #004d99;
+      --accent-color: #00a86b;
+      --text-color: #1f2937; /* slate-800 */
+      --muted-text: #6b7280; /* slate-500 */
+      --light-bg: #f8f9fa;
+      --card-bg: #ffffff;
+      --dark-bg: #0b1220;
+      --dark-card: #111827; /* gray-900 */
+      --dark-text: #e5e7eb;
+      --shadow: 0 5px 15px rgba(0,0,0,.08);
+      --radius: 14px;
+      --transition: all .3s ease;
+    }
+
+    /* Dark mode */
+    html[data-theme="dark"] {
+      --text-color: var(--dark-text);
+      --light-bg: #0b1220;
+      --card-bg: var(--dark-card);
+      --shadow: 0 10px 30px rgba(0,0,0,.5);
+      --secondary-color: #7cc4ff;
+    }
+
+    * { box-sizing: border-box; margin:0; padding:0; }
+    html { scroll-behavior: smooth; }
+    body { color: var(--text-color); background: var(--light-bg); font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; line-height: 1.6; }
+    a { color: var(--primary-color); text-decoration: none; transition: var(--transition); }
+    a:hover { color: var(--secondary-color); }
+    img { max-width: 100%; height: auto; display: block; border-radius: 10px; }
+
+    .container { width: min(1200px, 92%); margin: 0 auto; }
+    section { padding: 80px 0; }
+    .section-title { text-align: center; margin-bottom: 50px; color: var(--primary-color); font-size: clamp(1.8rem, 1.6rem + 1.2vw, 2.6rem); position: relative; }
+    .section-title::after { content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 80px; height: 4px; background: var(--accent-color); border-radius: 2px; }
+
+    .btn { display:inline-flex; align-items:center; gap:.6rem; padding:12px 20px; background:var(--primary-color); color:#fff; border:none; border-radius: 999px; font-weight:600; cursor:pointer; transition: var(--transition); box-shadow: var(--shadow); }
+    .btn:hover { background: var(--secondary-color); transform: translateY(-2px); }
+    .btn-outline { background: transparent; color: var(--primary-color); border: 2px solid var(--primary-color); }
+    .btn-outline:hover { background: var(--primary-color); color:#fff; }
+    .btn-ghost { background: transparent; border: 1px solid rgba(0,0,0,.08); }
+
+    /* Header */
+    header { position: sticky; top: 0; z-index: 1000; background: var(--card-bg); box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+    .navbar { display:flex; justify-content:space-between; align-items:center; padding:16px 0; }
+    .logo { font-weight:800; letter-spacing:.3px; color:var(--primary-color); font-size:1.4rem; }
+    .nav-links { display:flex; list-style:none; gap:26px; }
+    .nav-links a { color: var(--text-color); font-weight:600; position:relative; }
+    .nav-links a::after { content:''; position:absolute; left:0; bottom:-6px; height:2px; width:0; background:var(--primary-color); transition:var(--transition); }
+    .nav-links a:hover::after { width:100%; }
+    .hamburger { display:none; font-size:1.5rem; cursor:pointer; }
+
+    /* Dark-mode toggle */
+    .mode-toggle { border: 1px solid rgba(0,0,0,.1); padding:8px 12px; border-radius:999px; background:transparent; cursor:pointer; display:flex; align-items:center; gap:.5rem; }
+
+    /* Hero */
+    .hero { min-height: 86vh; display:grid; place-items:center; background: linear-gradient(135deg, rgba(0,102,204,.10) 0%, rgba(0,168,107,.10) 100%); position:relative; overflow:hidden; }
+    .hero .content { max-width: 760px; text-align:left; }
+    .hero h1 { font-size: clamp(2rem, 1.2rem + 2.4vw, 3.2rem); color: var(--primary-color); margin-bottom: 10px; }
+    .hero h2 { font-size: clamp(1.1rem, .9rem + 1vw, 1.6rem); color: var(--secondary-color); font-weight:500; margin-bottom: 16px; }
+    .hero p { font-size: 1.05rem; color: var(--muted-text); margin-bottom: 20px; }
+    .hero .cta { display:flex; gap:12px; flex-wrap:wrap; }
+    .hero .bg-shape { position:absolute; bottom:-10%; right:-10%; width:min(40%,520px); opacity:.10; }
+
+    /* About */
+    .about { display:grid; grid-template-columns: 1.1fr .9fr; gap: 40px; align-items:center; }
+    .about .profile-img { border-radius: var(--radius); box-shadow: var(--shadow); transition: transform .3s; }
+    .about .profile-img:hover { transform: scale(1.02); }
+
+    /* Cards / grids */
+    .grid { display:grid; gap: 26px; }
+    .skills-grid { grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); }
+    .projects-grid { grid-template-columns: repeat(auto-fit, minmax(320px,1fr)); }
+    .card { background: var(--card-bg); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); transition: var(--transition); }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,.12); }
+    .project-card img { height: 200px; object-fit: cover; border-radius: 12px; }
+    .project-meta { display:flex; gap:8px; flex-wrap:wrap; margin-top: 10px; }
+    .tag { display:inline-block; font-size:.8rem; padding:6px 10px; border-radius:999px; background:rgba(0,102,204,.12); color:var(--secondary-color); }
+
+    /* Timeline */
+    .timeline { position:relative; max-width: 900px; margin: 0 auto; }
+    .timeline::after { content:''; position:absolute; width:4px; background: var(--primary-color); top:0; bottom:0; left:50%; transform: translateX(-50%); }
+    .timeline-item { position:relative; width:50%; padding:10px 40px; }
+    .timeline-item:nth-child(odd){ left:0; }
+    .timeline-item:nth-child(even){ left:50%; }
+    .timeline-item::after { content:''; position:absolute; top:20px; width:20px; height:20px; background: var(--card-bg); border:4px solid var(--primary-color); border-radius:50%; z-index:2; }
+    .timeline-item:nth-child(odd)::after { right:-10px; }
+    .timeline-item:nth-child(even)::after { left:-10px; }
+
+    /* Contact */
+    .contact { display:grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items:start; }
+    .contact .info { display:grid; gap:16px; }
+    .contact .row { display:flex; gap:14px; align-items:center; }
+    .contact .icon { width:46px; height:46px; display:grid; place-items:center; border-radius:999px; background: var(--primary-color); color:#fff; }
+    .contact form { display:grid; gap:16px; }
+    .form-group { display:grid; gap:6px; }
+    .form-group input, .form-group textarea { padding:12px 14px; border:1px solid #e5e7eb; border-radius: 10px; font-size: 1rem; background: var(--card-bg); color: var(--text-color); }
+    .form-group input:focus, .form-group textarea:focus { outline: 2px solid rgba(0,102,204,.25); border-color: var(--primary-color); }
+    .status { font-size:.95rem; }
+
+    /* Footer */
+    footer { background:#0f172a; color:#cbd5e1; padding: 50px 0 20px; }
+    footer .footer-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 26px; }
+    footer a { color:#cbd5e1; }
+    .copyright { text-align:center; margin-top: 24px; border-top: 1px solid rgba(255,255,255,.08); padding-top: 16px; font-size:.95rem; }
+
+    /* Modal */
+    .modal { display:none; position:fixed; inset:0; z-index: 2000; background: rgba(0,0,0,.85); }
+    .modal[open] { display:block; }
+    .modal .panel { position:relative; width:min(920px, 94%); margin: 5% auto; background: var(--card-bg); border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,.4); padding: 18px 18px 12px; }
+    .modal .header { display:flex; align-items:center; justify-content:space-between; gap:10px; padding: 6px 6px 14px; }
+    .modal .header h2 { color: var(--primary-color); font-size: 1.2rem; }
+    .modal .close { border:none; background:transparent; font-size: 28px; line-height:1; cursor:pointer; color:#9ca3af; }
+    .modal .close:hover { color: var(--primary-color); }
+    #pdf-viewer { width:100%; height: 78vh; border:none; border-radius: 10px; background:#111; }
+
+    /* Utilities */
+    .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
+    .skip-link { position:absolute; left:-9999px; }
+    .skip-link:focus { left: 10px; top: 10px; background: #111; color:#fff; padding:8px 12px; border-radius:8px; z-index:2001; }
+    .top-btn { position: fixed; right: 16px; bottom: 16px; display:none; }
+    .top-btn.show { display:inline-flex; }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .about, .contact { grid-template-columns: 1fr; }
+      .timeline::after { left: 32px; transform:none; }
+      .timeline-item { width:100%; left:0 !important; padding-left: 68px; padding-right: 22px; }
+      .timeline-item::after { left: 22px !important; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { position: fixed; inset: 64px 0 auto 0; height: calc(100vh - 64px); background: var(--card-bg); flex-direction: column; justify-content:center; align-items:center; gap: 22px; transform: translateY(-110%); transition: var(--transition); }
+      .nav-links.active { transform: translateY(0); }
+      .hamburger { display:block; }
+      #pdf-viewer { height: 72vh; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; scroll-behavior: auto; }
+    }
+  </style>
 </head>
 <body>
-    <!-- Header & Navigation -->
-    <header>
-        <div class="container">
-            <nav>
-                <div class="logo">S.N.</div>
-                <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#certifications">Certifications</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                <div class="menu-btn">
-                    <i class="fas fa-bars"></i>
-                </div>
-            </nav>
-        </div>
-    </header>
+  <a href="#main" class="skip-link">Skip to content</a>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1>Samson Niyizuruqero</h1>
-                    <h2>Data Scientist & AI Researcher</h2>
-                    <p>Environmental Technology | Public Health</p>
-                    <div class="hero-buttons">
-                        <a href="#projects" class="btn btn-primary">View My Work</a>
-                        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
-                    </div>
-                </div>
-                <div class="hero-image">
-                    <img src="https://placehold.co/300x300/3498db/FFFFFF?text=Profile+Photo" alt="Samson Niyizuruqero" id="profile-img">
-                </div>
+  <!-- Header -->
+  <header id="header">
+    <div class="container">
+      <nav class="navbar" aria-label="Primary">
+        <a href="#home" class="logo" aria-label="Homepage">Samson.N</a>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#certifications">Certifications</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <button class="mode-toggle" id="modeToggle" aria-label="Toggle dark mode"><i class="fa-regular fa-moon"></i> <span class="label">Theme</span></button>
+          <button class="hamburger" id="hamburger" aria-expanded="false" aria-controls="navLinks" aria-label="Toggle navigation"><i class="fas fa-bars"></i></button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="hero" aria-labelledby="hero-title">
+    <div class="container content" id="main">
+      <h1 id="hero-title">Samson Niyizurugero</h1>
+      <h2>Data Scientist & AI Researcher</h2>
+      <p>Innovative data scientist with 3+ years of experience developing AI solutions for environmental and social challenges. Specializes in deploying machine learning systems that bridge technical excellence with real-world impact.</p>
+      <div class="cta">
+        <a href="#projects" class="btn"><i class="fa-solid fa-diagram-project"></i> View My Work</a>
+        <a href="#contact" class="btn btn-outline"><i class="fa-regular fa-paper-plane"></i> Contact Me</a>
+        <a class="btn btn-ghost" href="myDoc.pdf" download><i class="fa-regular fa-file-lines"></i> Download CV</a>
+      </div>
+    </div>
+    <svg class="bg-shape" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path fill="currentColor" d="M25,-25C36.2,-16.8,54.2,-6.4,59.3,8.8C64.4,24,56.6,42.9,41.9,53.5C27.2,64.1,5.5,66.4,-9.8,60.4C-25.1,54.4,-36.9,40.1,-44.1,23.6C-51.3,7.1,-53.9,-11.6,-47.5,-25.2C-41.1,-38.8,-25.7,-47.3,-9.7,-44.5C6.3,-41.7,13.8,-27.6,25,-25Z" transform="translate(50 50)" />
+    </svg>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <div class="about">
+        <div>
+          <h3 style="margin-bottom:12px;color:var(--primary-color)">Professional Profile</h3>
+          <p style="margin-bottom:12px">I am an innovative data scientist with 3+ years of experience developing AI solutions for environmental and social challenges. I specialize in deploying machine learning systems that bridge technical excellence with real-world impact.</p>
+          <p style="margin-bottom:12px">I have a proven track record of creating tools adopted by government agencies, schools, and financial institutions. I combine deep technical expertise in time series forecasting, natural language processing, and geospatial analysis with a strong foundation in strategic business management, data-driven decision making, global leadership, and digital innovation through app development.</p>
+          <p style="margin-bottom:18px">Based in Kigali, Rwanda, I'm passionate about using technology to solve pressing environmental and public health challenges across Africa.</p>
+          <div style="display:flex; gap:10px; flex-wrap:wrap">
+            <a href="#contact" class="btn"><i class="fa-regular fa-handshake"></i> Get In Touch</a>
+            <a href="#certifications" class="btn btn-outline" id="viewAllCerts"><i class="fa-regular fa-file-pdf"></i> View All Certificates (PDF)</a>
+          </div>
+        </div>
+        <div>
+          <img src="https://placehold.co/600x720/0066cc/ffffff?text=Samson+N" alt="Portrait of Samson Niyizurugero" class="profile-img" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <div class="container">
+      <h2 class="section-title">Core Competencies</h2>
+      <div class="grid skills-grid">
+        <div class="card">
+          <h3 style="color:var(--primary-color);margin-bottom:10px">Technical Skills</h3>
+          <ul>
+            <li>Python (PyTorch, TensorFlow, Scikit-learn)</li>
+            <li>R, SQL, Swift</li>
+            <li>Transformer architectures & LSTM/GRU networks</li>
+            <li>Ensemble methods (XGBoost, CatBoost)</li>
+            <li>Air quality forecasting & satellite data fusion</li>
+            <li>Conversational AI & multilingual chatbots</li>
+            <li>Real-time APIs (FastAPI) & cloud deployment</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 style="color:var(--primary-color);margin-bottom:10px">Business & Leadership</h3>
+          <ul>
+            <li>Strategic Management & Business Planning</li>
+            <li>Data-Driven Decision Making</li>
+            <li>Cross-cultural Teamwork</li>
+            <li>Stakeholder Engagement</li>
+            <li>Project Management</li>
+            <li>Mentorship & Coaching</li>
+            <li>International Collaboration</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 style="color:var(--primary-color);margin-bottom:10px">Tools & Technologies</h3>
+          <ul>
+            <li>Hadoop, Spark, AWS</li>
+            <li>QGIS, R-INLA, Google Earth Engine</li>
+            <li>Power BI, Tableau, Seaborn</li>
+            <li>SPSS, STATA, Excel, EViews</li>
+            <li>JavaScript, C++</li>
+            <li>Git & GitHub</li>
+            <li>Docker & Kubernetes</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title">AI for Social Impact Projects</h2>
+      <div class="grid projects-grid">
+        <article class="card project-card">
+          <img src="https://placehold.co/800x400/0066cc/ffffff?text=CO2+Emissions+Dashboard" alt="African CO2 Emissions Forecast Dashboard preview" loading="lazy" />
+          <div style="padding: 18px 4px 0">
+            <h3 style="color:var(--primary-color)">African CO2 Emissions Forecast Dashboard</h3>
+            <p class="muted">Interactive Streamlit dashboard with RAG-powered chatbot that transforms complex emissions data into actionable insights for African policymakers.</p>
+            <div class="project-meta">
+              <span class="tag">Streamlit</span>
+              <span class="tag">RAG</span>
+              <span class="tag">Time Series</span>
             </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title">Professional Profile</h2>
-            <div class="about-content">
-                <p>Innovative data scientist with 3+ years of experience developing AI solutions for environmental and social challenges. Specializes in deploying machine learning systems that bridge technical excellence with real-world impact.</p>
-                
-                <div class="skills-container">
-                    <div class="technical-skills">
-                        <h3>Technical Competencies</h3>
-                        <ul>
-                            <li>Transformer architectures, LSTM/GRU networks</li>
-                            <li>Air quality forecasting, satellite data fusion</li>
-                            <li>Conversational AI, multilingual chatbots</li>
-                            <li>Python (PyTorch, TensorFlow, Scikit-learn), R, SQL</li>
-                            <li>Real-time APIs, cloud deployment, geospatial databases</li>
-                            <li>Hadoop, Spark, AWS for scalable AI</li>
-                            <li>SHAP, LIME, model auditing for trust</li>
-                        </ul>
-                    </div>
-                    <div class="business-skills">
-                        <h3>Business & Leadership Competencies</h3>
-                        <ul>
-                            <li>Business planning, organizational strategy</li>
-                            <li>Data-driven insights, risk analysis</li>
-                            <li>Cross-cultural teamwork, stakeholder engagement</li>
-                            <li>International collaboration, sustainability</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="download-cv">
-                    <a href="#" class="btn btn-primary" id="download-cv">
-                        <i class="fas fa-download"></i> Download CV
-                    </a>
-                </div>
+            <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap">
+              <a href="https://huggingface.co/spaces/NSamson1/Early-Warning-Airquality" class="btn" target="_blank" rel="noopener">Live Demo</a>
             </div>
-        </div>
-    </section>
+          </div>
+        </article>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2 class="section-title">AI for Social Impact Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <h3>African CO₂ Emissions Forecast Dashboard</h3>
-                    <p>Interactive Streamlit dashboard with RAG-powered chatbot that transforms complex emissions data into actionable insights for African policymakers.</p>
-                    <a href="#" class="project-link">Live Demo</a>
-                </div>
-                <div class="project-card">
-                    <h3>Rwanda Air Quality Dashboard</h3>
-                    <p>Real-time air quality monitoring dashboard for Rwanda using Streamlit, providing accessible environmental data and forecasts.</p>
-                    <a href="#" class="project-link">Live Demo</a>
-                </div>
-                <div class="project-card">
-                    <h3>MyFirstMathFriend</h3>
-                    <p>Interactive multilingual math chatbot aligned with the Rwanda primary curriculum. Used in rural classrooms.</p>
-                    <a href="#" class="project-link">Live Demo</a>
-                </div>
-                <div class="project-card">
-                    <h3>Financial Literacy Assistant</h3>
-                    <p>Conversational interface for mobile banking. Helps users understand savings, loans, and digital wallets.</p>
-                    <a href="#" class="project-link">Live Demo</a>
-                </div>
+        <article class="card project-card">
+          <img src="https://placehold.co/800x400/0066cc/ffffff?text=Rwanda+Air+Quality" alt="Rwanda Air Quality Dashboard preview" loading="lazy" />
+          <div style="padding: 18px 4px 0">
+            <h3 style="color:var(--primary-color)">Rwanda Air Quality Dashboard</h3>
+            <p class="muted">Real-time air quality monitoring dashboard for Rwanda using Streamlit, providing accessible environmental data and forecasts.</p>
+            <div class="project-meta">
+              <span class="tag">Streamlit</span>
+              <span class="tag">Forecasting</span>
+              <span class="tag">Public Health</span>
             </div>
-        </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section id="experience" class="experience">
-        <div class="container">
-            <h2 class="section-title">Professional Experience</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>AIMS Research and Innovation Centre</h3>
-                        <span class="date">2023–Present</span>
-                        <span class="role">Data Manager</span>
-                        <ul>
-                            <li>Lead data analysis in regional health and environment programs.</li>
-                            <li>Develop real-time forecasting models using deep learning.</li>
-                            <li>Manage collaborative research projects, documentation, and funding proposals.</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>Willows International</h3>
-                        <span class="date">2021–2022</span>
-                        <span class="role">Data Analyst</span>
-                        <ul>
-                            <li>Conducted evaluations of family planning programs.</li>
-                            <li>Supported RCT design and M&E frameworks.</li>
-                            <li>Built tools for training CHWs in digital data collection.</li>
-                        </ul>
-                    </div>
-                </div>
+            <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap">
+              <a href="https://rwanda-air-quality-dashboard-2pprtzkknhnwo9cbrw6q2a.streamlit.app/" class="btn" target="_blank" rel="noopener">Live Demo</a>
             </div>
-        </div>
-    </section>
+          </div>
+        </article>
 
-    <!-- Certifications Section -->
-    <section id="certifications" class="certifications">
-        <div class="container">
-            <h2 class="section-title">Certifications</h2>
-            <div class="certificates-grid" id="certificates-container">
-                <!-- Certificates will be loaded dynamically -->
+        <article class="card project-card">
+          <img src="https://placehold.co/800x400/0066cc/ffffff?text=Math+Friend+Chatbot" alt="MyFirstMathFriend chatbot preview" loading="lazy" />
+          <div style="padding: 18px 4px 0">
+            <h3 style="color:var(--primary-color)">MyFirstMathFriend</h3>
+            <p class="muted">Interactive multilingual math chatbot aligned with the Rwanda primary curriculum. Used in rural classrooms.</p>
+            <div class="project-meta">
+              <span class="tag">NLP</span>
+              <span class="tag">Education</span>
+              <span class="tag">Multilingual</span>
             </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <p><i class="fas fa-envelope"></i> sniyizuruqero@aimsric.org</p>
-                    <p><i class="fas fa-phone"></i> +250 784 602 833</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Kigali, Rwanda</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
-                <div class="passport-photo">
-                    <img src="https://placehold.co/250x300/3498db/FFFFFF?text=Passport+Photo" alt="Passport Photo" id="passport-img">
-                </div>
+            <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap">
+              <a href="https://huggingface.co/spaces/NSamson1/MyFirstMathFriend" class="btn" target="_blank" rel="noopener">Live Demo</a>
             </div>
+          </div>
+        </article>
+
+        <article class="card project-card">
+          <img src="https://placehold.co/800x400/0066cc/ffffff?text=Finance+Assistant" alt="Financial Literacy Assistant preview" loading="lazy" />
+          <div style="padding: 18px 4px 0">
+            <h3 style="color:var(--primary-color)">Financial Literacy Assistant</h3>
+            <p class="muted">Conversational interface for mobile banking. Helps users understand savings, loans, and digital wallets.</p>
+            <div class="project-meta">
+              <span class="tag">Conversational AI</span>
+              <span class="tag">Finance</span>
+              <span class="tag">Assistant</span>
+            </div>
+            <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap">
+              <a href="https://huggingface.co/spaces/NSamson1/Finance" class="btn" target="_blank" rel="noopener">Live Demo</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience & Education -->
+  <section id="experience">
+    <div class="container">
+      <h2 class="section-title">Experience & Education</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="card">
+            <h3 style="color:var(--primary-color)">AIMS Research and Innovation Centre</h3>
+            <h4 style="color:var(--secondary-color);font-weight:600">Data Manager | 2023–Present</h4>
+            <p class="muted">Lead data analysis in regional health and environment programs. Develop real-time forecasting models using deep learning.</p>
+          </div>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2023 Samson Niyizuruqero. All rights reserved.</p>
+        <div class="timeline-item">
+          <div class="card">
+            <h3 style="color:var(--primary-color)">Willows International</h3>
+            <h4 style="color:var(--secondary-color);font-weight:600">Data Analyst | 2021–2022</h4>
+            <p class="muted">Conducted evaluations of family planning programs. Supported RCT design and M&E frameworks.</p>
+          </div>
         </div>
-    </footer>
+        <div class="timeline-item">
+          <div class="card">
+            <h3 style="color:var(--primary-color)">African Institute for Mathematical Sciences (AIMS)</h3>
+            <h4 style="color:var(--secondary-color);font-weight:600">MSc in Data Science | 2021–2023</h4>
+            <p class="muted">Focus: Applied ML, environmental time series, XAI. Thesis: Machine Learning-Based Early Warning System for Air Pollution in Rwanda.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="card">
+            <h3 style="color:var(--primary-color)">University of Rwanda</h3>
+            <h4 style="color:var(--secondary-color);font-weight:600">BSc in Statistics | 2018–2021</h4>
+            <p class="muted">Undergrad Research: Under-Five Mortality Forecasting Using Time Series Techniques.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <script>
-        // Mobile Navigation Toggle
-        document.querySelector('.menu-btn').addEventListener('click', () => {
-            document.querySelector('.nav-links').classList.toggle('active');
-        });
+  <!-- Certifications -->
+  <section id="certifications">
+    <div class="container">
+      <h2 class="section-title">Certifications</h2>
+      <div class="grid skills-grid">
+        <div class="card">
+          <h3 style="color:var(--primary-color)">Apple AATCE Program – Swift App Development</h3>
+          <p class="muted">2025–2026 (Ongoing)</p>
+          <p>Selected participant in Apple-led AATCE initiative, focused on practical training in Swift programming and app development.</p>
+        </div>
+        <div class="card">
+          <h3 style="color:var(--primary-color)">Certificate in Business Management</h3>
+          <p class="muted">Aug 2025</p>
+          <p>Industry Immersion Africa (iiAfrica) in collaboration with ESMT Berlin, Harvard Business Publishing, and Academics Without Borders.</p>
+        </div>
+        <div class="card">
+          <h3 style="color:var(--primary-color)">East-African School for Young Researchers</h3>
+          <p class="muted">Jul 2025</p>
+          <p>Advanced Machine Learning Techniques, University of Nairobi, Kenya. Represented Rwanda among East Africa's top AI researchers.</p>
+        </div>
+        <div class="card">
+          <h3 style="color:var(--primary-color)">Modern Statistics & ML for Global Health</h3>
+          <p class="muted">Feb 2024</p>
+          <p>Imperial College London & AIMS, Rwanda. Focused on applying modern statistical methods to global health challenges.</p>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:24px">
+        <a href="#" class="btn" id="viewAllCerts2"><i class="fa-regular fa-file-pdf"></i> View All Certificates (PDF)</a>
+      </div>
+    </div>
+  </section>
 
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.querySelector('.nav-links').classList.remove('active');
-            });
-        });
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Get In Touch</h2>
+      <div class="contact">
+        <div class="info">
+          <div class="row">
+            <div class="icon"><i class="fa-regular fa-envelope"></i></div>
+            <div>
+              <h3>Email</h3>
+              <a href="mailto:sniyizurugero@aimsric.org">sniyizurugero@aimsric.org</a>
+            </div>
+          </div>
+          <div class="row">
+            <div class="icon"><i class="fa-solid fa-phone"></i></div>
+            <div>
+              <h3>Phone</h3>
+              <a href="tel:+250784602833">+250 784 602 833</a>
+            </div>
+          </div>
+          <div class="row">
+            <div class="icon"><i class="fa-solid fa-location-dot"></i></div>
+            <div>
+              <h3>Location</h3>
+              <p>Kigali, Rwanda</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="icon"><i class="fa-solid fa-globe"></i></div>
+            <div>
+              <h3>Follow Me</h3>
+              <div style="display:flex; gap:12px; margin-top:6px">
+                <a aria-label="LinkedIn" href="https://www.linkedin.com/in/samson-niyizurugero-200a19260" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg"></i></a>
+                <a aria-label="GitHub" href="https://github.com/samson19977" target="_blank" rel="noopener"><i class="fab fa-github fa-lg"></i></a>
+                <a aria-label="Hugging Face" href="https://huggingface.co/NSamson1" target="_blank" rel="noopener"><i class="fas fa-robot fa-lg"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
 
-        // Certificate data
-        const certificates = [
-            {
-                title: "Apple AATCE Program - Swift App Development",
-                date: "2025–2026 (Ongoing)",
-                image: "https://placehold.co/300x200/3498db/FFFFFF?text=Apple+AATCE"
-            },
-            {
-                title: "Certificate in Business Management",
-                date: "Aug 2025",
-                image: "https://placehold.co/300x200/3498db/FFFFFF?text=Business+Management"
-            },
-            {
-                title: "East-African School for Young Researchers",
-                date: "Jul 2025",
-                image: "https://placehold.co/300x200/3498db/FFFFFF?text=EASY-ML"
-            },
-            {
-                title: "Modern Statistics & ML for Global Health",
-                date: "Feb 2024",
-                image: "https://placehold.co/300x200/3498db/FFFFFF?text=Modern+Statistics"
-            },
-            {
-                title: "Building Your Own Chatbot Workshop",
-                date: "Jan 2025",
-                image: "https://placehold.co/300x200/3498db/FFFFFF?text=Chatbot+Workshop"
-            },
-            {
-                title: "Geospatial Analytics using R-INLA",
-                date: "Nov-Dec 2023",
-                image: "https://placehold.co/300x200/3498db/FFFFFF?text=Geospatial+Analytics"
-            }
-        ];
+        <form id="contactForm" autocomplete="on" novalidate>
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input id="name" name="from_name" type="text" required placeholder="Jane Doe" />
+          </div>
+          <div class="form-group">
+            <label for="email">Your Email</label>
+            <input id="email" name="reply_to" type="email" required placeholder="jane@example.com" />
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input id="subject" name="subject" type="text" required placeholder="Project inquiry" />
+          </div>
+          <div class="form-group">
+            <label for="message">Your Message</label>
+            <textarea id="message" name="message" rows="5" required placeholder="Hello Samson, I'd like to discuss..."></textarea>
+          </div>
+          <!-- Honeypot field for spam bots -->
+          <input type="text" id="website" name="website" class="sr-only" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
-        // Function to load certificates
-        function loadCertificates() {
-            const certificatesContainer = document.getElementById('certificates-container');
-            
-            certificates.forEach(cert => {
-                const certificateItem = document.createElement('div');
-                certificateItem.classList.add('certificate-item');
-                
-                certificateItem.innerHTML = `
-                    <img src="${cert.image}" alt="${cert.title}" class="certificate-img">
-                    <div class="certificate-info">
-                        <h3>${cert.title}</h3>
-                        <p>${cert.date}</p>
-                    </div>
-                `;
-                
-                certificatesContainer.appendChild(certificateItem);
-            });
+          <button type="submit" class="btn"><i class="fa-regular fa-paper-plane"></i> Send Message</button>
+          <p id="formStatus" class="status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="logo" style="color:#fff">Samson.N</div>
+          <p style="margin-top:6px">Data Scientist & AI Researcher specializing in environmental technology and public health applications.</p>
+          <div style="display:flex; gap:12px; margin-top:10px">
+            <a aria-label="LinkedIn" href="https://www.linkedin.com/in/samson-niyizurugero-200a19260" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg"></i></a>
+            <a aria-label="GitHub" href="https://github.com/samson19977" target="_blank" rel="noopener"><i class="fab fa-github fa-lg"></i></a>
+            <a aria-label="Hugging Face" href="https://huggingface.co/NSamson1" target="_blank" rel="noopener"><i class="fas fa-robot fa-lg"></i></a>
+          </div>
+        </div>
+        <div>
+          <h3 style="color:#fff; font-size:1.1rem">Quick Links</h3>
+          <ul style="list-style:none; margin-top:8px">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#experience">Experience</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="color:#fff; font-size:1.1rem">Resources</h3>
+          <ul style="list-style:none; margin-top:8px">
+            <li><a href="#certifications">Certifications</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#" id="viewPdfFooter">View Certificates PDF</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">&copy; <span id="year"></span> Samson Niyizurugero. All Rights Reserved.</div>
+    </div>
+  </footer>
+
+  <!-- PDF Modal -->
+  <div id="pdfModal" class="modal" aria-labelledby="pdfTitle" aria-modal="true" role="dialog">
+    <div class="panel" role="document">
+      <div class="header">
+        <h2 id="pdfTitle">My Degrees & Certificates</h2>
+        <div style="display:flex; gap:8px; align-items:center">
+          <a class="btn btn-outline" href="myDoc.pdf" download><i class="fa-regular fa-circle-down"></i> Download PDF</a>
+          <button class="close" id="closePdf" aria-label="Close certificates viewer">&times;</button>
+        </div>
+      </div>
+      <iframe id="pdf-viewer" title="Certificates PDF"></iframe>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js" defer></script>
+  <script>
+    // ===== Helpers =====
+    const $ = (sel, ctx=document) => ctx.querySelector(sel);
+    const $$ = (sel, ctx=document) => Array.from(ctx.querySelectorAll(sel));
+
+    // ===== Navbar & Header =====
+    const hamburger = $('#hamburger');
+    const navLinks = $('#navLinks');
+    hamburger.addEventListener('click', () => {
+      const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+      hamburger.setAttribute('aria-expanded', String(!expanded));
+      navLinks.classList.toggle('active');
+    });
+    // Close mobile menu when clicking a link
+    $$('#navLinks a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('active')));
+
+    // Back to top button
+    const topBtn = document.createElement('a');
+    topBtn.href = '#home';
+    topBtn.className = 'btn top-btn';
+    topBtn.innerHTML = '<i class="fa-solid fa-arrow-up"></i>';
+    document.body.appendChild(topBtn);
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 600) topBtn.classList.add('show'); else topBtn.classList.remove('show');
+    });
+
+    // Year
+    $('#year').textContent = new Date().getFullYear();
+
+    // ===== Theme Toggle =====
+    const modeToggle = $('#modeToggle');
+    const root = document.documentElement;
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme) root.setAttribute('data-theme', storedTheme);
+    modeToggle.addEventListener('click', () => {
+      const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
+
+    // ===== PDF Modal Logic =====
+    const pdfModal = $('#pdfModal');
+    const pdfViewer = $('#pdf-viewer');
+    const closePdf = $('#closePdf');
+    const openers = ['#viewAllCerts', '#viewAllCerts2', '#viewPdfFooter']
+      .map(sel => $(sel)).filter(Boolean);
+    const PDF_PATH = 'myDoc.pdf'; // <-- Put your certificates PDF here
+
+    function openPdfModal() {
+      pdfViewer.src = PDF_PATH + '#toolbar=1&navpanes=0&scrollbar=1';
+      pdfModal.setAttribute('open', '');
+      // Trap focus
+      closePdf.focus();
+      document.body.style.overflow = 'hidden';
+    }
+    function closePdfModal() {
+      pdfModal.removeAttribute('open');
+      pdfViewer.src = '';
+      document.body.style.overflow = '';
+    }
+    openers.forEach(btn => btn && btn.addEventListener('click', (e) => { e.preventDefault(); openPdfModal(); }));
+    closePdf.addEventListener('click', closePdfModal);
+    window.addEventListener('keydown', (e) => { if (e.key === 'Escape' && pdfModal.hasAttribute('open')) closePdfModal(); });
+    pdfModal.addEventListener('click', (e) => { if (e.target === pdfModal) closePdfModal(); });
+
+    // ===== EmailJS Contact Form =====
+    // 1) Create a service + email template in EmailJS dashboard
+    // 2) Replace the placeholders below
+    const EMAILJS_PUBLIC_KEY = 'public_12345abcDEF';
+    const EMAILJS_SERVICE_ID = 'service_6z1g5cx';
+    const EMAILJS_TEMPLATE_ID = 'template_ab12cd';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.emailjs && EMAILJS_PUBLIC_KEY !== 'YOUR_PUBLIC_KEY') {
+        window.emailjs.init(EMAILJS_PUBLIC_KEY);
+      }
+    });
+
+    const form = $('#contactForm');
+    const status = $('#formStatus');
+
+    function validateForm() {
+      if ($('#website').value) return { ok:false, msg:'Spam detected.' }; // honeypot
+      const required = ['#name','#email','#subject','#message'].map(sel => $(sel));
+      for (const el of required) {
+        if (!el.value.trim()) return { ok:false, msg:'Please fill out all required fields.' };
+      }
+      const email = $('#email').value.trim();
+      const emailOK = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      if (!emailOK) return { ok:false, msg:'Please enter a valid email address.' };
+      return { ok:true };
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const v = validateForm();
+      if (!v.ok) { status.textContent = v.msg; status.style.color = '#ef4444'; return; }
+
+      status.textContent = 'Sending…'; status.style.color = '';
+      try {
+        if (!window.emailjs || EMAILJS_PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
+          // Fallback demo: open mailto if EmailJS isn't configured yet
+          const name = encodeURIComponent($('#name').value);
+          const subj = encodeURIComponent($('#subject').value);
+          const body = encodeURIComponent($('#message').value + '\n\nFrom: ' + $('#email').value);
+          window.location.href = `mailto:sniyizurugero@aimsric.org?subject=${subj}&body=${body}`;
+          status.textContent = 'Opening your email client…';
+          return;
         }
+        const res = await emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, form);
+        status.textContent = 'Message sent successfully!';
+        status.style.color = '#10b981';
+        form.reset();
+      } catch (err) {
+        console.error(err);
+        status.textContent = 'Failed to send. Please try again or email me directly.';
+        status.style.color = '#ef4444';
+      }
+    });
+  </script>
 
-        // Load certificates when the page loads
-        document.addEventListener('DOMContentLoaded', loadCertificates);
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // CV download handler
-        document.getElementById('download-cv').addEventListener('click', function(e) {
-            e.preventDefault();
-            alert('CV download functionality would be implemented here. In a real implementation, this would download your actual CV file.');
-            // In a real implementation, this would be:
-            // window.open('path/to/your/cv.pdf', '_blank');
-        });
-    </script>
+  <!-- (Optional) Analytics - replace with your own, or remove -->
+  <!-- <script defer data-domain="yourdomain.com" src="https://plausible.io/js/script.js"></script> -->
 </body>
 </html>
