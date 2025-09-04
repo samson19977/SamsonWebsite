@@ -152,6 +152,27 @@
     .modal .close:hover { color: var(--primary-color); }
     #pdf-viewer { width:100%; height: 78vh; border:none; border-radius: 10px; background:#111; }
 
+    /* Form validation styles */
+    .form-group.error input, 
+    .form-group.error textarea {
+      border-color: #ef4444;
+      outline-color: rgba(239, 68, 68, 0.25);
+    }
+    .error-message {
+      color: #ef4444;
+      font-size: 0.85rem;
+      display: none;
+    }
+    .form-group.error .error-message {
+      display: block;
+    }
+    .status.success {
+      color: #10b981;
+    }
+    .status.error {
+      color: #ef4444;
+    }
+
     /* Utilities */
     .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
     .skip-link { position:absolute; left:-9999px; }
@@ -472,18 +493,22 @@
           <div class="form-group">
             <label for="name">Your Name</label>
             <input id="name" name="from_name" type="text" required placeholder="Jane Doe" />
+            <div class="error-message">Please enter your name</div>
           </div>
           <div class="form-group">
             <label for="email">Your Email</label>
             <input id="email" name="reply_to" type="email" required placeholder="jane@example.com" />
+            <div class="error-message">Please enter a valid email address</div>
           </div>
           <div class="form-group">
             <label for="subject">Subject</label>
             <input id="subject" name="subject" type="text" required placeholder="Project inquiry" />
+            <div class="error-message">Please enter a subject</div>
           </div>
           <div class="form-group">
             <label for="message">Your Message</label>
             <textarea id="message" name="message" rows="5" required placeholder="Hello Samson, I'd like to discuss..."></textarea>
+            <div class="error-message">Please enter your message</div>
           </div>
           <!-- Honeypot field for spam bots -->
           <input type="text" id="website" name="website" class="sr-only" tabindex="-1" autocomplete="off" aria-hidden="true" />
@@ -548,7 +573,7 @@
   </div>
 
   <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <script>
     // ===== Helpers =====
     const $ = (sel, ctx=document) => ctx.querySelector(sel);
@@ -615,57 +640,144 @@
     pdfModal.addEventListener('click', (e) => { if (e.target === pdfModal) closePdfModal(); });
 
     // ===== EmailJS Contact Form =====
-    // 1) Create a service + email template in EmailJS dashboard
-    // 2) Replace the placeholders below
-    const EMAILJS_PUBLIC_KEY = 'QRk86L4CQCjexJvuV';
-    const EMAILJS_SERVICE_ID = 'service_14hbffc';
-    const EMAILJS_TEMPLATE_ID = 'template_f8qhxle';
+    // Replace these with your actual EmailJS credentials
+    const EMAILJS_PUBLIC_KEY = 'QRk86L4CQCjexJvuV'; // Your public key
+    const EMAILJS_SERVICE_ID = 'service_14hbffc'; // Your service ID
+    const EMAILJS_TEMPLATE_ID = 'template_f8qhxle'; // Your template ID
 
-    document.addEventListener('DOMContentLoaded', () => {
-      if (window.emailjs && EMAILJS_PUBLIC_KEY !== 'YOUR_PUBLIC_KEY') {
-        window.emailjs.init(EMAILJS_PUBLIC_KEY);
+    // Initialize EmailJS
+    (function() {
+      if (typeof emailjs !== 'undefined') {
+        emailjs.init(EMAILJS_PUBLIC_KEY);
       }
-    });
+    })();
 
     const form = $('#contactForm');
     const status = $('#formStatus');
+    const formGroups = $$('.form-group');
 
-    function validateForm() {
-      if ($('#website').value) return { ok:false, msg:'Spam detected.' }; // honeypot
-      const required = ['#name','#email','#subject','#message'].map(sel => $(sel));
-      for (const el of required) {
-        if (!el.value.trim()) return { ok:false, msg:'Please fill out all required fields.' };
-      }
-      const email = $('#email').value.trim();
-      const emailOK = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-      if (!emailOK) return { ok:false, msg:'Please enter a valid email address.' };
-      return { ok:true };
+    // Clear validation errors
+    function clearErrors() {
+      formGroups.forEach(group => group.classList.remove('error'));
+      status.textContent = '';
+      status.className = 'status';
     }
 
+    // Show validation error
+    function showError(input, message) {
+      const group = input.closest('.form-group');
+      group.classList.add('error');
+      status.textContent = message;
+      status.className = 'status error';
+      input.focus();
+    }
+
+    // Validate form
+    function validateForm() {
+      clearErrors();
+      
+      // Check honeypot
+      if ($('#website').value) {
+        return { ok: false, msg: 'Spam detected.' };
+      }
+      
+      // Validate name
+      const name = $('#name').value.trim();
+      if (!name) {
+        showError($('#name'), 'Please enter your name');
+        return { ok: false };
+      }
+      
+      // Validate email
+      const email = $('#email').value.trim();
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!email) {
+        showError($('#email'), 'Please enter your email');
+        return { ok: false };
+      } else if (!emailRegex.test(email)) {
+        showError($('#email'), 'Please enter a valid email address');
+        return { ok: false };
+      }
+      
+      // Validate subject
+      const subject = $('#subject').value.trim();
+      if (!subject) {
+        showError($('#subject'), 'Please enter a subject');
+        return { ok: false };
+      }
+      
+      // Validate message
+      const message = $('#message').value.trim();
+      if (!message) {
+        showError($('#message'), 'Please enter your message');
+        return { ok: false };
+      }
+      
+      return { ok: true, data: { name, email, subject, message } };
+    }
+
+    // Form submission
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const v = validateForm();
-      if (!v.ok) { status.textContent = v.msg; status.style.color = '#ef4444'; return; }
-
-      status.textContent = 'Sending…'; status.style.color = '';
+      
+      const validation = validateForm();
+      if (!validation.ok) return;
+      
+      status.textContent = 'Sending message...';
+      
       try {
-        if (!window.emailjs || EMAILJS_PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
-          // Fallback demo: open mailto if EmailJS isn't configured yet
-          const name = encodeURIComponent($('#name').value);
-          const subj = encodeURIComponent($('#subject').value);
-          const body = encodeURIComponent($('#message').value + '\n\nFrom: ' + $('#email').value);
-          window.location.href = `mailto:sniyizurugero@aimsric.org?subject=${subj}&body=${body}`;
-          status.textContent = 'Opening your email client…';
-          return;
+        // If EmailJS is properly configured
+        if (typeof emailjs !== 'undefined' && 
+            EMAILJS_PUBLIC_KEY && EMAILJS_PUBLIC_KEY !== 'QRk86L4CQCjexJvuV' &&
+            EMAILJS_SERVICE_ID && EMAILJS_SERVICE_ID !== 'service_14hbffc' &&
+            EMAILJS_TEMPLATE_ID && EMAILJS_TEMPLATE_ID !== 'template_f8qhxle') {
+      
+          const templateParams = {
+            from_name: validation.data.name,
+            reply_to: validation.data.email,
+            subject: validation.data.subject,
+            message: validation.data.message
+          };
+          
+          const response = await emailjs.send(
+            EMAILJS_SERVICE_ID, 
+            EMAILJS_TEMPLATE_ID, 
+            templateParams
+          );
+          
+          if (response.status === 200) {
+            status.textContent = 'Message sent successfully!';
+            status.className = 'status success';
+            form.reset();
+            
+            // Clear status after 5 seconds
+            setTimeout(() => {
+              status.textContent = '';
+            }, 5000);
+          } else {
+            throw new Error('Failed to send message');
+          }
+        } else {
+          // Fallback to mailto if EmailJS is not configured
+          const subject = encodeURIComponent(validation.data.subject);
+          const body = encodeURIComponent(`${validation.data.message}\n\nFrom: ${validation.data.name} (${validation.data.email})`);
+          window.location.href = `mailto:sniyizurugero@aimsric.org?subject=${subject}&body=${body}`;
+          status.textContent = 'Opening your email client...';
         }
-        const res = await emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, form);
-        status.textContent = 'Message sent successfully!';
-        status.style.color = '#10b981';
-        form.reset();
-      } catch (err) {
-        console.error(err);
-        status.textContent = 'Failed to send. Please try again or email me directly.';
-        status.style.color = '#ef4444';
+      } catch (error) {
+        console.error('Email sending error:', error);
+        status.textContent = 'Failed to send message. Please try again or email me directly.';
+        status.className = 'status error';
+      }
+    });
+
+    // Real-time validation
+    form.addEventListener('input', (e) => {
+      const input = e.target;
+      const group = input.closest('.form-group');
+      
+      if (input.value.trim()) {
+        group.classList.remove('error');
       }
     });
   </script>
