@@ -7,8 +7,6 @@
   <meta name="description" content="Samson Niyizurugero – Data Scientist & AI Researcher in Kigali. Environmental AI, forecasting, NLP, and geospatial analytics. View projects, resume, and contact." />
   <meta name="theme-color" content="#0066cc" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E🤖%3C/text%3E%3C/svg%3E" />
-
-  <!-- Fonts & Icons -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-Sa0Gg1G3jYg2r1Dq7xJYf88z/0d26LJp3bIH6g2c3Ywq3uAq2pJ2iQbU9dv5/8m4Nn5FJmUe0uQ8u0C1+7x2GQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -38,313 +36,245 @@
 
   <style>
     :root {
-      --primary: #0066cc;
-      --secondary: #004d99;
-      --accent: #00a86b;
-      --text: #1f2937;
-      --muted: #6b7280;
-      --bg: #f8f9fa;
-      --card: #fff;
+      --primary-color: #0066cc;
+      --secondary-color: #004d99;
+      --accent-color: #00a86b;
+      --text-color: #1f2937; 
+      --muted-text: #6b7280; 
+      --light-bg: #f8f9fa;
+      --card-bg: #ffffff;
+      --dark-bg: #0b1220;
+      --dark-card: #111827; 
+      --dark-text: #e5e7eb;
       --shadow: 0 5px 15px rgba(0,0,0,.08);
       --radius: 14px;
       --transition: all .3s ease;
     }
-    html[data-theme="dark"] {
-      --text: #e5e7eb;
-      --bg: #0b1220;
-      --card: #111827;
-      --secondary: #7cc4ff;
-      --shadow: 0 10px 30px rgba(0,0,0,.5);
-    }
-    *, *::before, *::after { box-sizing: border-box; }
-    body { margin:0; font-family: system-ui, sans-serif; color: var(--text); background: var(--bg); line-height: 1.6; scroll-behavior: smooth; }
-    a { color: var(--primary); text-decoration: none; transition: var(--transition); }
-    a:hover { color: var(--secondary); }
-    img, iframe { max-width: 100%; border-radius: 10px; display: block; }
 
-    header { position: sticky; top:0; z-index:1000; background: var(--card); box-shadow: 0 2px 10px rgba(0,0,0,.06); }
-    .navbar { display:flex; justify-content:space-between; align-items:center; padding:16px; }
-    .logo { font-weight:800; font-size:1.4rem; color: var(--primary); }
-    .nav-links { display:flex; gap:26px; list-style:none; }
-    .nav-links a { position: relative; font-weight:600; }
-    .nav-links a::after { content:''; position:absolute; left:0; bottom:-6px; height:2px; width:0; background:var(--primary); transition: var(--transition); }
+    html[data-theme="dark"] {
+      --text-color: var(--dark-text);
+      --light-bg: #0b1220;
+      --card-bg: var(--dark-card);
+      --shadow: 0 10px 30px rgba(0,0,0,.5);
+      --secondary-color: #7cc4ff;
+    }
+
+    * { box-sizing: border-box; margin:0; padding:0; }
+    html { scroll-behavior: smooth; }
+    body { color: var(--text-color); background: var(--light-bg); font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; line-height: 1.6; }
+    a { color: var(--primary-color); text-decoration: none; transition: var(--transition); }
+    a:hover { color: var(--secondary-color); }
+    img { max-width: 100%; height: auto; display: block; border-radius: 10px; }
+
+    .container { width: min(1200px, 92%); margin: 0 auto; }
+    section { padding: 80px 0; }
+    .section-title { text-align: center; margin-bottom: 50px; color: var(--primary-color); font-size: clamp(1.8rem, 1.6rem + 1.2vw, 2.6rem); position: relative; }
+    .section-title::after { content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 80px; height: 4px; background: var(--accent-color); border-radius: 2px; }
+
+    .btn { display:inline-flex; align-items:center; gap:.6rem; padding:12px 20px; background:var(--primary-color); color:#fff; border:none; border-radius: 999px; font-weight:600; cursor:pointer; transition: var(--transition); box-shadow: var(--shadow); }
+    .btn:hover { background: var(--secondary-color); transform: translateY(-2px); }
+    .btn-outline { background: transparent; color: var(--primary-color); border: 2px solid var(--primary-color); }
+    .btn-outline:hover { background: var(--primary-color); color:#fff; }
+    .btn-ghost { background: transparent; border: 1px solid rgba(0,0,0,.08); }
+
+    header { position: sticky; top: 0; z-index: 1000; background: var(--card-bg); box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+    .navbar { display:flex; justify-content:space-between; align-items:center; padding:16px 0; }
+    .logo { font-weight:800; letter-spacing:.3px; color:var(--primary-color); font-size:1.4rem; }
+    .nav-links { display:flex; list-style:none; gap:26px; }
+    .nav-links a { color: var(--text-color); font-weight:600; position:relative; }
+    .nav-links a::after { content:''; position:absolute; left:0; bottom:-6px; height:2px; width:0; background:var(--primary-color); transition:var(--transition); }
     .nav-links a:hover::after { width:100%; }
     .hamburger { display:none; font-size:1.5rem; cursor:pointer; }
 
-    .mode-toggle { border:1px solid rgba(0,0,0,.1); padding:8px 12px; border-radius:999px; background:transparent; cursor:pointer; display:flex; align-items:center; gap:.5rem; }
+    .mode-toggle { border: 1px solid rgba(0,0,0,.1); padding:8px 12px; border-radius:999px; background:transparent; cursor:pointer; display:flex; align-items:center; gap:.5rem; }
 
-    section { padding: 80px 0; }
-    .section-title { text-align:center; margin-bottom:50px; color: var(--primary); font-size: clamp(1.8rem, 1.6rem + 1.2vw, 2.6rem); position: relative; }
-    .section-title::after { content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 80px; height: 4px; background: var(--accent); border-radius: 2px; }
-
-    .container { width: min(1200px, 92%); margin:0 auto; }
-
-    .hero { min-height: 86vh; display:grid; place-items:center; text-align:left; background: linear-gradient(135deg, rgba(0,102,204,.10) 0%, rgba(0,168,107,.10) 100%); position:relative; overflow:hidden; }
-    .hero h1 { font-size: clamp(2rem,1.2rem+2.4vw,3.2rem); color: var(--primary); margin-bottom:10px; }
-    .hero h2 { font-size: clamp(1.1rem,.9rem+1vw,1.6rem); color: var(--secondary); font-weight:500; margin-bottom:16px; }
-    .hero p { font-size:1.05rem; color: var(--muted); margin-bottom:20px; }
+    .hero { min-height: 86vh; display:grid; place-items:center; background: linear-gradient(135deg, rgba(0,102,204,.10) 0%, rgba(0,168,107,.10) 100%); position:relative; overflow:hidden; }
+    .hero .content { max-width: 760px; text-align:left; }
+    .hero h1 { font-size: clamp(2rem, 1.2rem + 2.4vw, 3.2rem); color: var(--primary-color); margin-bottom: 10px; }
+    .hero h2 { font-size: clamp(1.1rem, .9rem + 1vw, 1.6rem); color: var(--secondary-color); font-weight:500; margin-bottom: 16px; }
+    .hero p { font-size: 1.05rem; color: var(--muted-text); margin-bottom: 20px; }
     .hero .cta { display:flex; gap:12px; flex-wrap:wrap; }
+    .hero .bg-shape { position:absolute; bottom:-10%; right:-10%; width:min(40%,520px); opacity:.10; }
 
-    .grid { display:grid; gap:26px; }
+    .about { display:grid; grid-template-columns: 1.1fr .9fr; gap: 40px; align-items:center; }
+    .about .profile-img { border-radius: var(--radius); box-shadow: var(--shadow); transition: transform .3s; }
+    .about .profile-img:hover { transform: scale(1.02); }
+
+    .grid { display:grid; gap: 26px; }
     .skills-grid { grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); }
     .projects-grid { grid-template-columns: repeat(auto-fit, minmax(320px,1fr)); }
-    .card { background: var(--card); border-radius: var(--radius); padding:24px; box-shadow: var(--shadow); transition: var(--transition); }
-    .card:hover { transform: translateY(-4px); box-shadow:0 12px 30px rgba(0,0,0,.12); }
-    .project-card img { height:200px; object-fit:cover; border-radius:12px; }
+    .card { background: var(--card-bg); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); transition: var(--transition); }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,.12); }
+    .project-card img { height: 200px; object-fit: cover; border-radius: 12px; }
+    .project-meta { display:flex; gap:8px; flex-wrap:wrap; margin-top: 10px; }
+    .tag { display:inline-block; font-size:.8rem; padding:6px 10px; border-radius:999px; background:rgba(0,102,204,.12); color:var(--secondary-color); }
 
-    .timeline { position:relative; max-width:900px; margin:0 auto; }
-    .timeline::after { content:''; position:absolute; width:4px; background: var(--primary); top:0; bottom:0; left:50%; transform: translateX(-50%); }
+    .timeline { position:relative; max-width: 900px; margin: 0 auto; }
+    .timeline::after { content:''; position:absolute; width:4px; background: var(--primary-color); top:0; bottom:0; left:50%; transform: translateX(-50%); }
     .timeline-item { position:relative; width:50%; padding:10px 40px; }
     .timeline-item:nth-child(odd){ left:0; }
     .timeline-item:nth-child(even){ left:50%; }
-    .timeline-item::after { content:''; position:absolute; top:20px; width:20px; height:20px; background: var(--card); border:4px solid var(--primary); border-radius:50%; z-index:2; }
+    .timeline-item::after { content:''; position:absolute; top:20px; width:20px; height:20px; background: var(--card-bg); border:4px solid var(--primary-color); border-radius:50%; z-index:2; }
     .timeline-item:nth-child(odd)::after { right:-10px; }
     .timeline-item:nth-child(even)::after { left:-10px; }
 
-    .contact { display:grid; grid-template-columns: 1fr 1fr; gap:40px; }
+    .contact { display:grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items:start; }
     .contact .info { display:grid; gap:16px; }
+    .contact .row { display:flex; gap:14px; align-items:center; }
+    .contact .icon { width:46px; height:46px; display:grid; place-items:center; border-radius:999px; background: var(--primary-color); color:#fff; }
     .contact form { display:grid; gap:16px; }
     .form-group { display:grid; gap:6px; }
-    .form-group input, .form-group textarea { padding:12px 14px; border:1px solid #e5e7eb; border-radius:10px; background: var(--card); color: var(--text); font-size:1rem; }
-    .form-group input:focus, .form-group textarea:focus { outline:2px solid rgba(0,102,204,.25); border-color: var(--primary); }
+    .form-group input, .form-group textarea { padding:12px 14px; border:1px solid #e5e7eb; border-radius: 10px; font-size: 1rem; background: var(--card-bg); color: var(--text-color); }
+    .form-group input:focus, .form-group textarea:focus { outline: 2px solid rgba(0,102,204,.25); border-color: var(--primary-color); }
     .status { font-size:.95rem; }
-    .status.success { color:#10b981; }
-    .status.error { color:#ef4444; }
 
-    footer { background:#0f172a; color:#cbd5e1; padding:50px 0 20px; }
-    footer .footer-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap:26px; }
+    footer { background:#0f172a; color:#cbd5e1; padding: 50px 0 20px; }
+    footer .footer-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 26px; }
     footer a { color:#cbd5e1; }
-    .copyright { text-align:center; margin-top:24px; border-top:1px solid rgba(255,255,255,.08); padding-top:16px; font-size:.95rem; }
+    .copyright { text-align:center; margin-top: 24px; border-top: 1px solid rgba(255,255,255,.08); padding-top: 16px; font-size:.95rem; }
 
-    /* Responsive */
-    @media (max-width: 992px) { .about, .contact { grid-template-columns:1fr; } .timeline-item { width:100%; padding-left:68px; padding-right:22px; } .timeline::after { left:32px; transform:none; } .timeline-item::after { left:22px !important; } }
-    @media (max-width: 768px) { .nav-links { position:fixed; inset:64px 0 auto 0; height: calc(100vh - 64px); flex-direction: column; justify-content:center; align-items:center; gap:22px; transform: translateY(-110%); transition: var(--transition); background: var(--card); } .nav-links.active { transform:translateY(0); } .hamburger { display:block; } }
+    .modal { display:none; position:fixed; inset:0; z-index: 2000; background: rgba(0,0,0,.85); }
+    .modal[open] { display:block; }
+    .modal .panel { position:relative; width:min(920px, 94%); margin: 5% auto; background: var(--card-bg); border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,.4); padding: 18px 18px 12px; }
+    .modal .header { display:flex; align-items:center; justify-content:space-between; gap:10px; padding: 6px 6px 14px; }
+    .modal .header h2 { color: var(--primary-color); font-size: 1.2rem; }
+    .modal .close { border:none; background:transparent; font-size: 28px; line-height:1; cursor:pointer; color:#9ca3af; }
+    .modal .close:hover { color: var(--primary-color); }
+    #pdf-viewer { width:100%; height: 78vh; border:none; border-radius: 10px; background:#111; }
+
+    .form-group.error input, 
+    .form-group.error textarea {
+      border-color: #ef4444;
+      outline-color: rgba(239, 68, 68, 0.25);
+    }
+    .error-message {
+      color: #ef4444;
+      font-size: 0.85rem;
+      display: none;
+    }
+    .form-group.error .error-message {
+      display: block;
+    }
+    .status.success { color: #10b981; }
+    .status.error { color: #ef4444; }
+
+    .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
+    .skip-link { position:absolute; left:-9999px; }
+    .skip-link:focus { left: 10px; top: 10px; background: #111; color:#fff; padding:8px 12px; border-radius:8px; z-index:2001; }
+    .top-btn { position: fixed; right: 16px; bottom: 16px; display:none; }
+    .top-btn.show { display:inline-flex; }
+
+    @media (max-width: 992px) {
+      .about, .contact { grid-template-columns: 1fr; }
+      .timeline::after { left: 32px; transform:none; }
+      .timeline-item { width:100%; left:0 !important; padding-left: 68px; padding-right: 22px; }
+      .timeline-item::after { left: 22px !important; }
+      .nav-links { display:none; position:absolute; top:100%; left:0; right:0; background: var(--card-bg); flex-direction:column; padding:16px 24px; box-shadow: var(--shadow); }
+      .nav-links.show { display:flex; }
+      .hamburger { display:block; }
+    }
   </style>
 </head>
+
 <body>
   <a href="#main" class="skip-link">Skip to content</a>
 
-  <!-- Header -->
   <header>
-    <div class="container">
-      <nav class="navbar" aria-label="Primary navigation">
-        <a href="#home" class="logo">Samson.N</a>
-        <ul class="nav-links" id="navLinks">
-          <li><a href="#home">Home</a></li>
+    <div class="container navbar">
+      <div class="logo">Samson Niyizurugero</div>
+      <nav>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#hero">Home</a></li>
           <li><a href="#about">About</a></li>
-          <li><a href="#skills">Skills</a></li>
           <li><a href="#projects">Projects</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#certifications">Certifications</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
-        <div style="display:flex; gap:10px; align-items:center;">
-          <button class="mode-toggle" id="modeToggle" aria-label="Toggle dark mode"><i class="fa-regular fa-moon"></i> Dark</button>
-          <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
-        </div>
+        <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
       </nav>
+      <button class="mode-toggle" id="theme-toggle"><i class="fas fa-moon"></i> Dark Mode</button>
     </div>
   </header>
 
-  <!-- Hero -->
-  <section id="home" class="hero">
-    <div class="container">
-      <h1>Samson Niyizurugero</h1>
-      <h2>Data Scientist & AI Researcher</h2>
-      <p>Focused on environmental AI, forecasting, NLP, and geospatial analytics for social impact.</p>
-      <div class="cta">
-        <a href="#projects" class="card" style="padding:10px 20px; display:inline-block;">View Projects</a>
-        <button id="resumeBtn" class="card" style="padding:10px 20px; display:inline-block;">View Resume</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- About -->
-  <section id="about">
-    <div class="container">
-      <h2 class="section-title">About Me</h2>
-      <p>Data scientist passionate about AI applications for environmental sustainability and public health. Experienced in machine learning, NLP, and geospatial analytics, with a focus on real-world impact.</p>
-    </div>
-  </section>
-
-  <!-- Skills -->
-  <section id="skills">
-    <div class="container">
-      <h2 class="section-title">Skills</h2>
-      <div class="grid skills-grid">
-        <div class="card">Python, R, SQL</div>
-        <div class="card">Machine Learning & Deep Learning</div>
-        <div class="card">NLP & Computer Vision</div>
-        <div class="card">Data Visualization & Dashboarding</div>
-        <div class="card">GIS & Remote Sensing</div>
-        <div class="card">Air Quality Forecasting Models</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Projects -->
-  <section id="projects">
-    <div class="container">
-      <h2 class="section-title">Projects</h2>
-      <div class="grid projects-grid">
-        <div class="card project-card">
-          <img src="project1.jpg" loading="lazy" alt="Air Quality Forecasting Project">
-          <h3>Air Quality Forecasting</h3>
-          <p>Predictive model for Kigali’s air quality using ML and weather data.</p>
-        </div>
-        <div class="card project-card">
-          <img src="project2.jpg" loading="lazy" alt="Environmental NLP Project">
-          <h3>Environmental NLP Analysis</h3>
-          <p>Natural language processing for environmental data insights.</p>
-        </div>
-        <div class="card project-card">
-          <img src="project3.jpg" loading="lazy" alt="Geospatial Analytics Project">
-          <h3>Geospatial Analytics</h3>
-          <p>GIS-based environmental monitoring and prediction models.</p>
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero" id="hero">
+      <div class="container content">
+        <h1>Hello, I'm Samson</h1>
+        <h2>Data Scientist & AI Researcher in Kigali</h2>
+        <p>Specializing in environmental AI, forecasting, NLP, and geospatial analytics. I build data-driven solutions for social impact and sustainability.</p>
+        <div class="cta">
+          <a href="#projects" class="btn">View Projects</a>
+          <a href="#contact" class="btn btn-outline">Contact Me</a>
         </div>
       </div>
-    </div>
-  </section>
+      <img src="passport.png" alt="Samson Niyizurugero" class="bg-shape" />
+    </section>
 
-  <!-- Experience -->
-  <section id="experience">
-    <div class="container">
-      <h2 class="section-title">Experience</h2>
-      <div class="timeline">
-        <div class="timeline-item">
-          <h3>AI Researcher</h3>
-          <span>Kigali, 2022–Present</span>
-          <p>Developed ML models for environmental monitoring and public health predictions.</p>
-        </div>
-        <div class="timeline-item">
-          <h3>Data Scientist Intern</h3>
-          <span>2021–2022</span>
-          <p>Worked on predictive modeling and data visualization for urban datasets.</p>
-        </div>
+    <!-- About -->
+    <section class="about container" id="about">
+      <div>
+        <h2 class="section-title">About Me</h2>
+        <p>I’m Samson Niyizurugero, a passionate Data Scientist and AI researcher based in Kigali, Rwanda. I work on environmental AI, air quality forecasting, and geospatial analytics to drive social and environmental impact.</p>
+        <p>With expertise in Python, machine learning, NLP, and deep learning, I design solutions for real-world problems. I love open-source collaboration and sharing knowledge with the AI community.</p>
+        <a href="#contact" class="btn">Get in Touch</a>
       </div>
-    </div>
-  </section>
-
-  <!-- Certifications -->
-  <section id="certifications">
-    <div class="container">
-      <h2 class="section-title">Certifications</h2>
-      <div class="grid skills-grid">
-        <div class="card">AI for Earth</div>
-        <div class="card">Deep Learning Specialization</div>
-        <div class="card">Data Science Professional Certificate</div>
+      <div>
+        <img src="passport.png" alt="Samson Niyizurugero" class="profile-img" />
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Contact -->
-  <section id="contact">
-    <div class="container">
-      <h2 class="section-title">Contact</h2>
-      <div class="contact">
-        <div class="info">
-          <p>Email: <a href="mailto:sniyizurugero@aimsric.org">sniyizurugero@aimsric.org</a></p>
-          <p>Location: Kigali, Rwanda</p>
-          <p>LinkedIn: <a href="https://www.linkedin.com/in/samson-niyizurugero-200a19260">Profile</a></p>
-          <p>GitHub: <a href="https://github.com/samson19977">samson19977</a></p>
-        </div>
-        <form id="contactForm">
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input id="name" type="text" required>
-          </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input id="email" type="email" required>
-          </div>
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" rows="5" required></textarea>
-          </div>
-          <button type="submit" class="card">Send Message</button>
-          <p class="status" id="formStatus"></p>
-        </form>
-      </div>
-    </div>
-  </section>
+    <!-- Projects and other sections go here... -->
+  </main>
 
-  <!-- Footer -->
   <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <h4>Samson Niyizurugero</h4>
-          <p>Data Scientist & AI Researcher based in Kigali.</p>
-        </div>
-        <div>
-          <h4>Social</h4>
-          <p><a href="https://github.com/samson19977">GitHub</a></p>
-          <p><a href="https://www.linkedin.com/in/samson-niyizurugero-200a19260">LinkedIn</a></p>
-          <p><a href="https://huggingface.co/NSamson1">Hugging Face</a></p>
-        </div>
+    <div class="container footer-grid">
+      <div>
+        <h3>Samson Niyizurugero</h3>
+        <p>Data Scientist & AI Researcher | Kigali, Rwanda</p>
       </div>
-      <p class="copyright">&copy; 2025 Samson Niyizurugero. All rights reserved.</p>
+      <div>
+        <h4>Contact</h4>
+        <p>Email: <a href="mailto:sniyizurugero@aimsric.org">sniyizurugero@aimsric.org</a></p>
+      </div>
+      <div>
+        <h4>Follow</h4>
+        <a href="https://www.linkedin.com/in/samson-niyizurugero-200a19260" target="_blank">LinkedIn</a> | 
+        <a href="https://github.com/samson19977" target="_blank">GitHub</a>
+      </div>
     </div>
+    <div class="copyright">© 2025 Samson Niyizurugero. All rights reserved.</div>
   </footer>
 
-  <!-- PDF Modal -->
-  <div id="pdfModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);align-items:center;justify-content:center;z-index:999;">
-    <iframe id="pdfViewer" src="" style="width:90%;height:90%;border:none;border-radius:12px;"></iframe>
-    <button id="closePdf" style="position:absolute;top:20px;right:20px;padding:10px 14px;border:none;border-radius:8px;background:var(--primary);color:#fff;font-size:1rem;cursor:pointer;">Close</button>
-  </div>
+  <button class="top-btn" id="top-btn"><i class="fas fa-arrow-up"></i></button>
 
-  <!-- Scripts -->
   <script>
-    const navLinks = document.getElementById('navLinks');
-    const hamburger = document.getElementById('hamburger');
-    hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
-
-    // Dark/Light mode
-    const root = document.documentElement;
-    const modeToggle = document.getElementById('modeToggle');
-    const storedTheme = localStorage.getItem('theme');
-    if(storedTheme) root.setAttribute('data-theme', storedTheme);
-    modeToggle.addEventListener('click', () => {
-      const current = root.getAttribute('data-theme');
-      const next = current === 'dark' ? 'light' : 'dark';
-      root.setAttribute('data-theme', next);
-      localStorage.setItem('theme', next);
-    });
-
-    // Resume PDF Modal
-    const pdfModal = document.getElementById('pdfModal');
-    const pdfViewer = document.getElementById('pdfViewer');
-    const resumeBtn = document.getElementById('resumeBtn');
-    const closePdf = document.getElementById('closePdf');
-    const PDF_PATH = 'resume.pdf';
-
-    resumeBtn.addEventListener('click', () => {
-      pdfViewer.src = PDF_PATH + '#toolbar=1';
-      pdfModal.style.display = 'flex';
-    });
-    closePdf.addEventListener('click', () => pdfModal.style.display = 'none');
-
-    // Contact Form
-    const form = document.getElementById('contactForm');
-    const status = document.getElementById('formStatus');
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const data = {
-        name: form.name.value,
-        email: form.email.value,
-        message: form.message.value
-      };
-      try {
-        // EmailJS integration could go here, fallback mailto:
-        window.location.href = `mailto:sniyizurugero@aimsric.org?subject=Contact from ${data.name}&body=${encodeURIComponent(data.message)}`;
-        status.textContent = 'Message sent!';
-        status.className = 'status success';
-        form.reset();
-      } catch(err){
-        status.textContent = 'Failed to send. Try email manually.';
-        status.className = 'status error';
+    // Theme toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.addEventListener('click', () => {
+      const html = document.documentElement;
+      if(html.getAttribute('data-theme') === 'dark'){
+        html.removeAttribute('data-theme');
+        themeToggle.innerHTML = '<i class="fas fa-moon"></i> Dark Mode';
+      } else {
+        html.setAttribute('data-theme', 'dark');
+        themeToggle.innerHTML = '<i class="fas fa-sun"></i> Light Mode';
       }
     });
+
+    // Hamburger menu
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+
+    // Scroll to top button
+    const topBtn = document.getElementById('top-btn');
+    window.addEventListener('scroll', () => {
+      if(window.scrollY > 400) topBtn.classList.add('show');
+      else topBtn.classList.remove('show');
+    });
+    topBtn.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
   </script>
 </body>
 </html>
