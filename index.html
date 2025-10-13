@@ -1,338 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Samson Niyizurugero | Data Scientist & AI Researcher</title>
-<meta name="description" content="Samson Niyizurugero – Data Scientist & AI Researcher in Kigali. Environmental AI, forecasting, NLP, and geospatial analytics. View projects, resume, and contact.">
-<meta name="theme-color" content="#0066cc">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E🤖%3C/text%3E%3C/svg%3E">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-Sa0Gg1G3jYg2r1Dq7xJYf88z/0d26LJp3bIH6g2c3Ywq3uAq2pJ2iQbU9dv5/8m4Nn5FJmUe0uQ8u0C1+7x2GQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
-<style>
-:root {
-  --primary-color: #0066cc;
-  --secondary-color: #004d99;
-  --accent-color: #00a86b;
-  --text-color: #1f2937;
-  --muted-text: #6b7280;
-  --light-bg: #f8f9fa;
-  --card-bg: #ffffff;
-  --dark-bg: #0b1220;
-  --dark-card: #111827;
-  --dark-text: #e5e7eb;
-  --shadow: 0 5px 15px rgba(0,0,0,.08);
-  --radius: 14px;
-  --transition: all .3s ease;
-}
-html[data-theme="dark"] {
-  --text-color: var(--dark-text);
-  --light-bg: var(--dark-bg);
-  --card-bg: var(--dark-card);
-  --shadow: 0 10px 30px rgba(0,0,0,.5);
-  --secondary-color: #7cc4ff;
-}
-* { box-sizing:border-box; margin:0; padding:0; }
-body { color: var(--text-color); background: var(--light-bg); font-family: system-ui, sans-serif; line-height:1.6; }
-a { color: var(--primary-color); text-decoration:none; transition:var(--transition); }
-a:hover { color: var(--secondary-color); }
-img { max-width:100%; display:block; border-radius:10px; }
-.container { width:min(1200px,92%); margin:0 auto; }
-section { padding:80px 0; }
-.section-title { text-align:center; margin-bottom:50px; color: var(--primary-color); font-size:clamp(1.8rem,1.6rem+1.2vw,2.6rem); position:relative; }
-.section-title::after { content:''; position:absolute; bottom:-10px; left:50%; transform:translateX(-50%); width:80px; height:4px; background:var(--accent-color); border-radius:2px; }
-.btn { display:inline-flex; align-items:center; gap:.6rem; padding:12px 20px; background:var(--primary-color); color:#fff; border:none; border-radius:999px; font-weight:600; cursor:pointer; transition: var(--transition); box-shadow: var(--shadow);}
-.btn:hover { background:var(--secondary-color); transform: translateY(-2px);}
-.btn-outline { background:transparent; color:var(--primary-color); border:2px solid var(--primary-color);}
-.btn-outline:hover { background:var(--primary-color); color:#fff;}
-.card { background:var(--card-bg); border-radius:var(--radius); padding:24px; box-shadow:var(--shadow); transition:var(--transition);}
-.card:hover { transform:translateY(-4px); box-shadow:0 12px 30px rgba(0,0,0,.12);}
-.grid { display:grid; gap:26px; }
-.skills-grid { grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); }
-.projects-grid { grid-template-columns: repeat(auto-fit, minmax(320px,1fr)); }
-.tag { display:inline-block; font-size:.8rem; padding:6px 10px; border-radius:999px; background:rgba(0,102,204,.12); color:var(--secondary-color);}
-.timeline { position:relative; max-width:900px; margin:0 auto;}
-.timeline::after { content:''; position:absolute; width:4px; background:var(--primary-color); top:0; bottom:0; left:50%; transform:translateX(-50%);}
-.timeline-item { position:relative; width:50%; padding:10px 40px;}
-.timeline-item:nth-child(odd){ left:0;}
-.timeline-item:nth-child(even){ left:50%;}
-.timeline-item::after { content:''; position:absolute; top:20px; width:20px; height:20px; background: var(--card-bg); border:4px solid var(--primary-color); border-radius:50%; z-index:2; }
-.timeline-item:nth-child(odd)::after { right:-10px; }
-.timeline-item:nth-child(even)::after { left:-10px; }
-footer { background:#0f172a; color:#cbd5e1; padding:50px 0 20px;}
-footer a { color:#cbd5e1;}
-.copyright { text-align:center; margin-top:24px; border-top:1px solid rgba(255,255,255,.08); padding-top:16px; font-size:.95rem;}
-.modal { display:none; position:fixed; inset:0; z-index:2000; background: rgba(0,0,0,.85);}
-.modal[open] { display:block;}
-.modal .panel { position:relative; width:min(920px,94%); margin:5% auto; background: var(--card-bg); border-radius:16px; box-shadow:0 20px 60px rgba(0,0,0,.4); padding:18px;}
-.modal .header { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;}
-.modal .header h2 { color:var(--primary-color);}
-.modal .close { border:none; background:transparent; font-size:28px; line-height:1; cursor:pointer; color:#9ca3af;}
-.modal .close:hover { color:var(--primary-color);}
-#pdf-viewer { width:100%; height:78vh; border:none; border-radius:10px; background:#111;}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samson Niyizurugero - Data Scientist</title>
+    <style>
+        /* --- Reset & Base --- */
+        * { margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif; }
+        body { background: #f4f4f9; color: #333; line-height: 1.6; }
+        a { color: #007acc; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* --- Header --- */
+        header { background: #1a73e8; color: white; padding: 20px 0; text-align: center; }
+        header img { width:120px; height:120px; border-radius:50%; border: 3px solid white; object-fit: cover; }
+        header h1 { font-size: 2em; margin: 10px 0 5px; }
+        header p { font-size: 1em; margin-bottom: 10px; }
+        .contact-links a { margin: 0 10px; color: #d0f0ff; font-weight: bold; }
+
+        nav { background: #0b59b1; display:flex; justify-content:center; flex-wrap:wrap; gap:15px; padding: 10px 0; }
+        nav a { color:white; font-weight:bold; padding:5px 10px; border-radius:5px; transition:0.3s; }
+        nav a:hover { background: #095494; }
+
+        /* --- Sections --- */
+        section { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
+        section h2 { color: #1a73e8; margin-bottom: 15px; border-bottom: 2px solid #1a73e8; display:inline-block; padding-bottom:5px; }
+
+        /* --- About --- */
+        #about p { margin-bottom: 15px; }
+
+        /* --- Skills --- */
+        .skills { display: flex; flex-wrap: wrap; gap: 20px; }
+        .skill-box { flex:1 1 45%; background:white; padding:15px; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.1); }
+        .skill-box h3 { margin-bottom:10px; color:#007acc; }
+
+        /* --- Projects --- */
+        .projects { display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:20px; }
+        .project-card { background:white; padding:20px; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.1); display:flex; flex-direction:column; justify-content:space-between; }
+        .project-card h3 { color:#007acc; margin-bottom:10px; }
+        .project-card p { flex:1; margin-bottom:10px; }
+        .project-card a { margin-top:auto; color:#1a73e8; font-weight:bold; }
+
+        /* --- Experience & Education --- */
+        .timeline { display:flex; flex-direction:column; gap:15px; }
+        .timeline-item { background:white; padding:15px; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.05); }
+        .timeline-item h3 { color:#007acc; margin-bottom:5px; }
+        .timeline-item span { font-size:0.9em; color:gray; }
+
+        /* --- Certifications --- */
+        .cert-list { list-style:none; }
+        .cert-list li { background:white; padding:15px; border-radius:10px; margin-bottom:10px; box-shadow:0 4px 8px rgba(0,0,0,0.05); }
+
+        /* --- Contact --- */
+        #contact p { margin-bottom:10px; }
+        #contact a { font-weight:bold; }
+
+        /* --- Responsive --- */
+        @media(max-width:600px){
+            .skills { flex-direction:column; }
+        }
+    </style>
 </head>
 <body>
-<!-- Header -->
-<header>
-<div class="container">
-  <nav class="navbar">
-    <a href="#home" class="logo">Samson.N</a>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#certifications">Certifications</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <div style="display:flex;gap:10px;">
-      <button class="mode-toggle" id="modeToggle"><i class="fa-regular fa-moon"></i></button>
-      <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
-    </div>
-  </nav>
-</div>
-</header>
 
-<!-- Hero -->
-<section id="home">
-<div class="container">
-  <h1>Samson Niyizurugero</h1>
-  <h2>Data Scientist & AI Researcher</h2>
-  <p>Innovative data scientist with 3+ years of experience developing AI solutions for environmental and social challenges.</p>
-  <div class="cta">
-    <a href="#projects" class="btn"><i class="fa-solid fa-diagram-project"></i> View My Work</a>
-    <a href="#contact" class="btn btn-outline"><i class="fa-regular fa-paper-plane"></i> Contact Me</a>
-    <a class="btn btn-ghost" href="myDoc.pdf" download><i class="fa-regular fa-file-lines"></i> Download CV</a>
-  </div>
-</div>
-</section>
+    <!-- --- Header --- -->
+    <header>
+        <div style="display:flex; align-items:center; justify-content:center; gap:20px; flex-wrap:wrap;">
+            <img src="passport.png" alt="Samson Niyizurugero">
+            <div>
+                <h1>Samson Niyizurugero</h1>
+                <p>Data Scientist & AI Researcher | Environmental Technology | Public Health</p>
+                <div class="contact-links">
+                    <a href="mailto:sniyizurugero@aimsric.org">sniyizurugero@aimsric.org</a> | 
+                    <a href="tel:+250784602833">+250 784 602 833</a>
+                </div>
+            </div>
+        </div>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#experience">Experience</a>
+            <a href="#education">Education</a>
+            <a href="#certifications">Certifications</a>
+            <a href="#publications">Publications</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
 
-<!-- About -->
-<section id="about">
-<div class="container">
-<h2 class="section-title">About Me</h2>
-<div class="about" style="display:grid;grid-template-columns:1.1fr .9fr;gap:40px;">
-  <div>
-    <h3 style="color:var(--primary-color)">Professional Profile</h3>
-    <p>I am an innovative data scientist with 3+ years of experience developing AI solutions...</p>
-    <div style="display:flex;gap:10px;">
-      <a href="#contact" class="btn"><i class="fa-regular fa-handshake"></i> Get In Touch</a>
-      <a href="#certifications" class="btn btn-outline" id="viewAllCerts"><i class="fa-regular fa-file-pdf"></i> View Certificates</a>
-    </div>
-  </div>
-  <div>
-    <img src="passport.png" alt="Portrait of Samson Niyizurugero" class="profile-img" loading="lazy">
-  </div>
-</div>
-</div>
-</section>
+    <!-- --- About --- -->
+    <section id="about">
+        <h2>About Me</h2>
+        <p>Innovative data scientist with 3+ years of experience developing AI and ML solutions for environmental and social challenges. I combine technical expertise with strategic business insights to deliver projects that impact government agencies, schools, and financial institutions. My work spans predictive modeling, NLP, geospatial analysis, and the deployment of real-time AI solutions for public health and sustainability.</p>
+        <p>I am passionate about creating practical AI systems, mentoring young researchers, and translating complex data into actionable insights for decision-makers and communities.</p>
+    </section>
 
-<!-- Skills -->
-<section id="skills">
-<div class="container">
-<h2 class="section-title">Core Competencies</h2>
-<div class="grid skills-grid">
-  <div class="card">
-    <h3 style="color:var(--primary-color)">Technical Skills</h3>
-    <ul>
-      <li>Python (PyTorch, TensorFlow, Scikit-learn)</li>
-      <li>R, SQL, Swift</li>
-      <li>Transformer architectures & LSTM/GRU</li>
-      <li>Ensemble methods (XGBoost, CatBoost)</li>
-      <li>Air quality forecasting & satellite data fusion</li>
-      <li>Conversational AI & multilingual chatbots</li>
-      <li>Real-time APIs (FastAPI) & cloud deployment</li>
-    </ul>
-  </div>
-  <div class="card">
-    <h3 style="color:var(--primary-color)">Business & Leadership</h3>
-    <ul>
-      <li>Strategic Management & Business Planning</li>
-      <li>Data-Driven Decision Making</li>
-      <li>Cross-cultural Teamwork</li>
-      <li>Stakeholder Engagement</li>
-      <li>Project Management</li>
-      <li>Mentorship & Coaching</li>
-      <li>International Collaboration</li>
-    </ul>
-  </div>
-  <div class="card">
-    <h3 style="color:var(--primary-color)">Tools & Technologies</h3>
-    <ul>
-      <li>Hadoop, Spark, AWS</li>
-      <li>QGIS, R-INLA, Google Earth Engine</li>
-      <li>Power BI, Tableau, Seaborn</li>
-      <li>SPSS, STATA, Excel</li>
-      <li>JavaScript, C++</li>
-      <li>Git & GitHub</li>
-      <li>Docker & Kubernetes</li>
-    </ul>
-  </div>
-</div>
-</div>
-</section>
+    <!-- --- Skills --- -->
+    <section id="skills">
+        <h2>Skills</h2>
+        <div class="skills">
+            <div class="skill-box">
+                <h3>Machine Learning & AI</h3>
+                <p>Transformers, LSTM/GRU, XGBoost, CatBoost, explainable AI (SHAP/LIME), time series forecasting, predictive modeling, concept drift detection.</p>
+            </div>
+            <div class="skill-box">
+                <h3>Environmental & Geospatial AI</h3>
+                <p>Air quality forecasting, satellite data fusion (MODIS/Sentinel), geospatial analysis using QGIS, Google Earth Engine, PostGIS, environmental monitoring tools.</p>
+            </div>
+            <div class="skill-box">
+                <h3>NLP & Chatbots</h3>
+                <p>Conversational AI, multilingual chatbots, USSD/SMS interfaces, text processing, semantic search, knowledge-based AI assistants.</p>
+            </div>
+            <div class="skill-box">
+                <h3>Programming & Tools</h3>
+                <p>Python (PyTorch, TensorFlow, Scikit-learn), R, SQL, Swift, JavaScript, cloud deployment (Hugging Face Spaces), AWS, Hadoop, Spark, Tableau, Power BI.</p>
+            </div>
+        </div>
+    </section>
 
-<!-- Projects -->
-<section id="projects">
-<div class="container">
-<h2 class="section-title">AI for Social Impact Projects</h2>
-<div class="grid projects-grid">
-  <div class="card project-card">
-    <img src="https://placehold.co/800x400/0066cc/ffffff?text=CO2+Emissions+Dashboard" alt="African CO2 Emissions Dashboard">
-    <h3 style="color:var(--primary-color)">African CO2 Emissions Forecast Dashboard</h3>
-    <p>Interactive Streamlit dashboard with RAG-powered chatbot...</p>
-    <div class="project-meta">
-      <span class="tag">Streamlit</span>
-      <span class="tag">RAG</span>
-      <span class="tag">Time Series</span>
-    </div>
-    <a href="https://huggingface.co/spaces/NSamson1/Early-Warning-Airquality" class="btn" target="_blank">Live Demo</a>
-  </div>
-  <!-- Add other project cards similarly -->
-</div>
-</div>
-</section>
+    <!-- --- Projects --- -->
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="projects">
+            <div class="project-card">
+                <h3>African CO₂ Emissions Forecast Dashboard</h3>
+                <p>Interactive Streamlit dashboard with RAG-powered chatbot providing actionable climate insights for African countries. Includes time series forecasting, data visualization, and policy recommendations.</p>
+                <a href="https://huggingface.co/spaces/NSamson1/Early-Warning-Airquality" target="_blank">Live Demo</a>
+            </div>
+            <div class="project-card">
+                <h3>Rwanda Air Quality Dashboard</h3>
+                <p>Real-time monitoring dashboard supporting public health decisions. Integrates sensor networks and satellite data to provide air quality alerts and predictions across Kigali and Rwanda.</p>
+                <a href="https://rwanda-air-quality-dashboard-2pprtzkknhnwo9cbrw6q2a.streamlit.app/" target="_blank">Live Demo</a>
+            </div>
+            <div class="project-card">
+                <h3>MyFirstMathFriend</h3>
+                <p>Multilingual math chatbot aligned with Rwanda primary curriculum. Assists students in solving math problems interactively through chat interfaces and provides step-by-step explanations.</p>
+                <a href="https://huggingface.co/spaces/NSamson1/MyFriendMath" target="_blank">Live Demo</a>
+            </div>
+            <div class="project-card">
+                <h3>Financial Literacy Assistant</h3>
+                <p>Conversational assistant for mobile banking users. Offers guidance on savings, loans, budgeting, and financial education through intuitive chat interactions.</p>
+                <a href="https://huggingface.co/spaces/NSamson1/Finance" target="_blank">Live Demo</a>
+            </div>
+        </div>
+    </section>
 
-<!-- Experience & Education -->
-<section id="experience">
-<div class="container">
-<h2 class="section-title">Experience & Education</h2>
-<div class="timeline">
-  <div class="timeline-item">
-    <div class="card">
-      <h3 style="color:var(--primary-color)">AIMS Research and Innovation Centre</h3>
-      <h4 style="color:var(--secondary-color)">Data Manager | 2023–Present</h4>
-      <p>Lead data analysis in regional health and environment programs. Develop real-time forecasting models using deep learning.</p>
-    </div>
-  </div>
-  <!-- Add other timeline items similarly -->
-</div>
-</div>
-</section>
+    <!-- --- Experience --- -->
+    <section id="experience">
+        <h2>Professional Experience</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>Data Manager - AIMS Research and Innovation Centre</h3>
+                <span>Kigali, Rwanda | 2023–Present</span>
+                <p>Leading data analysis in health and environmental programs. Developing deep learning models for real-time forecasting. Managing collaborative research projects and funding proposals.</p>
+            </div>
+            <div class="timeline-item">
+                <h3>Data Analyst - Willows International</h3>
+                <span>Kigali, Rwanda | 2021–2022</span>
+                <p>Conducted evaluations for family planning programs. Supported RCT design, monitoring, and evaluation frameworks. Built digital training tools for community health workers.</p>
+            </div>
+        </div>
+    </section>
 
-<!-- Certifications -->
-<section id="certifications">
-<div class="container">
-<h2 class="section-title">Certifications</h2>
-<div class="grid skills-grid">
-  <div class="card">
-    <h3 style="color:var(--primary-color)">Apple AATCE Program – Swift App Development</h3>
-    <p>2025–2026 (Ongoing)</p>
-  </div>
-  <!-- Add other certificate cards -->
-</div>
-<div style="text-align:center;margin-top:24px">
-<a href="#" class="btn" id="viewAllCerts2"><i class="fa-regular fa-file-pdf"></i> View All Certificates</a>
-</div>
-</div>
-</section>
+    <!-- --- Education --- -->
+    <section id="education">
+        <h2>Education</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>MSc in Data Science - AIMS</h3>
+                <span>Kigali, Rwanda | 2021–2023</span>
+                <p>Applied ML, environmental time series, and XAI. Thesis: Machine Learning-Based Early Warning System for Air Pollution in Rwanda.</p>
+            </div>
+            <div class="timeline-item">
+                <h3>BSc in Statistics - University of Rwanda</h3>
+                <span>Rwanda | 2018–2021</span>
+                <p>Undergraduate research on Under-Five Mortality Forecasting using time series techniques.</p>
+            </div>
+        </div>
+    </section>
 
-<!-- Contact -->
-<section id="contact">
-<div class="container">
-<h2 class="section-title">Get In Touch</h2>
-<div class="contact" style="display:grid;grid-template-columns:1fr 1fr;gap:40px;">
-<div class="info">
-  <div class="row"><div class="icon"><i class="fa-regular fa-envelope"></i></div><div><h3>Email</h3><a href="mailto:sniyizurugero@aimsric.org">sniyizurugero@aimsric.org</a></div></div>
-  <div class="row"><div class="icon"><i class="fa-solid fa-phone"></i></div><div><h3>Phone</h3><a href="tel:+250784602833">+250 784 602 833</a></div></div>
-</div>
-<form id="contactForm" autocomplete="on" novalidate>
-  <div class="form-group">
-    <label for="name">Your Name</label>
-    <input id="name" name="from_name" type="text" required placeholder="Jane Doe">
-  </div>
-  <div class="form-group">
-    <label for="email">Your Email</label>
-    <input id="email" name="reply_to" type="email" required placeholder="jane@example.com">
-  </div>
-  <div class="form-group">
-    <label for="subject">Subject</label>
-    <input id="subject" name="subject" type="text" required placeholder="Project inquiry">
-  </div>
-  <div class="form-group">
-    <label for="message">Your Message</label>
-    <textarea id="message" name="message" rows="5" required placeholder="Hello Samson, I'd like to discuss..."></textarea>
-  </div>
-  <input type="text" id="website" name="website" class="sr-only">
-  <button type="submit" class="btn"><i class="fa-regular fa-paper-plane"></i> Send Message</button>
-  <p id="formStatus" class="status"></p>
-</form>
-</div>
-</div>
-</section>
+    <!-- --- Certifications --- -->
+    <section id="certifications">
+        <h2>Certifications & International Representation</h2>
+        <ul class="cert-list">
+            <li>Machine Learning Optimization in Africa (MLOA) 2025 Conference – Poster Presentation on Smart Fuel-Saving & Sustainable Urban Mobility</li>
+            <li>Apple AATCE Program – Swift App Development (Sep 2025)</li>
+            <li>Certificate in Business Management (Business & Data Analytics) Aug 2025</li>
+            <li>East-African School for Young Researchers (EASY-ML) Jul 2025</li>
+            <li>Modern Statistics & ML for Global Health Feb 2024</li>
+            <li>Building Your Own Chatbot Workshop Jan 2025</li>
+            <li>Geospatial Analytics using R-INLA Nov-Dec 2023</li>
+            <li>Synthetic Data for Health Research Nov 2023</li>
+            <li>ICDL Data Analytics Jun 2024</li>
+            <li>African Mathematical School & Conference Jun 2023</li>
+            <li>Gender Equality & Global Markets Oct 2024</li>
+        </ul>
+    </section>
 
-<!-- Footer -->
-<footer>
-<div class="container">
-<div class="footer-grid">
-<div>
-  <div class="logo">Samson.N</div>
-  <p>Data Scientist & AI Researcher specializing in environmental technology and public health applications.</p>
-</div>
-<div>
-  <h3>Quick Links</h3>
-  <ul>
-    <li><a href="#home">Home</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</div>
-<div>
-  <h3>Social</h3>
-  <ul>
-    <li><a href="https://github.com/NSamson1" target="_blank">GitHub</a></li>
-    <li><a href="https://linkedin.com/in/nsamson1" target="_blank">LinkedIn</a></li>
-  </ul>
-</div>
-</div>
-<div class="copyright">© 2025 Samson Niyizurugero. All rights reserved.</div>
-</div>
-</footer>
+    <!-- --- Publications --- -->
+    <section id="publications">
+        <h2>Publications</h2>
+        <ul class="cert-list">
+            <li><strong>Towards Clean Air:</strong> Predicting PM2.5 in Rwanda Using Advanced Machine Learning Techniques. <a href="https://drive.google.com/file/d/14HkBHyBHu34baOWl2sXB-PbVGP7LgnFf/view?usp=sharing" target="_blank">Download paper</a></li>
+            <li><strong>City-wide space-time patterns of environmental noise pollution in Kigali, Rwanda:</strong> Submitted to Environmental Research Letters. <a href="https://drive.google.com/file/d/1r0PIffnEdQcdV3Ac8fnH5vvBDCrQD2ti/view?usp=sharing" target="_blank">Download manuscript</a></li>
+        </ul>
+    </section>
 
-<!-- Certificates Modal -->
-<div class="modal" id="pdfModal">
-<div class="panel">
-<div class="header">
-<h2>All Certificates</h2>
-<button class="close" id="closeModal">&times;</button>
-</div>
-<iframe id="pdf-viewer" src="Certificates.pdf#toolbar=1&navpanes=0&scrollbar=1"></iframe>
-</div>
-</div>
+    <!-- --- Contact --- -->
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Email: <a href="mailto:sniyizurugero@aimsric.org">sniyizurugero@aimsric.org</a></p>
+        <p>Phone: <a href="tel:+250784602833">+250 784 602 833</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/samson-niyizurugero-200a19260" target="_blank">/samson-niyizurugero</a></p>
+        <p>GitHub: <a href="https://github.com/samson19977" target="_blank">samson19977</a></p>
+        <p>Portfolio: <a href="https://huggingface.co/NSamson1" target="_blank">huggingface.co/NSamson1</a></p>
+        <p>Website: <a href="https://niyizurugero.netlify.app" target="_blank">niyizurugero.netlify.app</a></p>
+    </section>
 
-<script>
-// Dark/Light Mode
-const toggle = document.getElementById('modeToggle');
-toggle.addEventListener('click', () => {
-  if(document.documentElement.getAttribute('data-theme') === 'dark') {
-    document.documentElement.removeAttribute('data-theme');
-  } else { document.documentElement.setAttribute('data-theme','dark'); }
-});
-
-// Hamburger
-const hamburger = document.getElementById('hamburger');
-const navLinks = document.getElementById('navLinks');
-hamburger.addEventListener('click', ()=>navLinks.classList.toggle('open'));
-
-// PDF Modal
-const modal = document.getElementById('pdfModal');
-const openBtns = [document.getElementById('viewAllCerts'), document.getElementById('viewAllCerts2')];
-const closeBtn = document.getElementById('closeModal');
-openBtns.forEach(btn => btn.addEventListener('click', e => { e.preventDefault(); modal.setAttribute('open',''); }));
-closeBtn.addEventListener('click', ()=>modal.removeAttribute('open'));
-window.addEventListener('click', e=>{if(e.target===modal) modal.removeAttribute('open');});
-
-// Contact Form Spam Protection (honeypot) & fallback
-const form = document.getElementById('contactForm');
-form.addEventListener('submit', e=>{
-  e.preventDefault();
-  if(document.getElementById('website').value !== '') return; // bot detected
-  const status = document.getElementById('formStatus');
-  status.innerText = 'Message submitted. Please configure EmailJS to send emails.';
-  form.reset();
-});
-</script>
 </body>
 </html>
