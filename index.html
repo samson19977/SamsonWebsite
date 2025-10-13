@@ -7,6 +7,8 @@
   <meta name="description" content="Samson Niyizurugero – Data Scientist & AI Researcher in Kigali. Environmental AI, forecasting, NLP, and geospatial analytics. View projects, resume, and contact." />
   <meta name="theme-color" content="#0066cc" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E🤖%3C/text%3E%3C/svg%3E" />
+
+  <!-- Fonts & Icons -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-Sa0Gg1G3jYg2r1Dq7xJYf88z/0d26LJp3bIH6g2c3Ywq3uAq2pJ2iQbU9dv5/8m4Nn5FJmUe0uQ8u0C1+7x2GQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -36,177 +38,97 @@
 
   <style>
     :root {
-      --primary-color: #0066cc;
-      --secondary-color: #004d99;
-      --accent-color: #00a86b;
-      --text-color: #1f2937; /* slate-800 */
-      --muted-text: #6b7280; /* slate-500 */
-      --light-bg: #f8f9fa;
-      --card-bg: #ffffff;
-      --dark-bg: #0b1220;
-      --dark-card: #111827; /* gray-900 */
-      --dark-text: #e5e7eb;
+      --primary: #0066cc;
+      --secondary: #004d99;
+      --accent: #00a86b;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --bg: #f8f9fa;
+      --card: #fff;
       --shadow: 0 5px 15px rgba(0,0,0,.08);
       --radius: 14px;
       --transition: all .3s ease;
     }
-
-    /* Dark mode */
     html[data-theme="dark"] {
-      --text-color: var(--dark-text);
-      --light-bg: #0b1220;
-      --card-bg: var(--dark-card);
+      --text: #e5e7eb;
+      --bg: #0b1220;
+      --card: #111827;
+      --secondary: #7cc4ff;
       --shadow: 0 10px 30px rgba(0,0,0,.5);
-      --secondary-color: #7cc4ff;
     }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin:0; font-family: system-ui, sans-serif; color: var(--text); background: var(--bg); line-height: 1.6; scroll-behavior: smooth; }
+    a { color: var(--primary); text-decoration: none; transition: var(--transition); }
+    a:hover { color: var(--secondary); }
+    img, iframe { max-width: 100%; border-radius: 10px; display: block; }
 
-    * { box-sizing: border-box; margin:0; padding:0; }
-    html { scroll-behavior: smooth; }
-    body { color: var(--text-color); background: var(--light-bg); font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; line-height: 1.6; }
-    a { color: var(--primary-color); text-decoration: none; transition: var(--transition); }
-    a:hover { color: var(--secondary-color); }
-    img { max-width: 100%; height: auto; display: block; border-radius: 10px; }
-
-    .container { width: min(1200px, 92%); margin: 0 auto; }
-    section { padding: 80px 0; }
-    .section-title { text-align: center; margin-bottom: 50px; color: var(--primary-color); font-size: clamp(1.8rem, 1.6rem + 1.2vw, 2.6rem); position: relative; }
-    .section-title::after { content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 80px; height: 4px; background: var(--accent-color); border-radius: 2px; }
-
-    .btn { display:inline-flex; align-items:center; gap:.6rem; padding:12px 20px; background:var(--primary-color); color:#fff; border:none; border-radius: 999px; font-weight:600; cursor:pointer; transition: var(--transition); box-shadow: var(--shadow); }
-    .btn:hover { background: var(--secondary-color); transform: translateY(-2px); }
-    .btn-outline { background: transparent; color: var(--primary-color); border: 2px solid var(--primary-color); }
-    .btn-outline:hover { background: var(--primary-color); color:#fff; }
-    .btn-ghost { background: transparent; border: 1px solid rgba(0,0,0,.08); }
-
-    /* Header */
-    header { position: sticky; top: 0; z-index: 1000; background: var(--card-bg); box-shadow: 0 2px 10px rgba(0,0,0,.06); }
-    .navbar { display:flex; justify-content:space-between; align-items:center; padding:16px 0; }
-    .logo { font-weight:800; letter-spacing:.3px; color:var(--primary-color); font-size:1.4rem; }
-    .nav-links { display:flex; list-style:none; gap:26px; }
-    .nav-links a { color: var(--text-color); font-weight:600; position:relative; }
-    .nav-links a::after { content:''; position:absolute; left:0; bottom:-6px; height:2px; width:0; background:var(--primary-color); transition:var(--transition); }
+    header { position: sticky; top:0; z-index:1000; background: var(--card); box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+    .navbar { display:flex; justify-content:space-between; align-items:center; padding:16px; }
+    .logo { font-weight:800; font-size:1.4rem; color: var(--primary); }
+    .nav-links { display:flex; gap:26px; list-style:none; }
+    .nav-links a { position: relative; font-weight:600; }
+    .nav-links a::after { content:''; position:absolute; left:0; bottom:-6px; height:2px; width:0; background:var(--primary); transition: var(--transition); }
     .nav-links a:hover::after { width:100%; }
     .hamburger { display:none; font-size:1.5rem; cursor:pointer; }
 
-    /* Dark-mode toggle */
-    .mode-toggle { border: 1px solid rgba(0,0,0,.1); padding:8px 12px; border-radius:999px; background:transparent; cursor:pointer; display:flex; align-items:center; gap:.5rem; }
+    .mode-toggle { border:1px solid rgba(0,0,0,.1); padding:8px 12px; border-radius:999px; background:transparent; cursor:pointer; display:flex; align-items:center; gap:.5rem; }
 
-    /* Hero */
-    .hero { min-height: 86vh; display:grid; place-items:center; background: linear-gradient(135deg, rgba(0,102,204,.10) 0%, rgba(0,168,107,.10) 100%); position:relative; overflow:hidden; }
-    .hero .content { max-width: 760px; text-align:left; }
-    .hero h1 { font-size: clamp(2rem, 1.2rem + 2.4vw, 3.2rem); color: var(--primary-color); margin-bottom: 10px; }
-    .hero h2 { font-size: clamp(1.1rem, .9rem + 1vw, 1.6rem); color: var(--secondary-color); font-weight:500; margin-bottom: 16px; }
-    .hero p { font-size: 1.05rem; color: var(--muted-text); margin-bottom: 20px; }
+    section { padding: 80px 0; }
+    .section-title { text-align:center; margin-bottom:50px; color: var(--primary); font-size: clamp(1.8rem, 1.6rem + 1.2vw, 2.6rem); position: relative; }
+    .section-title::after { content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 80px; height: 4px; background: var(--accent); border-radius: 2px; }
+
+    .container { width: min(1200px, 92%); margin:0 auto; }
+
+    .hero { min-height: 86vh; display:grid; place-items:center; text-align:left; background: linear-gradient(135deg, rgba(0,102,204,.10) 0%, rgba(0,168,107,.10) 100%); position:relative; overflow:hidden; }
+    .hero h1 { font-size: clamp(2rem,1.2rem+2.4vw,3.2rem); color: var(--primary); margin-bottom:10px; }
+    .hero h2 { font-size: clamp(1.1rem,.9rem+1vw,1.6rem); color: var(--secondary); font-weight:500; margin-bottom:16px; }
+    .hero p { font-size:1.05rem; color: var(--muted); margin-bottom:20px; }
     .hero .cta { display:flex; gap:12px; flex-wrap:wrap; }
-    .hero .bg-shape { position:absolute; bottom:-10%; right:-10%; width:min(40%,520px); opacity:.10; }
 
-    /* About */
-    .about { display:grid; grid-template-columns: 1.1fr .9fr; gap: 40px; align-items:center; }
-    .about .profile-img { border-radius: var(--radius); box-shadow: var(--shadow); transition: transform .3s; }
-    .about .profile-img:hover { transform: scale(1.02); }
-
-    /* Cards / grids */
-    .grid { display:grid; gap: 26px; }
+    .grid { display:grid; gap:26px; }
     .skills-grid { grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); }
     .projects-grid { grid-template-columns: repeat(auto-fit, minmax(320px,1fr)); }
-    .card { background: var(--card-bg); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); transition: var(--transition); }
-    .card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,.12); }
-    .project-card img { height: 200px; object-fit: cover; border-radius: 12px; }
-    .project-meta { display:flex; gap:8px; flex-wrap:wrap; margin-top: 10px; }
-    .tag { display:inline-block; font-size:.8rem; padding:6px 10px; border-radius:999px; background:rgba(0,102,204,.12); color:var(--secondary-color); }
+    .card { background: var(--card); border-radius: var(--radius); padding:24px; box-shadow: var(--shadow); transition: var(--transition); }
+    .card:hover { transform: translateY(-4px); box-shadow:0 12px 30px rgba(0,0,0,.12); }
+    .project-card img { height:200px; object-fit:cover; border-radius:12px; }
 
-    /* Timeline */
-    .timeline { position:relative; max-width: 900px; margin: 0 auto; }
-    .timeline::after { content:''; position:absolute; width:4px; background: var(--primary-color); top:0; bottom:0; left:50%; transform: translateX(-50%); }
+    .timeline { position:relative; max-width:900px; margin:0 auto; }
+    .timeline::after { content:''; position:absolute; width:4px; background: var(--primary); top:0; bottom:0; left:50%; transform: translateX(-50%); }
     .timeline-item { position:relative; width:50%; padding:10px 40px; }
     .timeline-item:nth-child(odd){ left:0; }
     .timeline-item:nth-child(even){ left:50%; }
-    .timeline-item::after { content:''; position:absolute; top:20px; width:20px; height:20px; background: var(--card-bg); border:4px solid var(--primary-color); border-radius:50%; z-index:2; }
+    .timeline-item::after { content:''; position:absolute; top:20px; width:20px; height:20px; background: var(--card); border:4px solid var(--primary); border-radius:50%; z-index:2; }
     .timeline-item:nth-child(odd)::after { right:-10px; }
     .timeline-item:nth-child(even)::after { left:-10px; }
 
-    /* Contact */
-    .contact { display:grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items:start; }
+    .contact { display:grid; grid-template-columns: 1fr 1fr; gap:40px; }
     .contact .info { display:grid; gap:16px; }
-    .contact .row { display:flex; gap:14px; align-items:center; }
-    .contact .icon { width:46px; height:46px; display:grid; place-items:center; border-radius:999px; background: var(--primary-color); color:#fff; }
     .contact form { display:grid; gap:16px; }
     .form-group { display:grid; gap:6px; }
-    .form-group input, .form-group textarea { padding:12px 14px; border:1px solid #e5e7eb; border-radius: 10px; font-size: 1rem; background: var(--card-bg); color: var(--text-color); }
-    .form-group input:focus, .form-group textarea:focus { outline: 2px solid rgba(0,102,204,.25); border-color: var(--primary-color); }
+    .form-group input, .form-group textarea { padding:12px 14px; border:1px solid #e5e7eb; border-radius:10px; background: var(--card); color: var(--text); font-size:1rem; }
+    .form-group input:focus, .form-group textarea:focus { outline:2px solid rgba(0,102,204,.25); border-color: var(--primary); }
     .status { font-size:.95rem; }
+    .status.success { color:#10b981; }
+    .status.error { color:#ef4444; }
 
-    /* Footer */
-    footer { background:#0f172a; color:#cbd5e1; padding: 50px 0 20px; }
-    footer .footer-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 26px; }
+    footer { background:#0f172a; color:#cbd5e1; padding:50px 0 20px; }
+    footer .footer-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap:26px; }
     footer a { color:#cbd5e1; }
-    .copyright { text-align:center; margin-top: 24px; border-top: 1px solid rgba(255,255,255,.08); padding-top: 16px; font-size:.95rem; }
-
-    /* Modal */
-    .modal { display:none; position:fixed; inset:0; z-index: 2000; background: rgba(0,0,0,.85); }
-    .modal[open] { display:block; }
-    .modal .panel { position:relative; width:min(920px, 94%); margin: 5% auto; background: var(--card-bg); border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,.4); padding: 18px 18px 12px; }
-    .modal .header { display:flex; align-items:center; justify-content:space-between; gap:10px; padding: 6px 6px 14px; }
-    .modal .header h2 { color: var(--primary-color); font-size: 1.2rem; }
-    .modal .close { border:none; background:transparent; font-size: 28px; line-height:1; cursor:pointer; color:#9ca3af; }
-    .modal .close:hover { color: var(--primary-color); }
-    #pdf-viewer { width:100%; height: 78vh; border:none; border-radius: 10px; background:#111; }
-
-    /* Form validation styles */
-    .form-group.error input, 
-    .form-group.error textarea {
-      border-color: #ef4444;
-      outline-color: rgba(239, 68, 68, 0.25);
-    }
-    .error-message {
-      color: #ef4444;
-      font-size: 0.85rem;
-      display: none;
-    }
-    .form-group.error .error-message {
-      display: block;
-    }
-    .status.success {
-      color: #10b981;
-    }
-    .status.error {
-      color: #ef4444;
-    }
-
-    /* Utilities */
-    .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
-    .skip-link { position:absolute; left:-9999px; }
-    .skip-link:focus { left: 10px; top: 10px; background: #111; color:#fff; padding:8px 12px; border-radius:8px; z-index:2001; }
-    .top-btn { position: fixed; right: 16px; bottom: 16px; display:none; }
-    .top-btn.show { display:inline-flex; }
+    .copyright { text-align:center; margin-top:24px; border-top:1px solid rgba(255,255,255,.08); padding-top:16px; font-size:.95rem; }
 
     /* Responsive */
-    @media (max-width: 992px) {
-      .about, .contact { grid-template-columns: 1fr; }
-      .timeline::after { left: 32px; transform:none; }
-      .timeline-item { width:100%; left:0 !important; padding-left: 68px; padding-right: 22px; }
-      .timeline-item::after { left: 22px !important; }
-    }
-    @media (max-width: 768px) {
-      .nav-links { position: fixed; inset: 64px 0 auto 0; height: calc(100vh - 64px); background: var(--card-bg); flex-direction: column; justify-content:center; align-items:center; gap: 22px; transform: translateY(-110%); transition: var(--transition); }
-      .nav-links.active { transform: translateY(0); }
-      .hamburger { display:block; }
-      #pdf-viewer { height: 72vh; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      * { transition: none !important; scroll-behavior: auto; }
-    }
+    @media (max-width: 992px) { .about, .contact { grid-template-columns:1fr; } .timeline-item { width:100%; padding-left:68px; padding-right:22px; } .timeline::after { left:32px; transform:none; } .timeline-item::after { left:22px !important; } }
+    @media (max-width: 768px) { .nav-links { position:fixed; inset:64px 0 auto 0; height: calc(100vh - 64px); flex-direction: column; justify-content:center; align-items:center; gap:22px; transform: translateY(-110%); transition: var(--transition); background: var(--card); } .nav-links.active { transform:translateY(0); } .hamburger { display:block; } }
   </style>
 </head>
 <body>
   <a href="#main" class="skip-link">Skip to content</a>
 
   <!-- Header -->
-  <header id="header">
+  <header>
     <div class="container">
-      <nav class="navbar" aria-label="Primary">
-        <a href="#home" class="logo" aria-label="Homepage">Samson.N</a>
+      <nav class="navbar" aria-label="Primary navigation">
+        <a href="#home" class="logo">Samson.N</a>
         <ul class="nav-links" id="navLinks">
           <li><a href="#home">Home</a></li>
           <li><a href="#about">About</a></li>
@@ -216,94 +138,46 @@
           <li><a href="#certifications">Certifications</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
-        <div style="display:flex; align-items:center; gap:10px;">
-          <button class="mode-toggle" id="modeToggle" aria-label="Toggle dark mode"><i class="fa-regular fa-moon"></i> <span class="label">Theme</span></button>
-          <button class="hamburger" id="hamburger" aria-expanded="false" aria-controls="navLinks" aria-label="Toggle navigation"><i class="fas fa-bars"></i></button>
+        <div style="display:flex; gap:10px; align-items:center;">
+          <button class="mode-toggle" id="modeToggle" aria-label="Toggle dark mode"><i class="fa-regular fa-moon"></i> Dark</button>
+          <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
         </div>
       </nav>
     </div>
   </header>
 
   <!-- Hero -->
-  <section id="home" class="hero" aria-labelledby="hero-title">
-    <div class="container content" id="main">
-      <h1 id="hero-title">Samson Niyizurugero</h1>
+  <section id="home" class="hero">
+    <div class="container">
+      <h1>Samson Niyizurugero</h1>
       <h2>Data Scientist & AI Researcher</h2>
-      <p>Innovative data scientist with 3+ years of experience developing AI solutions for environmental and social challenges. Specializes in deploying machine learning systems that bridge technical excellence with real-world impact.</p>
+      <p>Focused on environmental AI, forecasting, NLP, and geospatial analytics for social impact.</p>
       <div class="cta">
-        <a href="#projects" class="btn"><i class="fa-solid fa-diagram-project"></i> View My Work</a>
-        <a href="#contact" class="btn btn-outline"><i class="fa-regular fa-paper-plane"></i> Contact Me</a>
-        <a class="btn btn-ghost" href="myDoc.pdf" download><i class="fa-regular fa-file-lines"></i> Download CV</a>
+        <a href="#projects" class="card" style="padding:10px 20px; display:inline-block;">View Projects</a>
+        <button id="resumeBtn" class="card" style="padding:10px 20px; display:inline-block;">View Resume</button>
       </div>
     </div>
-    <svg class="bg-shape" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path fill="currentColor" d="M25,-25C36.2,-16.8,54.2,-6.4,59.3,8.8C64.4,24,56.6,42.9,41.9,53.5C27.2,64.1,5.5,66.4,-9.8,60.4C-25.1,54.4,-36.9,40.1,-44.1,23.6C-51.3,7.1,-53.9,-11.6,-47.5,-25.2C-41.1,-38.8,-25.7,-47.3,-9.7,-44.5C6.3,-41.7,13.8,-27.6,25,-25Z" transform="translate(50 50)" />
-    </svg>
   </section>
 
   <!-- About -->
   <section id="about">
     <div class="container">
       <h2 class="section-title">About Me</h2>
-      <div class="about">
-        <div>
-          <h3 style="margin-bottom:12px;color:var(--primary-color)">Professional Profile</h3>
-          <p style="margin-bottom:12px">I am an innovative data scientist with 3+ years of experience developing AI solutions for environmental and social challenges. I specialize in deploying machine learning systems that bridge technical excellence with real-world impact.</p>
-          <p style="margin-bottom:12px">I have a proven track record of creating tools adopted by government agencies, schools, and financial institutions. I combine deep technical expertise in time series forecasting, natural language processing, and geospatial analysis with a strong foundation in strategic business management, data-driven decision making, global leadership, and digital innovation through app development.</p>
-          <p style="margin-bottom:18px">Based in Kigali, Rwanda, I'm passionate about using technology to solve pressing environmental and public health challenges across Africa.</p>
-          <div style="display:flex; gap:10px; flex-wrap:wrap">
-            <a href="#contact" class="btn"><i class="fa-regular fa-handshake"></i> Get In Touch</a>
-            <a href="#certifications" class="btn btn-outline" id="viewAllCerts"><i class="fa-regular fa-file-pdf"></i> View All Certificates (PDF)</a>
-          </div>
-        </div>
-        <div>
-          <img src="https://placehold.co/600x720/0066cc/ffffff?text=Samson+N" alt="Portrait of Samson Niyizurugero" class="profile-img" loading="lazy" />
-        </div>
-      </div>
+      <p>Data scientist passionate about AI applications for environmental sustainability and public health. Experienced in machine learning, NLP, and geospatial analytics, with a focus on real-world impact.</p>
     </div>
   </section>
 
   <!-- Skills -->
   <section id="skills">
     <div class="container">
-      <h2 class="section-title">Core Competencies</h2>
+      <h2 class="section-title">Skills</h2>
       <div class="grid skills-grid">
-        <div class="card">
-          <h3 style="color:var(--primary-color);margin-bottom:10px">Technical Skills</h3>
-          <ul>
-            <li>Python (PyTorch, TensorFlow, Scikit-learn)</li>
-            <li>R, SQL, Swift</li>
-            <li>Transformer architectures & LSTM/GRU networks</li>
-            <li>Ensemble methods (XGBoost, CatBoost)</li>
-            <li>Air quality forecasting & satellite data fusion</li>
-            <li>Conversational AI & multilingual chatbots</li>
-            <li>Real-time APIs (FastAPI) & cloud deployment</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3 style="color:var(--primary-color);margin-bottom:10px">Business & Leadership</h3>
-          <ul>
-            <li>Strategic Management & Business Planning</li>
-            <li>Data-Driven Decision Making</li>
-            <li>Cross-cultural Teamwork</li>
-            <li>Stakeholder Engagement</li>
-            <li>Project Management</li>
-            <li>Mentorship & Coaching</li>
-            <li>International Collaboration</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3 style="color:var(--primary-color);margin-bottom:10px">Tools & Technologies</h3>
-          <ul>
-            <li>Hadoop, Spark, AWS</li>
-            <li>QGIS, R-INLA, Google Earth Engine</li>
-            <li>Power BI, Tableau, Seaborn</li>
-            <li>SPSS, STATA, Excel, EViews</li>
-            <li>JavaScript, C++</li>
-            <li>Git & GitHub</li>
-            <li>Docker & Kubernetes</li>
-          </ul>
-        </div>
+        <div class="card">Python, R, SQL</div>
+        <div class="card">Machine Learning & Deep Learning</div>
+        <div class="card">NLP & Computer Vision</div>
+        <div class="card">Data Visualization & Dashboarding</div>
+        <div class="card">GIS & Remote Sensing</div>
+        <div class="card">Air Quality Forecasting Models</div>
       </div>
     </div>
   </section>
@@ -311,107 +185,41 @@
   <!-- Projects -->
   <section id="projects">
     <div class="container">
-      <h2 class="section-title">AI for Social Impact Projects</h2>
+      <h2 class="section-title">Projects</h2>
       <div class="grid projects-grid">
-        <article class="card project-card">
-          <img src="https://placehold.co/800x400/0066cc/ffffff?text=CO2+Emissions+Dashboard" alt="African CO2 Emissions Forecast Dashboard preview" loading="lazy" />
-          <div style="padding: 18px 4px 0">
-            <h3 style="color:var(--primary-color)">African CO2 Emissions Forecast Dashboard</h3>
-            <p class="muted">Interactive Streamlit dashboard with RAG-powered chatbot that transforms complex emissions data into actionable insights for African policymakers.</p>
-            <div class="project-meta">
-              <span class="tag">Streamlit</span>
-              <span class="tag">RAG</span>
-              <span class="tag">Time Series</span>
-            </div>
-            <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap">
-              <a href="https://huggingface.co/spaces/NSamson1/Early-Warning-Airquality" class="btn" target="_blank" rel="noopener">Live Demo</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card project-card">
-          <img src="https://placehold.co/800x400/0066cc/ffffff?text=Rwanda+Air+Quality" alt="Rwanda Air Quality Dashboard preview" loading="lazy" />
-          <div style="padding: 18px 4px 0">
-            <h3 style="color:var(--primary-color)">Rwanda Air Quality Dashboard</h3>
-            <p class="muted">Real-time air quality monitoring dashboard for Rwanda using Streamlit, providing accessible environmental data and forecasts.</p>
-            <div class="project-meta">
-              <span class="tag">Streamlit</span>
-              <span class="tag">Forecasting</span>
-              <span class="tag">Public Health</span>
-            </div>
-            <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap">
-              <a href="https://rwanda-air-quality-dashboard-2pprtzkknhnwo9cbrw6q2a.streamlit.app/" class="btn" target="_blank" rel="noopener">Live Demo</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card project-card">
-          <img src="https://placehold.co/800x400/0066cc/ffffff?text=Math+Friend+Chatbot" alt="MyFirstMathFriend chatbot preview" loading="lazy" />
-          <div style="padding: 18px 4px 0">
-            <h3 style="color:var(--primary-color)">MyFirstMathFriend</h3>
-            <p class="muted">Interactive multilingual math chatbot aligned with the Rwanda primary curriculum. Used in rural classrooms.</p>
-            <div class="project-meta">
-              <span class="tag">NLP</span>
-              <span class="tag">Education</span>
-              <span class="tag">Multilingual</span>
-            </div>
-            <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap">
-              <a href="https://huggingface.co/spaces/NSamson1/MyFriendMath" class="btn" target="_blank" rel="noopener">Live Demo</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card project-card">
-          <img src="https://placehold.co/800x400/0066cc/ffffff?text=Finance+Assistant" alt="Financial Literacy Assistant preview" loading="lazy" />
-          <div style="padding: 18px 4px 0">
-            <h3 style="color:var(--primary-color)">Financial Literacy Assistant</h3>
-            <p class="muted">Conversational interface for mobile banking. Helps users understand savings, loans, and digital wallets.</p>
-            <div class="project-meta">
-              <span class="tag">Conversational AI</span>
-              <span class="tag">Finance</span>
-              <span class="tag">Assistant</span>
-            </div>
-            <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap">
-              <a href="https://huggingface.co/spaces/NSamson1/Finance" class="btn" target="_blank" rel="noopener">Live Demo</a>
-            </div>
-          </div>
-        </article>
+        <div class="card project-card">
+          <img src="project1.jpg" loading="lazy" alt="Air Quality Forecasting Project">
+          <h3>Air Quality Forecasting</h3>
+          <p>Predictive model for Kigali’s air quality using ML and weather data.</p>
+        </div>
+        <div class="card project-card">
+          <img src="project2.jpg" loading="lazy" alt="Environmental NLP Project">
+          <h3>Environmental NLP Analysis</h3>
+          <p>Natural language processing for environmental data insights.</p>
+        </div>
+        <div class="card project-card">
+          <img src="project3.jpg" loading="lazy" alt="Geospatial Analytics Project">
+          <h3>Geospatial Analytics</h3>
+          <p>GIS-based environmental monitoring and prediction models.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Experience & Education -->
+  <!-- Experience -->
   <section id="experience">
     <div class="container">
-      <h2 class="section-title">Experience & Education</h2>
+      <h2 class="section-title">Experience</h2>
       <div class="timeline">
         <div class="timeline-item">
-          <div class="card">
-            <h3 style="color:var(--primary-color)">AIMS Research and Innovation Centre</h3>
-            <h4 style="color:var(--secondary-color);font-weight:600">Data Manager | 2023–Present</h4>
-            <p class="muted">Lead data analysis in regional health and environment programs. Develop real-time forecasting models using deep learning.</p>
-          </div>
+          <h3>AI Researcher</h3>
+          <span>Kigali, 2022–Present</span>
+          <p>Developed ML models for environmental monitoring and public health predictions.</p>
         </div>
         <div class="timeline-item">
-          <div class="card">
-            <h3 style="color:var(--primary-color)">Willows International</h3>
-            <h4 style="color:var(--secondary-color);font-weight:600">Data Analyst | 2021–2022</h4>
-            <p class="muted">Conducted evaluations of family planning programs. Supported RCT design and M&E frameworks.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="card">
-            <h3 style="color:var(--primary-color)">African Institute for Mathematical Sciences (AIMS)</h3>
-            <h4 style="color:var(--secondary-color);font-weight:600">MSc in Data Science | 2021–2023</h4>
-            <p class="muted">Focus: Applied ML, environmental time series, XAI. Thesis: Machine Learning-Based Early Warning System for Air Pollution in Rwanda.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="card">
-            <h3 style="color:var(--primary-color)">University of Rwanda</h3>
-            <h4 style="color:var(--secondary-color);font-weight:600">BSc in Statistics | 2018–2021</h4>
-            <p class="muted">Undergrad Research: Under-Five Mortality Forecasting Using Time Series Techniques.</p>
-          </div>
+          <h3>Data Scientist Intern</h3>
+          <span>2021–2022</span>
+          <p>Worked on predictive modeling and data visualization for urban datasets.</p>
         </div>
       </div>
     </div>
@@ -422,29 +230,9 @@
     <div class="container">
       <h2 class="section-title">Certifications</h2>
       <div class="grid skills-grid">
-        <div class="card">
-          <h3 style="color:var(--primary-color)">Apple AATCE Program – Swift App Development</h3>
-          <p class="muted">2025–2026 (Ongoing)</p>
-          <p>Selected participant in Apple-led AATCE initiative, focused on practical training in Swift programming and app development.</p>
-        </div>
-        <div class="card">
-          <h3 style="color:var(--primary-color)">Certificate in Business Management</h3>
-          <p class="muted">Aug 2025</p>
-          <p>Industry Immersion Africa (iiAfrica) in collaboration with ESMT Berlin, Harvard Business Publishing, and Academics Without Borders.</p>
-        </div>
-        <div class="card">
-          <h3 style="color:var(--primary-color)">East-African School for Young Researchers</h3>
-          <p class="muted">Jul 2025</p>
-          <p>Advanced Machine Learning Techniques, University of Nairobi, Kenya. Represented Rwanda among East Africa's top AI researchers.</p>
-        </div>
-        <div class="card">
-          <h3 style="color:var(--primary-color)">Modern Statistics & ML for Global Health</h3>
-          <p class="muted">Feb 2024</p>
-          <p>Imperial College London & AIMS, Rwanda. Focused on applying modern statistical methods to global health challenges.</p>
-        </div>
-      </div>
-      <div style="text-align:center;margin-top:24px">
-        <a href="#" class="btn" id="viewAllCerts2"><i class="fa-regular fa-file-pdf"></i> View All Certificates (PDF)</a>
+        <div class="card">AI for Earth</div>
+        <div class="card">Deep Learning Specialization</div>
+        <div class="card">Data Science Professional Certificate</div>
       </div>
     </div>
   </section>
@@ -452,69 +240,29 @@
   <!-- Contact -->
   <section id="contact">
     <div class="container">
-      <h2 class="section-title">Get In Touch</h2>
+      <h2 class="section-title">Contact</h2>
       <div class="contact">
         <div class="info">
-          <div class="row">
-            <div class="icon"><i class="fa-regular fa-envelope"></i></div>
-            <div>
-              <h3>Email</h3>
-              <a href="mailto:sniyizurugero@aimsric.org">sniyizurugero@aimsric.org</a>
-            </div>
-          </div>
-          <div class="row">
-            <div class="icon"><i class="fa-solid fa-phone"></i></div>
-            <div>
-              <h3>Phone</h3>
-              <a href="tel:+250784602833">+250 784 602 833</a>
-            </div>
-          </div>
-          <div class="row">
-            <div class="icon"><i class="fa-solid fa-location-dot"></i></div>
-            <div>
-              <h3>Location</h3>
-              <p>Kigali, Rwanda</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="icon"><i class="fa-solid fa-globe"></i></div>
-            <div>
-              <h3>Follow Me</h3>
-              <div style="display:flex; gap:12px; margin-top:6px">
-                <a aria-label="LinkedIn" href="https://www.linkedin.com/in/samson-niyizurugero-200a19260" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg"></i></a>
-                <a aria-label="GitHub" href="https://github.com/samson19977" target="_blank" rel="noopener"><i class="fab fa-github fa-lg"></i></a>
-                <a aria-label="Hugging Face" href="https://huggingface.co/NSamson1" target="_blank" rel="noopener"><i class="fas fa-robot fa-lg"></i></a>
-              </div>
-            </div>
-          </div>
+          <p>Email: <a href="mailto:sniyizurugero@aimsric.org">sniyizurugero@aimsric.org</a></p>
+          <p>Location: Kigali, Rwanda</p>
+          <p>LinkedIn: <a href="https://www.linkedin.com/in/samson-niyizurugero-200a19260">Profile</a></p>
+          <p>GitHub: <a href="https://github.com/samson19977">samson19977</a></p>
         </div>
-
-        <form id="contactForm" autocomplete="on" novalidate>
+        <form id="contactForm">
           <div class="form-group">
-            <label for="name">Your Name</label>
-            <input id="name" name="from_name" type="text" required placeholder="Jane Doe" />
-            <div class="error-message">Please enter your name</div>
+            <label for="name">Name</label>
+            <input id="name" type="text" required>
           </div>
           <div class="form-group">
-            <label for="email">Your Email</label>
-            <input id="email" name="reply_to" type="email" required placeholder="jane@example.com" />
-            <div class="error-message">Please enter a valid email address</div>
+            <label for="email">Email</label>
+            <input id="email" type="email" required>
           </div>
           <div class="form-group">
-            <label for="subject">Subject</label>
-            <input id="subject" name="subject" type="text" required placeholder="Project inquiry" />
-            <div class="error-message">Please enter a subject</div>
+            <label for="message">Message</label>
+            <textarea id="message" rows="5" required></textarea>
           </div>
-          <div class="form-group">
-            <label for="message">Your Message</label>
-            <textarea id="message" name="message" rows="5" required placeholder="Hello Samson, I'd like to discuss..."></textarea>
-            <div class="error-message">Please enter your message</div>
-          </div>
-          <!-- Honeypot field for spam bots -->
-          <input type="text" id="website" name="website" class="sr-only" tabindex="-1" autocomplete="off" aria-hidden="true" />
-
-          <button type="submit" class="btn"><i class="fa-regular fa-paper-plane"></i> Send Message</button>
-          <p id="formStatus" class="status" role="status" aria-live="polite"></p>
+          <button type="submit" class="card">Send Message</button>
+          <p class="status" id="formStatus"></p>
         </form>
       </div>
     </div>
@@ -525,264 +273,78 @@
     <div class="container">
       <div class="footer-grid">
         <div>
-          <div class="logo" style="color:#fff">Samson.N</div>
-          <p style="margin-top:6px">Data Scientist & AI Researcher specializing in environmental technology and public health applications.</p>
-          <div style="display:flex; gap:12px; margin-top:10px">
-            <a aria-label="LinkedIn" href="https://www.linkedin.com/in/samson-niyizurugero-200a19260" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg"></i></a>
-            <a aria-label="GitHub" href="https://github.com/samson19977" target="_blank" rel="noopener"><i class="fab fa-github fa-lg"></i></a>
-            <a aria-label="Hugging Face" href="https://huggingface.co/NSamson1" target="_blank" rel="noopener"><i class="fas fa-robot fa-lg"></i></a>
-          </div>
+          <h4>Samson Niyizurugero</h4>
+          <p>Data Scientist & AI Researcher based in Kigali.</p>
         </div>
         <div>
-          <h3 style="color:#fff; font-size:1.1rem">Quick Links</h3>
-          <ul style="list-style:none; margin-top:8px">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#experience">Experience</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3 style="color:#fff; font-size:1.1rem">Resources</h3>
-          <ul style="list-style:none; margin-top:8px">
-            <li><a href="#certifications">Certifications</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="#" id="viewPdfFooter">View Certificates PDF</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms of Service</a></li>
-          </ul>
+          <h4>Social</h4>
+          <p><a href="https://github.com/samson19977">GitHub</a></p>
+          <p><a href="https://www.linkedin.com/in/samson-niyizurugero-200a19260">LinkedIn</a></p>
+          <p><a href="https://huggingface.co/NSamson1">Hugging Face</a></p>
         </div>
       </div>
-      <div class="copyright">&copy; <span id="year"></span> Samson Niyizurugero. All Rights Reserved.</div>
+      <p class="copyright">&copy; 2025 Samson Niyizurugero. All rights reserved.</p>
     </div>
   </footer>
 
   <!-- PDF Modal -->
-  <div id="pdfModal" class="modal" aria-labelledby="pdfTitle" aria-modal="true" role="dialog">
-    <div class="panel" role="document">
-      <div class="header">
-        <h2 id="pdfTitle">My Degrees & Certificates</h2>
-        <div style="display:flex; gap:8px; align-items:center">
-          <a class="btn btn-outline" href="Masters.pdf" download><i class="fa-regular fa-circle-down"></i> Download PDF</a>
-          <button class="close" id="closePdf" aria-label="Close certificates viewer">&times;</button>
-        </div>
-      </div>
-      <iframe id="pdf-viewer" title="Certificates PDF"></iframe>
-    </div>
+  <div id="pdfModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);align-items:center;justify-content:center;z-index:999;">
+    <iframe id="pdfViewer" src="" style="width:90%;height:90%;border:none;border-radius:12px;"></iframe>
+    <button id="closePdf" style="position:absolute;top:20px;right:20px;padding:10px 14px;border:none;border-radius:8px;background:var(--primary);color:#fff;font-size:1rem;cursor:pointer;">Close</button>
   </div>
 
   <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <script>
-    // ===== Helpers =====
-    const $ = (sel, ctx=document) => ctx.querySelector(sel);
-    const $$ = (sel, ctx=document) => Array.from(ctx.querySelectorAll(sel));
+    const navLinks = document.getElementById('navLinks');
+    const hamburger = document.getElementById('hamburger');
+    hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
 
-    // ===== Navbar & Header =====
-    const hamburger = $('#hamburger');
-    const navLinks = $('#navLinks');
-    hamburger.addEventListener('click', () => {
-      const expanded = hamburger.getAttribute('aria-expanded') === 'true';
-      hamburger.setAttribute('aria-expanded', String(!expanded));
-      navLinks.classList.toggle('active');
-    });
-    // Close mobile menu when clicking a link
-    $$('#navLinks a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('active')));
-
-    // Back to top button
-    const topBtn = document.createElement('a');
-    topBtn.href = '#home';
-    topBtn.className = 'btn top-btn';
-    topBtn.innerHTML = '<i class="fa-solid fa-arrow-up"></i>';
-    document.body.appendChild(topBtn);
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 600) topBtn.classList.add('show'); else topBtn.classList.remove('show');
-    });
-
-    // Year
-    $('#year').textContent = new Date().getFullYear();
-
-    // ===== Theme Toggle =====
-    const modeToggle = $('#modeToggle');
+    // Dark/Light mode
     const root = document.documentElement;
+    const modeToggle = document.getElementById('modeToggle');
     const storedTheme = localStorage.getItem('theme');
-    if (storedTheme) root.setAttribute('data-theme', storedTheme);
+    if(storedTheme) root.setAttribute('data-theme', storedTheme);
     modeToggle.addEventListener('click', () => {
-      const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      const current = root.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
       root.setAttribute('data-theme', next);
       localStorage.setItem('theme', next);
     });
 
-    // ===== PDF Modal Logic =====
-    const pdfModal = $('#pdfModal');
-    const pdfViewer = $('#pdf-viewer');
-    const closePdf = $('#closePdf');
-    const openers = ['#viewAllCerts', '#viewAllCerts2', '#viewPdfFooter']
-      .map(sel => $(sel)).filter(Boolean);
-    const PDF_PATH = 'Masters.pdf'; // <-- Put your certificates PDF here
+    // Resume PDF Modal
+    const pdfModal = document.getElementById('pdfModal');
+    const pdfViewer = document.getElementById('pdfViewer');
+    const resumeBtn = document.getElementById('resumeBtn');
+    const closePdf = document.getElementById('closePdf');
+    const PDF_PATH = 'resume.pdf';
 
-    function openPdfModal() {
-      pdfViewer.src = PDF_PATH + '#toolbar=1&navpanes=0&scrollbar=1';
-      pdfModal.setAttribute('open', '');
-      // Trap focus
-      closePdf.focus();
-      document.body.style.overflow = 'hidden';
-    }
-    function closePdfModal() {
-      pdfModal.removeAttribute('open');
-      pdfViewer.src = '';
-      document.body.style.overflow = '';
-    }
-    openers.forEach(btn => btn && btn.addEventListener('click', (e) => { e.preventDefault(); openPdfModal(); }));
-    closePdf.addEventListener('click', closePdfModal);
-    window.addEventListener('keydown', (e) => { if (e.key === 'Escape' && pdfModal.hasAttribute('open')) closePdfModal(); });
-    pdfModal.addEventListener('click', (e) => { if (e.target === pdfModal) closePdfModal(); });
+    resumeBtn.addEventListener('click', () => {
+      pdfViewer.src = PDF_PATH + '#toolbar=1';
+      pdfModal.style.display = 'flex';
+    });
+    closePdf.addEventListener('click', () => pdfModal.style.display = 'none');
 
-    // ===== EmailJS Contact Form =====
-    // Replace these with your actual EmailJS credentials
-    const EMAILJS_PUBLIC_KEY = 'QRk86L4CQCjexJvuV'; // Your public key
-    const EMAILJS_SERVICE_ID = 'service_14hbffc'; // Your service ID
-    const EMAILJS_TEMPLATE_ID = 'template_f8qhxle'; // Your template ID
-
-    // Initialize EmailJS
-    (function() {
-      if (typeof emailjs !== 'undefined') {
-        emailjs.init(EMAILJS_PUBLIC_KEY);
-      }
-    })();
-
-    const form = $('#contactForm');
-    const status = $('#formStatus');
-    const formGroups = $$('.form-group');
-
-    // Clear validation errors
-    function clearErrors() {
-      formGroups.forEach(group => group.classList.remove('error'));
-      status.textContent = '';
-      status.className = 'status';
-    }
-
-    // Show validation error
-    function showError(input, message) {
-      const group = input.closest('.form-group');
-      group.classList.add('error');
-      status.textContent = message;
-      status.className = 'status error';
-      input.focus();
-    }
-
-    // Validate form
-    function validateForm() {
-      clearErrors();
-      
-      // Check honeypot
-      if ($('#website').value) {
-        return { ok: false, msg: 'Spam detected.' };
-      }
-      
-      // Validate name
-      const name = $('#name').value.trim();
-      if (!name) {
-        showError($('#name'), 'Please enter your name');
-        return { ok: false };
-      }
-      
-      // Validate email
-      const email = $('#email').value.trim();
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!email) {
-        showError($('#email'), 'Please enter your email');
-        return { ok: false };
-      } else if (!emailRegex.test(email)) {
-        showError($('#email'), 'Please enter a valid email address');
-        return { ok: false };
-      }
-      
-      // Validate subject
-      const subject = $('#subject').value.trim();
-      if (!subject) {
-        showError($('#subject'), 'Please enter a subject');
-        return { ok: false };
-      }
-      
-      // Validate message
-      const message = $('#message').value.trim();
-      if (!message) {
-        showError($('#message'), 'Please enter your message');
-        return { ok: false };
-      }
-      
-      return { ok: true, data: { name, email, subject, message } };
-    }
-
-    // Form submission
+    // Contact Form
+    const form = document.getElementById('contactForm');
+    const status = document.getElementById('formStatus');
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      
-      const validation = validateForm();
-      if (!validation.ok) return;
-      
-      status.textContent = 'Sending message...';
-      
+      const data = {
+        name: form.name.value,
+        email: form.email.value,
+        message: form.message.value
+      };
       try {
-        // If EmailJS is properly configured
-        if (typeof emailjs !== 'undefined' && 
-            EMAILJS_PUBLIC_KEY && EMAILJS_PUBLIC_KEY !== 'QRk86L4CQCjexJvuV' &&
-            EMAILJS_SERVICE_ID && EMAILJS_SERVICE_ID !== 'service_14hbffc' &&
-            EMAILJS_TEMPLATE_ID && EMAILJS_TEMPLATE_ID !== 'template_f8qhxle') {
-      
-          const templateParams = {
-            from_name: validation.data.name,
-            reply_to: validation.data.email,
-            subject: validation.data.subject,
-            message: validation.data.message
-          };
-          
-          const response = await emailjs.send(
-            EMAILJS_SERVICE_ID, 
-            EMAILJS_TEMPLATE_ID, 
-            templateParams
-          );
-          
-          if (response.status === 200) {
-            status.textContent = 'Message sent successfully!';
-            status.className = 'status success';
-            form.reset();
-            
-            // Clear status after 5 seconds
-            setTimeout(() => {
-              status.textContent = '';
-            }, 5000);
-          } else {
-            throw new Error('Failed to send message');
-          }
-        } else {
-          // Fallback to mailto if EmailJS is not configured
-          const subject = encodeURIComponent(validation.data.subject);
-          const body = encodeURIComponent(`${validation.data.message}\n\nFrom: ${validation.data.name} (${validation.data.email})`);
-          window.location.href = `mailto:sniyizurugero@aimsric.org?subject=${subject}&body=${body}`;
-          status.textContent = 'Opening your email client...';
-        }
-      } catch (error) {
-        console.error('Email sending error:', error);
-        status.textContent = 'Failed to send message. Please try again or email me directly.';
+        // EmailJS integration could go here, fallback mailto:
+        window.location.href = `mailto:sniyizurugero@aimsric.org?subject=Contact from ${data.name}&body=${encodeURIComponent(data.message)}`;
+        status.textContent = 'Message sent!';
+        status.className = 'status success';
+        form.reset();
+      } catch(err){
+        status.textContent = 'Failed to send. Try email manually.';
         status.className = 'status error';
       }
     });
-
-    // Real-time validation
-    form.addEventListener('input', (e) => {
-      const input = e.target;
-      const group = input.closest('.form-group');
-      
-      if (input.value.trim()) {
-        group.classList.remove('error');
-      }
-    });
   </script>
-
-  <!-- (Optional) Analytics - replace with your own, or remove -->
-  <!-- <script defer data-domain="yourdomain.com" src="https://plausible.io/js/script.js"></script> -->
 </body>
 </html>
