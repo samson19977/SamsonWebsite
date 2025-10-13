@@ -3,220 +3,171 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Samson Niyizurugero - Data Scientist & AI Researcher portfolio.">
-<meta name="keywords" content="Samson Niyizurugero, Data Scientist, AI, Environmental Technology, Public Health, Portfolio">
-<title>Samson Niyizurugero | Portfolio</title>
+<title>Samson Niyizurugero | Data Scientist</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 <style>
-    :root {
-        --accent: #0066cc;
-        --bg-light: #f9f9f9;
-        --bg-dark: #1e1e1e;
-        --text-light: #ffffff;
-        --text-dark: #000000;
-    }
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background-color: var(--bg-light);
-        color: var(--text-dark);
-        line-height: 1.6;
-        transition: background-color 0.3s, color 0.3s;
-    }
-    header {
-        text-align: center;
-        padding: 2rem 1rem;
-    }
-    header img {
-        width: 150px;
-        border-radius: 50%;
-        margin-bottom: 1rem;
-    }
-    header h1 {
-        color: var(--accent);
-        margin-bottom: 0.2rem;
-    }
-    header p {
-        margin: 0.2rem 0;
-    }
-    a {
-        color: var(--accent);
-        text-decoration: none;
-    }
-    a:hover {
-        text-decoration: underline;
-    }
-    section {
-        max-width: 900px;
-        margin: 2rem auto;
-        padding: 0 1rem;
-    }
-    h2 {
-        color: var(--accent);
-        border-bottom: 2px solid var(--accent);
-        padding-bottom: 0.3rem;
-    }
-    .competencies, .experience, .education, .projects, .skills, .certifications, .publications {
-        margin-bottom: 2rem;
-    }
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-bottom: 1rem;
-    }
-    table td {
-        padding: 0.3rem 0.5rem;
-        vertical-align: top;
-    }
-    ul {
-        padding-left: 1.2rem;
-    }
-    form input, form textarea, form button {
-        width: 100%;
-        padding: 0.7rem;
-        margin-bottom: 1rem;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        font-size: 1rem;
-    }
-    form button {
-        background-color: var(--accent);
-        color: #fff;
-        border: none;
-        cursor: pointer;
-    }
-    form button:hover {
-        background-color: #004999;
-    }
-    .theme-toggle {
-        position: fixed;
-        top: 1rem;
-        right: 1rem;
-        background: var(--accent);
-        color: #fff;
-        border: none;
-        padding: 0.5rem 1rem;
-        cursor: pointer;
-        border-radius: 5px;
-    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Roboto', sans-serif; background:#f4f6f8; color:#333; scroll-behavior:smooth; }
+    a { text-decoration:none; color:#008000; }
+    a:hover { color:#0066cc; }
+    header { background:#0066cc; color:white; padding:2rem 1rem; text-align:center; position:sticky; top:0; z-index:1000; }
+    header img { width:150px; height:150px; border-radius:50%; border:3px solid white; margin-bottom:1rem; object-fit:cover; }
+    header h1 { font-size:2rem; margin-bottom:0.5rem; }
+    header nav { margin-top:1rem; }
+    header nav a { margin: 0 1rem; font-weight:700; color:white; }
+    header nav a:hover { color:#ffcc00; }
+
+    section { padding:4rem 1rem; max-width:1200px; margin:auto; }
+    h2 { color:#0066cc; margin-bottom:1rem; text-align:center; }
+
+    .card { background:white; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1); padding:1.5rem; margin-bottom:2rem; transition: transform 0.2s, box-shadow 0.2s; }
+    .card:hover { transform: translateY(-5px); box-shadow:0 8px 20px rgba(0,0,0,0.15); }
+    .grid { display:grid; gap:1rem; }
+    .grid-2 { grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); }
+    .grid-3 { grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); }
+
+    /* Education & Certificates */
+    .accordion { cursor:pointer; padding:1rem; background:#0066cc; color:white; border:none; outline:none; border-radius:8px; margin-bottom:0.5rem; text-align:left; }
+    .panel { padding:0 1rem; display:none; background:white; border-radius:8px; margin-bottom:1rem; box-shadow:0 4px 12px rgba(0,0,0,0.1); }
+
+    footer { text-align:center; padding:2rem 1rem; background:#0066cc; color:white; margin-top:2rem; }
 </style>
 </head>
 <body>
 
-<button class="theme-toggle" onclick="toggleTheme()">Toggle Dark/Light</button>
-
 <header>
-    <img src="passport.png" alt="Samson Niyizurugero">
+    <img src="your-picture.jpg" alt="Samson Niyizurugero">
     <h1>Samson Niyizurugero</h1>
     <p>Data Scientist & AI Researcher | Environmental Technology | Public Health</p>
-    <p>Kigali, Rwanda | <a href="mailto:sniyizurugero@aimsric.org">sniyizurugero@aimsric.org</a> | +250 784 602 833</p>
-    <p>
-        LinkedIn: <a href="https://www.linkedin.com/in/samson-niyizurugero-200a19260">/samson-niyizurugero</a> | 
-        GitHub: <a href="https://github.com/samson19977">samson19977</a> | 
-        Portfolio: <a href="https://huggingface.co/NSamson1">huggingface.co/NSamson1</a> | 
-        Website: <a href="https://niyizurugero.netlify.app">niyizurugero.netlify.app</a>
-    </p>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#certificates">Certificates</a>
+        <a href="#contact">Contact</a>
+    </nav>
 </header>
 
-<section class="profile">
-    <h2>Professional Profile</h2>
-    <p>Innovative data scientist with 3+ years of experience developing AI solutions for environmental and social challenges. Specializes in deploying machine learning systems that bridge technical excellence with real-world impact...</p>
+<section id="home">
+    <div class="card">
+        <h2>Welcome</h2>
+        <p>Hello! I am Samson Niyizurugero, an AI researcher and data scientist passionate about developing solutions for environmental and social impact. Explore my education, projects, skills, and certificates below.</p>
+    </div>
 </section>
 
-<section class="competencies">
-    <h2>Core Technical Competencies</h2>
-    <table>
-        <tr><td><strong>Machine Learning:</strong></td><td>Transformer architectures, LSTM/GRU networks, ensemble methods (XGBoost, CatBoost), concept drift detection</td></tr>
-        <tr><td><strong>Environmental AI:</strong></td><td>Air quality forecasting, satellite data fusion (MODIS/Sentinel), sensor network optimization</td></tr>
-        <tr><td><strong>NLP Applications:</strong></td><td>Conversational AI, multilingual chatbots, USSD/SMS interfaces</td></tr>
-        <tr><td><strong>Technical Stack:</strong></td><td>Python (PyTorch, TensorFlow, Scikit-learn), R, SQL, Swift</td></tr>
-        <tr><td><strong>Data Engineering:</strong></td><td>Real-time APIs (FastAPI), cloud deployment (Hugging Face Spaces), geospatial databases (PostGIS)</td></tr>
-        <tr><td><strong>Big Data:</strong></td><td>Hadoop, Spark, AWS for scalable AI</td></tr>
-        <tr><td><strong>Explainable AI:</strong></td><td>SHAP, LIME, model auditing for trust</td></tr>
-    </table>
+<section id="about">
+    <h2>About Me</h2>
+    <div class="card">
+        <p>Innovative data scientist with 3+ years of experience creating AI solutions for environmental and social challenges. Skilled in machine learning, NLP, geospatial analysis, data engineering, and cloud-based deployment. Experienced in delivering actionable insights to governments, organizations, and educational institutions.</p>
+    </div>
+    <div class="grid grid-2">
+        <div class="card">
+            <h3>Professional Experience</h3>
+            <ul>
+                <li><strong>Data Manager</strong> – AIMS Research & Innovation Centre, 2023–Present</li>
+                <li><strong>Data Analyst</strong> – Willows International, 2021–2022</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>Languages</h3>
+            <p>Kinyarwanda (Native), English (Fluent), French (Proficient), Swahili (Intermediate)</p>
+        </div>
+    </div>
 </section>
 
-<section class="business">
-    <h2>Core Business & Leadership Competencies</h2>
-    <table>
-        <tr><td><strong>Strategic Management:</strong></td><td>Business planning, organizational strategy, project management</td></tr>
-        <tr><td><strong>Decision Making:</strong></td><td>Data-driven insights, risk analysis, performance metrics</td></tr>
-        <tr><td><strong>Leadership:</strong></td><td>Cross-cultural teamwork, stakeholder engagement, mentorship</td></tr>
-        <tr><td><strong>Global Perspective:</strong></td><td>International collaboration, sustainability, inclusive innovation</td></tr>
-    </table>
-</section>
-
-<section class="projects">
-    <h2>AI for Social Impact Projects</h2>
-    <ul>
-        <li><strong>African CO<sub>2</sub> Emissions Forecast Dashboard</strong> - <a href="https://huggingface.co/spaces/NSamson1/Early-Warning-Airquality">Live Demo</a></li>
-        <li><strong>Rwanda Air Quality Dashboard</strong> - <a href="https://rwanda-air-quality-dashboard-2pprtzkknhnwo9cbrw6q2a.streamlit.app/">Live Demo</a></li>
-        <li><strong>MyFirstMathFriend</strong> - <a href="https://huggingface.co/spaces/NSamson1/MyFriendMath">Live Demo</a></li>
-        <li><strong>Financial Literacy Assistant</strong> - <a href="https://huggingface.co/spaces/NSamson1/Finance">Live Demo</a></li>
-    </ul>
-</section>
-
-<section class="experience">
-    <h2>Professional Experience</h2>
-    <p><strong>AIMS Research and Innovation Centre</strong> - Data Manager (2023–Present), Kigali, Rwanda</p>
-    <ul>
-        <li>Lead data analysis in regional health and environment programs.</li>
-        <li>Develop real-time forecasting models using deep learning.</li>
-        <li>Manage collaborative research projects, documentation, and funding proposals.</li>
-    </ul>
-
-    <p><strong>Willows International</strong> - Data Analyst (2021–2022), Kigali, Rwanda</p>
-    <ul>
-        <li>Conducted evaluations of family planning programs.</li>
-        <li>Supported RCT design and M&E frameworks.</li>
-        <li>Built tools for training CHWs in digital data collection.</li>
-    </ul>
-</section>
-
-<section class="education">
+<section id="education">
     <h2>Education</h2>
-    <p><strong>African Institute for Mathematical Sciences (AIMS)</strong> - MSc in Data Science (2021–2023), Kigali, Rwanda</p>
-    <p>Focus: Applied ML, environmental time series, XAI. Thesis: Machine Learning-Based Early Warning System for Air Pollution in Rwanda</p>
-    <p><strong>University of Rwanda</strong> - BSc in Statistics (2018–2021)</p>
-    <p>Undergrad Research: Under-Five Mortality Forecasting Using Time Series Techniques</p>
+    <button class="accordion">MSc Data Science – AIMS, Kigali (2021–2023)</button>
+    <div class="panel">
+        <p>Thesis: Machine Learning-Based Early Warning System for Air Pollution in Rwanda</p>
+    </div>
+    <button class="accordion">BSc Statistics – University of Rwanda (2018–2021)</button>
+    <div class="panel">
+        <p>Under-Five Mortality Forecasting Using Time Series Techniques</p>
+    </div>
 </section>
 
-<section class="skills">
-    <h2>Technical Skills</h2>
-    <ul>
-        <li>Programming: Python, R, SQL, C++, JavaScript, Swift</li>
-        <li>Statistical Tools: SPSS, STATA, Excel, EViews</li>
-        <li>Visualization: Power BI, Tableau, Seaborn, Matplotlib</li>
-        <li>Geospatial: QGIS, R-INLA, Google Earth Engine</li>
-        <li>ML/DL: TensorFlow, PyTorch, XGBoost, LSTM, GRU, CNN</li>
-        <li>Cloud/Big Data: AWS, Hadoop, Spark</li>
-        <li>Languages: Kinyarwanda (Native), English (Fluent), French (Proficient), Swahili (Intermediate)</li>
-    </ul>
+<section id="projects">
+    <h2>Projects</h2>
+    <div class="grid grid-2">
+        <div class="card">
+            <h3>African CO₂ Emissions Forecast Dashboard</h3>
+            <p>Interactive Streamlit dashboard with RAG-powered chatbot.</p>
+            <p><strong>Tech:</strong> Python, Streamlit, NLP, Time Series</p>
+            <a href="https://huggingface.co/spaces/NSamson1/Early-Warning-Airquality">View Project</a>
+        </div>
+        <div class="card">
+            <h3>Rwanda Air Quality Dashboard</h3>
+            <p>Real-time monitoring supporting public health decisions.</p>
+            <p><strong>Tech:</strong> Python, FastAPI, GIS, Deep Learning</p>
+            <a href="https://rwanda-air-quality-dashboard-2pprtzkknhnwo9cbrw6q2a.streamlit.app/">View Project</a>
+        </div>
+        <div class="card">
+            <h3>MyFirstMathFriend</h3>
+            <p>Multilingual math chatbot aligned with Rwanda primary curriculum.</p>
+            <p><strong>Tech:</strong> Python, RAG, NLP, Hugging Face</p>
+            <a href="https://huggingface.co/spaces/NSamson1/MyFriendMath">View Project</a>
+        </div>
+        <div class="card">
+            <h3>Financial Literacy Assistant</h3>
+            <p>Mobile banking assistant for savings and loans.</p>
+            <p><strong>Tech:</strong> Python, NLP, USSD, Swift</p>
+            <a href="https://huggingface.co/spaces/NSamson1/Finance">View Project</a>
+        </div>
+    </div>
+</section>
+
+<section id="skills">
+    <h2>Skills & Competencies</h2>
+    <div class="grid grid-3">
+        <div class="card"><strong>Machine Learning:</strong> Transformers, LSTM/GRU, XGBoost, CatBoost</div>
+        <div class="card"><strong>Environmental AI:</strong> Air quality forecasting, satellite fusion, sensor optimization</div>
+        <div class="card"><strong>NLP:</strong> Conversational AI, multilingual chatbots</div>
+        <div class="card"><strong>Data Engineering:</strong> FastAPI, Hugging Face Spaces, PostGIS</div>
+        <div class="card"><strong>Programming:</strong> Python, R, SQL, Swift, C++</div>
+        <div class="card"><strong>Big Data & Cloud:</strong> AWS, Hadoop, Spark</div>
+    </div>
+</section>
+
+<section id="certificates">
+    <h2>Certificates</h2>
+    <button class="accordion">Apple AATCE Program – Swift App Development (Sep 2025)</button>
+    <div class="panel"><p>Swift app development training by Apple.</p></div>
+    <button class="accordion">Machine Learning Optimization in Africa (MLOA) Conference 2025</button>
+    <div class="panel"><p>Poster Presentation: Smart Fuel-Saving in Rwanda’s Hilly Cities</p></div>
+    <button class="accordion">Business Management & Data Analytics (Aug 2025)</button>
+    <div class="panel"><p>Professional certificate in Business Management & Analytics.</p></div>
+    <button class="accordion">East-African School for Young Researchers (EASY-ML) (Jul 2025)</button>
+    <div class="panel"><p>ML training for young researchers in East Africa.</p></div>
 </section>
 
 <section id="contact">
-    <h2>Contact & Website</h2>
-    <p>Visit my personal website: <a href="https://niyizurugero.netlify.app" target="_blank">niyizurugero.netlify.app</a></p>
-    <h3>Send Me a Message</h3>
-    <!-- Formspree Form -->
-    <form action="https://formspree.io/f/mnqrlkjo" method="POST">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="_replyto" placeholder="Your Email" required>
-        <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
-        <button type="submit">Send Message</button>
-    </form>
-    <p>If the form does not work, you can email me directly at <a href="mailto:sniyizurugero@aimsric.org">sniyizurugero@aimsric.org</a>.</p>
+    <h2>Contact</h2>
+    <div class="card">
+        <p><strong>Email:</strong> <a href="mailto:sniyizurugero@aimsric.org">sniyizurugero@aimsric.org</a></p>
+        <p><strong>Phone:</strong> +250 784 602 833</p>
+        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/samson-niyizurugero-200a19260">linkedin.com/in/samson-niyizurugero</a></p>
+        <p><strong>GitHub:</strong> <a href="https://github.com/samson19977">github.com/samson19977</a></p>
+        <p><strong>Portfolio:</strong> <a href="https://huggingface.co/NSamson1">huggingface.co/NSamson1</a></p>
+        <p><strong>Website:</strong> <a href="https://niyizurugero.netlify.app">niyizurugero.netlify.app</a></p>
+    </div>
 </section>
 
+<footer>
+    &copy; 2025 Samson Niyizurugero. All Rights Reserved.
+</footer>
+
 <script>
-function toggleTheme() {
-    if (document.body.style.backgroundColor === "var(--bg-dark)") {
-        document.body.style.backgroundColor = "var(--bg-light)";
-        document.body.style.color = "var(--text-dark)";
-    } else {
-        document.body.style.backgroundColor = "var(--bg-dark)";
-        document.body.style.color = "var(--text-light)";
+    const acc = document.getElementsByClassName("accordion");
+    for (let i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            const panel = this.nextElementSibling;
+            panel.style.display = panel.style.display === "block" ? "none" : "block";
+        });
     }
-}
 </script>
 
 </body>
