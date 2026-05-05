@@ -1,8 +1,1628 @@
-<!-- ==================== CONTACT SECTION ==================== -->
-<section class="contact" id="contact">
-    <div class="contact-content">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samson Niyizurugero - Data Scientist & ML Engineer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #0066cc;
+            --secondary-color: #00d4ff;
+            --accent-color: #ff6b6b;
+            --dark-bg: #0a0e27;
+            --card-bg: #151a2f;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b8d4;
+            --border-color: #1e2847;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ==================== NAVIGATION ==================== */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .nav-links a.active {
+            color: var(--secondary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 0.5rem;
+        }
+
+        /* ==================== HERO SECTION ==================== */
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            min-height: 80vh;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content .title {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 102, 204, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--secondary-color);
+            color: var(--secondary-color);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 212, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .hero-image {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border: 3px solid var(--secondary-color);
+            box-shadow: 0 0 40px rgba(0, 212, 255, 0.2);
+            object-fit: cover;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-icons a {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(0, 212, 255, 0.1);
+            border: 2px solid var(--secondary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary-color);
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .social-icons a:hover {
+            background: var(--secondary-color);
+            color: var(--dark-bg);
+            transform: translateY(-5px);
+        }
+
+        /* ==================== SECTIONS ==================== */
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+        }
+
+        /* ==================== ABOUT SECTION ==================== */
+        .about {
+            background: rgba(21, 26, 47, 0.5);
+            border-radius: 15px;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .about-text h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        .about-text p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .about-highlights {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .highlight-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .highlight-card h4 {
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* ==================== EDUCATION SECTION ==================== */
+        .education {
+            background: rgba(21, 26, 47, 0.5);
+            border-radius: 15px;
+        }
+
+        .education-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .education-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .education-card:hover {
+            border-color: var(--secondary-color);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .education-card .degree {
+            font-size: 1.3rem;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .education-card .institution {
+            font-size: 1rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .education-card .period {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .education-card .details {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* ==================== EXPERIENCE SECTION ==================== */
+        .experience {
+            background: rgba(21, 26, 47, 0.5);
+            border-radius: 15px;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: var(--border-color);
+        }
+
+        .timeline-item {
+            margin-bottom: 3rem;
+            width: 48%;
+        }
+
+        .timeline-item:nth-child(odd) {
+            margin-left: 0;
+            text-align: right;
+            padding-right: 3rem;
+        }
+
+        .timeline-item:nth-child(even) {
+            margin-left: 52%;
+            padding-left: 3rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: var(--secondary-color);
+            border: 3px solid var(--dark-bg);
+            border-radius: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0;
+        }
+
+        .timeline-content {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            border-color: var(--secondary-color);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.1);
+        }
+
+        .timeline-title {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .timeline-company {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .timeline-period {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .timeline-skills {
+            margin-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-badge {
+            background: rgba(0, 212, 255, 0.1);
+            color: var(--secondary-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            border: 1px solid var(--secondary-color);
+        }
+
+        /* ==================== SKILLS SECTION ==================== */
+        .skills {
+            background: rgba(21, 26, 47, 0.5);
+            border-radius: 15px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            border-color: var(--secondary-color);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .skill-category h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .skill-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .skill-name {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .skill-bar {
+            width: 100%;
+            height: 6px;
+            background: var(--border-color);
+            border-radius: 3px;
+            margin-top: 0.5rem;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 3px;
+            transition: width 1s ease;
+        }
+
+        /* ==================== PROJECTS SECTION ==================== */
+        .projects {
+            background: rgba(21, 26, 47, 0.5);
+            border-radius: 15px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            border-color: var(--secondary-color);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.15);
+            transform: translateY(-10px);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .project-content {
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+            line-height: 1.6;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            background: rgba(0, 212, 255, 0.1);
+            color: var(--secondary-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            border: 1px solid var(--secondary-color);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: auto;
+        }
+
+        .project-links a {
+            flex: 1;
+            padding: 0.7rem;
+            border: 1px solid var(--secondary-color);
+            border-radius: 6px;
+            color: var(--secondary-color);
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .project-links a:hover {
+            background: var(--secondary-color);
+            color: var(--dark-bg);
+        }
+
+        /* ==================== CERTIFICATES SECTION ==================== */
+        .certificates {
+            background: rgba(21, 26, 47, 0.5);
+            border-radius: 15px;
+        }
+
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .certificate-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .certificate-card:hover {
+            border-color: var(--secondary-color);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .certificate-icon {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .certificate-name {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .certificate-issuer {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .certificate-date {
+            color: var(--secondary-color);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* ==================== CONTACT SECTION ==================== */
+        .contact {
+            background: rgba(21, 26, 47, 0.5);
+            border-radius: 15px;
+        }
+
+        .contact-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-content > p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-method {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .contact-method:hover {
+            border-color: var(--secondary-color);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .contact-method i {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .contact-method h3 {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-method a,
+        .contact-method p {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-method a:hover {
+            color: var(--secondary-color);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .social-links a {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(0, 212, 255, 0.1);
+            border: 2px solid var(--secondary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary-color);
+            transition: all 0.3s ease;
+            font-size: 1.5rem;
+        }
+
+        .social-links a:hover {
+            background: var(--secondary-color);
+            color: var(--dark-bg);
+            transform: translateY(-5px);
+        }
+
+        /* ==================== CONTACT FORM ==================== */
+        .contact-form {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .form-group button {
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        /* ==================== FOOTER ==================== */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 3rem 1rem;
+                min-height: auto;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content .title {
+                font-size: 1.2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .education-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline {
+                padding: 0;
+            }
+
+            .timeline::before {
+                display: none;
+            }
+
+            .timeline-item,
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                width: 100%;
+                margin-left: 0;
+                margin-bottom: 2rem;
+                padding: 0;
+                text-align: left;
+            }
+
+            .timeline-item::before {
+                display: none;
+            }
+
+            .timeline-content {
+                margin-left: 1rem;
+                border-left: 3px solid var(--secondary-color);
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            section {
+                padding: 2rem 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* ==================== ANIMATIONS ==================== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .skill-progress {
+            animation: fillProgress 1s ease-out forwards;
+        }
+
+        @keyframes fillProgress {
+            from {
+                width: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ==================== NAVIGATION ==================== -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-code"></i> Samson Niyizurugero
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#certificates">Certificates</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Samson Niyizurugero</h1>
+            <p class="title">Data Scientist & ML Engineer</p>
+            <p>I transform raw data into actionable insights and build intelligent systems that solve real-world problems. Specialized in Deep Learning, Agentic AI, and Geospatial Analytics.</p>
+            
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-primary">
+                    <i class="fas fa-briefcase"></i> View My Work
+                </a>
+                <a href="#contact" class="btn btn-secondary">
+                    <i class="fas fa-paper-plane"></i> Get In Touch
+                </a>
+            </div>
+
+            <div class="social-icons">
+                <a href="https://linkedin.com/in/samson-niyizurugero-200a19260" target="_blank" title="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/samson19977" target="_blank" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://huggingface.co/NSamson1" target="_blank" title="Hugging Face">
+                    <i class="fas fa-robot"></i>
+                </a>
+                <a href="https://twitter.com/samson19977" target="_blank" title="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="hero-image">
+            <img src="passport.png" alt="Samson Niyizurugero">
+        </div>
+    </section>
+
+    <!-- ==================== ABOUT SECTION ==================== -->
+    <section class="about" id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Who I Am</h3>
+                <p>
+                    I'm a Data Scientist and Machine Learning Engineer with a Master's degree in Data Science from AIMS Rwanda and a Bachelor's degree in Statistics. With a strong foundation in statistical analysis and machine learning, I specialize in developing end-to-end data solutions that drive business value.
+                </p>
+                <p>
+                    Currently, I work as a Data Manager & Researcher at AIMS Research and Innovation Centre, where I design and implement data pipelines, develop predictive models, and conduct research on emerging technologies. My passion lies in leveraging artificial intelligence and data science to address challenges in agriculture, climate, and global development.
+                </p>
+                <p>
+                    I'm particularly interested in:
+                </p>
+                <ul style="color: var(--text-secondary); margin-left: 1.5rem;">
+                    <li>Building Agentic AI systems with LangChain and LLMs</li>
+                    <li>Deep Learning for Computer Vision and NLP</li>
+                    <li>Geospatial Analytics and Remote Sensing</li>
+                    <li>MLOps and Production ML Systems</li>
+                    <li>Open-source contributions and community building</li>
+                </ul>
+            </div>
+
+            <div class="about-highlights">
+                <div class="highlight-card">
+                    <h4><i class="fas fa-graduation-cap"></i> Education</h4>
+                    <p>MSc Data Science (AIMS Rwanda) + BSc Statistics (University of Rwanda)</p>
+                </div>
+                <div class="highlight-card">
+                    <h4><i class="fas fa-briefcase"></i> Experience</h4>
+                    <p>3+ years in Data Science, ML Engineering, and Research</p>
+                </div>
+                <div class="highlight-card">
+                    <h4><i class="fas fa-laptop-code"></i> Languages</h4>
+                    <p>Python, R, SQL, JavaScript, Bash</p>
+                </div>
+                <div class="highlight-card">
+                    <h4><i class="fas fa-star"></i> Expertise</h4>
+                    <p>Deep Learning, LLMs, Geospatial Analytics, MLOps</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== EDUCATION SECTION ==================== -->
+    <section class="education" id="education">
+        <h2 class="section-title">Education & Qualifications</h2>
+        <div class="education-grid">
+            <div class="education-card fade-in">
+                <div class="degree"><i class="fas fa-graduation-cap"></i> Master of Science</div>
+                <div class="institution">Data Science</div>
+                <div class="institution" style="color: var(--secondary-color); font-weight: normal;">AIMS Rwanda</div>
+                <div class="period"><i class="fas fa-calendar"></i> 2021 - 2023</div>
+                <div class="details">
+                    <strong>Thesis:</strong> Advanced research in Machine Learning and Data Science<br><br>
+                    <strong>Key Modules:</strong>
+                    <ul style="margin-left: 1rem; margin-top: 0.5rem;">
+                        <li>Advanced Deep Learning</li>
+                        <li>Probabilistic Graphical Models</li>
+                        <li>Time Series Analysis</li>
+                        <li>Natural Language Processing</li>
+                        <li>Research Methodology</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="education-card fade-in">
+                <div class="degree"><i class="fas fa-graduation-cap"></i> Bachelor of Science</div>
+                <div class="institution">Statistics</div>
+                <div class="institution" style="color: var(--secondary-color); font-weight: normal;">University of Rwanda</div>
+                <div class="period"><i class="fas fa-calendar"></i> 2018 - 2021</div>
+                <div class="details">
+                    <strong>Focus Areas:</strong> Statistical inference, Data analysis, Probability<br><br>
+                    <strong>Key Courses:</strong>
+                    <ul style="margin-left: 1rem; margin-top: 0.5rem;">
+                        <li>Inferential Statistics</li>
+                        <li>Probability Theory</li>
+                        <li>Regression Analysis</li>
+                        <li>Database Management</li>
+                        <li>Statistical Software</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== EXPERIENCE SECTION ==================== -->
+    <section class="experience" id="experience">
+        <h2 class="section-title">Professional Experience</h2>
+        <div class="timeline">
+            <div class="timeline-item fade-in">
+                <div class="timeline-content">
+                    <div class="timeline-title"><i class="fas fa-chart-line"></i> Data Manager & Researcher</div>
+                    <div class="timeline-company">AIMS Research and Innovation Centre</div>
+                    <div class="timeline-period"><i class="fas fa-calendar"></i> 2023 - Present</div>
+                    <div class="timeline-description">
+                        <strong>Responsibilities:</strong>
+                        <ul style="margin-left: 1rem; margin-top: 0.5rem;">
+                            <li>Design and implement robust data pipelines for research projects</li>
+                            <li>Develop machine learning models for predictive analytics</li>
+                            <li>Conduct exploratory data analysis and statistical testing</li>
+                            <li>Manage research databases and ensure data quality</li>
+                            <li>Collaborate with researchers on AI/ML research initiatives</li>
+                            <li>Mentor junior data scientists and analysts</li>
+                            <li>Publish research findings and best practices</li>
+                        </ul>
+                        <br>
+                        <strong>Key Achievements:</strong>
+                        <ul style="margin-left: 1rem; margin-top: 0.5rem;">
+                            <li>Built production ML pipelines serving 50,000+ data points</li>
+                            <li>Developed Agentic AI system for agricultural recommendations</li>
+                            <li>Reduced model inference time by 40% through optimization</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-skills">
+                        <span class="skill-badge">Python</span>
+                        <span class="skill-badge">ML Engineering</span>
+                        <span class="skill-badge">Data Pipelines</span>
+                        <span class="skill-badge">SQL</span>
+                        <span class="skill-badge">Research</span>
+                        <span class="skill-badge">Leadership</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item fade-in">
+                <div class="timeline-content">
+                    <div class="timeline-title"><i class="fas fa-database"></i> Data Analyst</div>
+                    <div class="timeline-company">Willows International</div>
+                    <div class="timeline-period"><i class="fas fa-calendar"></i> 2021 - 2022</div>
+                    <div class="timeline-description">
+                        <strong>Responsibilities:</strong>
+                        <ul style="margin-left: 1rem; margin-top: 0.5rem;">
+                            <li>Performed data extraction, cleaning, and transformation</li>
+                            <li>Created interactive dashboards using Power BI and Python</li>
+                            <li>Conducted statistical analysis on business metrics</li>
+                            <li>Developed SQL queries for reporting</li>
+                            <li>Provided data-driven insights to management</li>
+                            <li>Automated routine reporting processes</li>
+                        </ul>
+                        <br>
+                        <strong>Key Achievements:</strong>
+                        <ul style="margin-left: 1rem; margin-top: 0.5rem;">
+                            <li>Automated 15+ manual reporting processes</li>
+                            <li>Created 10+ interactive dashboards</li>
+                            <li>Improved data quality by 35% through validation frameworks</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-skills">
+                        <span class="skill-badge">SQL</span>
+                        <span class="skill-badge">Power BI</span>
+                        <span class="skill-badge">Python</span>
+                        <span class="skill-badge">Excel</span>
+                        <span class="skill-badge">Statistics</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SKILLS SECTION ==================== -->
+    <section class="skills" id="skills">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="skills-grid">
+            <!-- Programming Languages -->
+            <div class="skill-category fade-in">
+                <h3><i class="fas fa-code"></i> Programming Languages</h3>
+                <div class="skill-list">
+                    <div class="skill-item">
+                        <span class="skill-name">Python</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 95%;"></div>
+                    </div>
+
+                    <div class="skill-item" style="margin-top: 1rem;">
+                        <span class="skill-name">R</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 90%;"></div>
+                    </div>
+
+                    <div class="skill-item" style="margin-top: 1rem;">
+                        <span class="skill-name">SQL</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 92%;"></div>
+                    </div>
+
+                    <div class="skill-item" style="margin-top: 1rem;">
+                        <span class="skill-name">JavaScript</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 75%;"></div>
+                    </div>
+
+                    <div class="skill-item" style="margin-top: 1rem;">
+                        <span class="skill-name">Bash/Shell</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 80%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Machine Learning & AI -->
+            <div class="skill-category fade-in">
+                <h3><i class="fas fa-brain"></i> Machine Learning & AI</h3>
+                <div class="skill-list">
+                    <div class="skill-item">
+                        <span class="skill-name">Deep Learning (TensorFlow/PyTorch)</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 93%;"></div>
+                    </div>
+
+                    <div class="skill-item" style="margin-top: 1rem;">
+                        <span class="skill-name">Scikit-learn & Pandas</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 95%;"></div>
+                    </div>
+
+                    <div class="skill-item" style="margin-top: 1rem;">
+                        <span class="skill-name">LLMs & Agentic AI (LangChain)</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 88%;"></div>
+                    </div>
+
+                    <div class="skill-item" style="margin-top: 1rem;">
+                        <span class="skill-name">NLP</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 87%;"></div>
+                    </div>
+
+                    <div class="skill-item" style="margin-top: 1rem;">
+                        <span class="skill-name">Computer Vision</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 85%;"></div>
+                    </div>
+
+                    <div class="skill-item" style="margin-top: 1rem;">
+                        <span class="skill-name">Time Series Analysis</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 82%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data & Databases -->
+            <div class="skill-category fade-in">
+                <h3><i class="fas fa-database"></i> Data & Databases</h3>
+                <div class="skill-list">
+                    <div class="skill-item">
+                        <span class="skill-name">Data Analysis & Visualization</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 92%;"></div>
+                    </div>
+
+                    <div class="skill-item" style="margin-top: 1rem;">
+                        <span class="skill-name">PostgreSQL & MySQL</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 90%;"></div>
+                    </div>
+
+                    <div class="skill-item" style="margin-top: 1rem;">
+                        <span class="skill-name">MongoDB & Firebase</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 80%;"></div>
+                    </div>
+
+                    <div class="skill-item" style="margin-top: 1rem;">
+                        <span class="skill-name">ETL & Data Pipelines</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 88%;"></div>
+                    </div>
+
+                    <div class="skill-item" style="margin-top: 1rem;">
+                        <span class="skill-name">Big Data (PySpark)</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 78%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Geospatial & Domain -->
+            <div class="skill-category fade-in">
+                <h3><i class="fas fa-map"></i> Geospatial & Domain</h3>
+                <div class="skill-list">
+                    <div class="skill-item">
+                        <span class="skill-name">Geospatial Analytics</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 88%;"></div>
+                    </div>
+
+                    <div class="skill-item" style="margin-top: 1rem;">
+                        <span class="skill-name">Remote Sensing</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 82%;"></div>
+                    </div>
+
+                    <div class="skill-item" style="margin-top: 1rem;">
+                        <span class="skill-name">GIS Tools (QGIS, ArcGIS)</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 80%;"></div>
+                    </div>
+
+                    <div class="skill-item" style="margin-top: 1rem;">
+                        <span class="skill-name">Climate & Environment Data</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 85%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MLOps & DevOps -->
+            <div class="skill-category fade-in">
+                <h3><i class="fas fa-cogs"></i> MLOps & DevOps</h3>
+                <div class="skill-list">
+                    <div class="skill-item">
+                        <span class="skill-name">Docker & Containerization</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 85%;"></div>
+                    </div>
+
+                    <div class="skill-item" style="margin-top: 1rem;">
+                        <span class="skill-name">Git & Version Control</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 92%;"></div>
+                    </div>
+
+                    <div class="skill-item" style="margin-top: 1rem;">
+                        <span class="skill-name">CI/CD Pipelines</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 80%;"></div>
+                    </div>
+
+                    <div class="skill-item" style="margin-top: 1rem;">
+                        <span class="skill-name">Cloud Platforms (AWS, GCP)</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 75%;"></div>
+                    </div>
+
+                    <div class="skill-item" style="margin-top: 1rem;">
+                        <span class="skill-name">Model Deployment & Serving</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 83%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Web & Visualization -->
+            <div class="skill-category fade-in">
+                <h3><i class="fas fa-chart-bar"></i> Web & Visualization</h3>
+                <div class="skill-list">
+                    <div class="skill-item">
+                        <span class="skill-name">Streamlit & Dash</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 90%;"></div>
+                    </div>
+
+                    <div class="skill-item" style="margin-top: 1rem;">
+                        <span class="skill-name">Flask & FastAPI</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 88%;"></div>
+                    </div>
+
+                    <div class="skill-item" style="margin-top: 1rem;">
+                        <span class="skill-name">Power BI & Tableau</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 85%;"></div>
+                    </div>
+
+                    <div class="skill-item" style="margin-top: 1rem;">
+                        <span class="skill-name">Plotly & Matplotlib</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 92%;"></div>
+                    </div>
+
+                    <div class="skill-item" style="margin-top: 1rem;">
+                        <span class="skill-name">HTML/CSS/JavaScript</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 80%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== PROJECTS SECTION ==================== -->
+    <section class="projects" id="projects">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+            <!-- Project 1 -->
+            <div class="project-card fade-in">
+                <div class="project-image">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="project-content">
+                    <div class="project-title">FarmSmart Agentic AI</div>
+                    <div class="project-description">
+                        An intelligent agent system powered by LLMs that provides personalized agricultural recommendations. The system uses natural language processing to understand farmer queries and leverages knowledge bases on crop management, pest control, and soil health to deliver actionable insights.
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">LangChain</span>
+                        <span class="tech-tag">LLMs</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">RAG</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/samson19977" target="_blank">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                        <a href="#" target="_blank">
+                            <i class="fas fa-globe"></i> Demo
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card fade-in">
+                <div class="project-image">
+                    <i class="fas fa-wind"></i>
+                </div>
+                <div class="project-content">
+                    <div class="project-title">Rwanda Air Quality Dashboard</div>
+                    <div class="project-description">
+                        A comprehensive real-time dashboard monitoring air quality across Rwanda. Built with Streamlit, it visualizes PM2.5, NO2, and other pollutants using geospatial mapping. Includes predictive models for air quality forecasting and health impact analysis.
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">Streamlit</span>
+                        <span class="tech-tag">Geospatial</span>
+                        <span class="tech-tag">Time Series</span>
+                        <span class="tech-tag">Folium</span>
+                        <span class="tech-tag">LSTM</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/samson19977" target="_blank">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                        <a href="#" target="_blank">
+                            <i class="fas fa-globe"></i> Live
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card fade-in">
+                <div class="project-image">
+                    <i class="fas fa-earth-africa"></i>
+                </div>
+                <div class="project-content">
+                    <div class="project-title">African CO2 Emissions Analytics</div>
+                    <div class="project-description">
+                        Data analysis and visualization platform for tracking carbon emissions across African countries. Uses satellite data and statistical models to identify emission trends, sectoral contributions, and climate impact. Interactive visualizations for policy makers.
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Remote Sensing</span>
+                        <span class="tech-tag">Geospatial</span>
+                        <span class="tech-tag">Plotly</span>
+                        <span class="tech-tag">Statistical Analysis</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/samson19977" target="_blank">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                        <a href="#" target="_blank">
+                            <i class="fas fa-globe"></i> Report
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="project-card fade-in">
+                <div class="project-image">
+                    <i class="fas fa-calculator"></i>
+                </div>
+                <div class="project-content">
+                    <div class="project-title">MyFirstMathFriend</div>
+                    <div class="project-description">
+                        An interactive educational platform using reinforcement learning to teach mathematics to children. Features personalized learning paths, adaptive difficulty levels, and gamification elements to keep students engaged.
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Reinforcement Learning</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">MongoDB</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/samson19977" target="_blank">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                        <a href="#" target="_blank">
+                            <i class="fas fa-globe"></i> Visit
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 5 -->
+            <div class="project-card fade-in">
+                <div class="project-image">
+                    <i class="fas fa-credit-card"></i>
+                </div>
+                <div class="project-content">
+                    <div class="project-title">Credit Risk Assessment Assistant</div>
+                    <div class="project-description">
+                        An AI-powered system for assessing credit risk using gradient boosting and ensemble methods. Predicts loan default probability with 92% accuracy. Includes SHAP interpretability for transparent decision making in financial institutions.
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">XGBoost</span>
+                        <span class="tech-tag">SHAP</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Streamlit</span>
+                        <span class="tech-tag">ML Interpretability</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/samson19977" target="_blank">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                        <a href="#" target="_blank">
+                            <i class="fas fa-globe"></i> Demo
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 6 -->
+            <div class="project-card fade-in">
+                <div class="project-image">
+                    <i class="fas fa-map-location-dot"></i>
+                </div>
+                <div class="project-content">
+                    <div class="project-title">Informal Address Resolver</div>
+                    <div class="project-description">
+                        A geospatial machine learning system that converts informal addresses (descriptions of locations) to standardized geographic coordinates. Uses NLP and geospatial matching algorithms. Critical for last-mile delivery in developing regions.
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">NLP</span>
+                        <span class="tech-tag">Geospatial</span>
+                        <span class="tech-tag">BERT</span>
+                        <span class="tech-tag">PostgreSQL+PostGIS</span>
+                        <span class="tech-tag">FastAPI</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/samson19977" target="_blank">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                        <a href="#" target="_blank">
+                            <i class="fas fa-globe"></i> API
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CERTIFICATES SECTION ==================== -->
+    <section class="certificates" id="certificates">
+        <h2 class="section-title">Certifications & Awards</h2>
+        <div class="certificates-grid">
+            <div class="certificate-card fade-in">
+                <div class="certificate-icon">
+                    <i class="fas fa-award"></i>
+                </div>
+                <div class="certificate-name">Deep Learning Specialization</div>
+                <div class="certificate-issuer">Deeplearning.AI & Coursera</div>
+                <div class="certificate-date">2023</div>
+            </div>
+
+            <div class="certificate-card fade-in">
+                <div class="certificate-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <div class="certificate-name">LLMs & Generative AI</div>
+                <div class="certificate-issuer">Deeplearning.AI</div>
+                <div class="certificate-date">2024</div>
+            </div>
+
+            <div class="certificate-card fade-in">
+                <div class="certificate-icon">
+                    <i class="fas fa-map"></i>
+                </div>
+                <div class="certificate-name">Geospatial Data Analysis</div>
+                <div class="certificate-issuer">Coursera</div>
+                <div class="certificate-date">2023</div>
+            </div>
+
+            <div class="certificate-card fade-in">
+                <div class="certificate-icon">
+                    <i class="fas fa-database"></i>
+                </div>
+                <div class="certificate-name">Advanced SQL & Databases</div>
+                <div class="certificate-issuer">Udacity</div>
+                <div class="certificate-date">2022</div>
+            </div>
+
+            <div class="certificate-card fade-in">
+                <div class="certificate-icon">
+                    <i class="fas fa-docker"></i>
+                </div>
+                <div class="certificate-name">Docker for Data Scientists</div>
+                <div class="certificate-issuer">DataCamp</div>
+                <div class="certificate-date">2023</div>
+            </div>
+
+            <div class="certificate-card fade-in">
+                <div class="certificate-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="certificate-name">AWS Cloud Practitioner</div>
+                <div class="certificate-issuer">Amazon Web Services</div>
+                <div class="certificate-date">2024</div>
+            </div>
+
+            <div class="certificate-card fade-in">
+                <div class="certificate-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <div class="certificate-name">Python for Data Science</div>
+                <div class="certificate-issuer">IBM & Coursera</div>
+                <div class="certificate-date">2022</div>
+            </div>
+
+            <div class="certificate-card fade-in">
+                <div class="certificate-icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <div class="certificate-name">AIMS Best Research Project</div>
+                <div class="certificate-issuer">African Institute for Mathematical Sciences</div>
+                <div class="certificate-date">2023</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CONTACT SECTION ==================== -->
+    <section class="contact" id="contact">
         <h2 class="section-title">Let's Work Together</h2>
-        <p>I'm always interested in new opportunities, collaborations, and conversations. Whether you have a project in mind, a question about my work, or just want to connect—reach out!</p>
+        
+        <p>I'm always excited about new opportunities, interesting challenges, and meaningful collaborations. Whether you have a project in mind, want to discuss data science and AI, or simply want to connect—I'd love to hear from you!</p>
 
         <div class="contact-methods">
             <div class="contact-method">
@@ -30,40 +1650,113 @@
                 <i class="fab fa-github"></i>
             </a>
             <a href="https://huggingface.co/NSamson1" target="_blank" title="Hugging Face">
-                <i class="fas fa-rocket"></i>
+                <i class="fas fa-robot"></i>
             </a>
             <a href="https://twitter.com/samson19977" target="_blank" title="Twitter">
                 <i class="fab fa-twitter"></i>
             </a>
         </div>
 
-        <h3 style="margin-top: 50px; margin-bottom: 30px; font-size: 1.3em;">Send Me a Message</h3>
-        
-        <!-- REPLACE xyzabc123 WITH YOUR ACTUAL FORM ID -->
-        <form class="contact-form" action="https://formspree.io/f/xyzabc123" method="POST">
-            <div class="form-group">
-                <label for="name">Your Name</label>
-                <input type="text" id="name" name="name" required placeholder="John Doe">
-            </div>
+        <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
+            <h3 style="margin-bottom: 2rem; font-size: 1.3em;">Send Me a Message</h3>
+            
+            <!-- REPLACE xyzabc123 WITH YOUR ACTUAL FORMSPREE ID -->
+            <form class="contact-form" action="https://formspree.io/f/xyzabc123" method="POST">
+                <div class="form-group">
+                    <label for="name">Your Name *</label>
+                    <input type="text" id="name" name="name" required placeholder="John Doe">
+                </div>
 
-            <div class="form-group">
-                <label for="email">Your Email</label>
-                <input type="email" id="email" name="email" required placeholder="john@example.com">
-            </div>
+                <div class="form-group">
+                    <label for="email">Your Email *</label>
+                    <input type="email" id="email" name="email" required placeholder="john@example.com">
+                </div>
 
-            <div class="form-group">
-                <label for="subject">Subject</label>
-                <input type="text" id="subject" name="subject" required placeholder="Project Inquiry">
-            </div>
+                <div class="form-group">
+                    <label for="subject">Subject *</label>
+                    <input type="text" id="subject" name="subject" required placeholder="Project Inquiry / Collaboration / Question">
+                </div>
 
-            <div class="form-group">
-                <label for="message">Message</label>
-                <textarea id="message" name="message" required placeholder="Tell me about your project..."></textarea>
-            </div>
+                <div class="form-group">
+                    <label for="message">Message *</label>
+                    <textarea id="message" name="message" required placeholder="Tell me more about your project, idea, or question..."></textarea>
+                </div>
 
-            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 20px;">
-                <i class="fas fa-paper-plane"></i> Send Message
-            </button>
-        </form>
-    </div>
-</section>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1.5rem; padding: 1rem;">
+                    <i class="fas fa-paper-plane"></i> Send Message
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer>
+        <p>&copy; 2024 Samson Niyizurugero. All rights reserved. | Crafted with <i class="fas fa-heart" style="color: var(--accent-color);"></i> for innovation and impact.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const element = document.querySelector(href);
+                    if (element) {
+                        element.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Active navigation link on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Animate skill bars on scroll
+        const observerOptions = {
+            threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.skill-category, .project-card, .certificate-card, .education-card, .timeline-item').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form submission success message
+        const form = document.querySelector('.contact-form');
+        if (form) {
+            form.addEventListener('submit', function() {
+                setTimeout(() => {
+                    alert('Thank you for your message! I will get back to you soon.');
+                }, 500);
+            });
+        }
+    </script>
+</body>
+</html>
