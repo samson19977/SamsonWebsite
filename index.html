@@ -1,230 +1,69 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Samson Niyizurugero - Data Scientist</title>
-    <style>
-        /* --- Reset & Base --- */
-        * { margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif; }
-        body { background: #f4f4f9; color: #333; line-height: 1.6; }
-        a { color: #007acc; text-decoration: none; }
-        a:hover { text-decoration: underline; }
+<!-- ==================== CONTACT SECTION ==================== -->
+<section class="contact" id="contact">
+    <div class="contact-content">
+        <h2 class="section-title">Let's Work Together</h2>
+        <p>I'm always interested in new opportunities, collaborations, and conversations. Whether you have a project in mind, a question about my work, or just want to connect—reach out!</p>
 
-        /* --- Header --- */
-        header { background: #1a73e8; color: white; padding: 20px 0; text-align: center; }
-        header img { width:120px; height:120px; border-radius:50%; border: 3px solid white; object-fit: cover; }
-        header h1 { font-size: 2em; margin: 10px 0 5px; }
-        header p { font-size: 1em; margin-bottom: 10px; }
-        .contact-links a { margin: 0 10px; color: #d0f0ff; font-weight: bold; }
-
-        nav { background: #0b59b1; display:flex; justify-content:center; flex-wrap:wrap; gap:15px; padding: 10px 0; }
-        nav a { color:white; font-weight:bold; padding:5px 10px; border-radius:5px; transition:0.3s; }
-        nav a:hover { background: #095494; }
-
-        /* --- Sections --- */
-        section { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
-        section h2 { color: #1a73e8; margin-bottom: 15px; border-bottom: 2px solid #1a73e8; display:inline-block; padding-bottom:5px; }
-
-        /* --- About --- */
-        #about p { margin-bottom: 15px; }
-
-        /* --- Skills --- */
-        .skills { display: flex; flex-wrap: wrap; gap: 20px; }
-        .skill-box { flex:1 1 45%; background:white; padding:15px; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.1); }
-        .skill-box h3 { margin-bottom:10px; color:#007acc; }
-
-        /* --- Projects --- */
-        .projects { display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:20px; }
-        .project-card { background:white; padding:20px; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.1); display:flex; flex-direction:column; justify-content:space-between; }
-        .project-card h3 { color:#007acc; margin-bottom:10px; }
-        .project-card p { flex:1; margin-bottom:10px; }
-        .project-card a { margin-top:auto; color:#1a73e8; font-weight:bold; }
-
-        /* --- Experience & Education --- */
-        .timeline { display:flex; flex-direction:column; gap:15px; }
-        .timeline-item { background:white; padding:15px; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.05); }
-        .timeline-item h3 { color:#007acc; margin-bottom:5px; }
-        .timeline-item span { font-size:0.9em; color:gray; }
-
-        /* --- Certifications --- */
-        .cert-list { list-style:none; padding-left:0; }
-        .cert-list li { background:white; padding:15px; border-radius:10px; margin-bottom:10px; box-shadow:0 4px 8px rgba(0,0,0,0.05); }
-
-        /* --- Contact --- */
-        #contact p { margin-bottom:10px; }
-        #contact a { font-weight:bold; }
-
-        /* --- Responsive --- */
-        @media(max-width:600px){
-            .skills { flex-direction:column; }
-        }
-    </style>
-</head>
-<body>
-
-    <!-- --- Header --- -->
-    <header>
-        <div style="display:flex; align-items:center; justify-content:center; gap:20px; flex-wrap:wrap;">
-            <img src="passport.png" alt="Samson Niyizurugero">
-            <div>
-                <h1>Samson Niyizurugero</h1>
-                <p>Data Scientist & AI Researcher | Environmental Technology | Public Health</p>
-                <div class="contact-links">
-                    <a href="mailto:sniyizurugero@aimsric.org">sniyizurugero@aimsric.org</a> | 
-                    <a href="tel:+250784602833">+250 784 602 833</a>
-                </div>
+        <div class="contact-methods">
+            <div class="contact-method">
+                <i class="fas fa-envelope"></i>
+                <h3>Email</h3>
+                <a href="mailto:sniyizurugero@aimsric.org">sniyizurugero@aimsric.org</a>
+            </div>
+            <div class="contact-method">
+                <i class="fas fa-phone"></i>
+                <h3>Phone</h3>
+                <a href="tel:+250784602833">+250 784 602 833</a>
+            </div>
+            <div class="contact-method">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Location</h3>
+                <p>Kigali, Rwanda</p>
             </div>
         </div>
-        <nav>
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
-            <a href="#experience">Experience</a>
-            <a href="#education">Education</a>
-            <a href="#certifications">Certifications</a>
-            <a href="#publications">Publications</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
 
-    <!-- --- About --- -->
-    <section id="about">
-        <h2>About Me</h2>
-        <p>Innovative data scientist with 3+ years of experience developing AI and ML solutions for environmental and social challenges. I combine technical expertise with strategic business insights to deliver projects that impact government agencies, schools, and financial institutions. My work spans predictive modeling, NLP, geospatial analysis, and the deployment of real-time AI solutions for public health and sustainability.</p>
-        <p>I am passionate about creating practical AI systems, mentoring young researchers, and translating complex data into actionable insights for decision-makers and communities.</p>
-    </section>
-
-    <!-- --- Skills --- -->
-    <section id="skills">
-        <h2>Skills</h2>
-        <div class="skills">
-            <div class="skill-box">
-                <h3>Machine Learning & AI</h3>
-                <p>Transformers, LSTM/GRU, XGBoost, CatBoost, explainable AI (SHAP/LIME), time series forecasting, predictive modeling, concept drift detection, <strong>Agentic AI & LLM Tool Use</strong>.</p>
-            </div>
-            <div class="skill-box">
-                <h3>Environmental & Geospatial AI</h3>
-                <p>Air quality forecasting, satellite data fusion (MODIS/Sentinel), geospatial analysis using QGIS, Google Earth Engine, PostGIS, environmental monitoring tools.</p>
-            </div>
-            <div class="skill-box">
-                <h3>NLP & Chatbots</h3>
-                <p>Conversational AI, multilingual chatbots, USSD/SMS interfaces, text processing, semantic search, knowledge-based AI assistants.</p>
-            </div>
-            <div class="skill-box">
-                <h3>Programming & Tools</h3>
-                <p>Python (PyTorch, TensorFlow, Scikit-learn), R, SQL, Swift, JavaScript, cloud deployment (Hugging Face Spaces), AWS, Hadoop, Spark, Tableau, Power BI.</p>
-            </div>
+        <div class="social-links">
+            <a href="https://linkedin.com/in/samson-niyizurugero-200a19260" target="_blank" title="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://github.com/samson19977" target="_blank" title="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://huggingface.co/NSamson1" target="_blank" title="Hugging Face">
+                <i class="fas fa-rocket"></i>
+            </a>
+            <a href="https://twitter.com/samson19977" target="_blank" title="Twitter">
+                <i class="fab fa-twitter"></i>
+            </a>
         </div>
-    </section>
 
-    <!-- --- Projects (UPDATED: FarmSmart added as the first project) --- -->
-    <section id="projects">
-        <h2>Projects</h2>
-        <div class="projects">
-            <!-- NEW: FarmSmart Agentic AI - Rwanda -->
-            <div class="project-card">
-                <h3>FarmSmart Agentic AI – Rwanda</h3>
-                <p>AI-powered agricultural advisor using agentic frameworks (LangChain) to provide personalized fertilizer recommendations for Rwandan smallholder farmers. Integrates soil database for 28 districts, real‑time weather APIs, and crop nutrient requirements. Features a chat interface and step‑by‑step agent reasoning for low‑resource environments.</p>
-                <a href="https://huggingface.co/spaces/NSamson1/FarmSmart-Agentic-AI" target="_blank">Live Demo</a>
+        <h3 style="margin-top: 50px; margin-bottom: 30px; font-size: 1.3em;">Send Me a Message</h3>
+        
+        <!-- REPLACE xyzabc123 WITH YOUR ACTUAL FORM ID -->
+        <form class="contact-form" action="https://formspree.io/f/xyzabc123" method="POST">
+            <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" required placeholder="John Doe">
             </div>
-            <!-- Existing projects (kept unchanged) -->
-            <div class="project-card">
-                <h3>African CO₂ Emissions Forecast Dashboard</h3>
-                <p>Interactive Streamlit dashboard with RAG-powered chatbot providing actionable climate insights for African countries. Includes time series forecasting, data visualization, and policy recommendations.</p>
-                <a href="https://huggingface.co/spaces/NSamson1/Early-Warning-Airquality" target="_blank">Live Demo</a>
-            </div>
-            <div class="project-card">
-                <h3>Rwanda Air Quality Dashboard</h3>
-                <p>Real-time monitoring dashboard supporting public health decisions. Integrates sensor networks and satellite data to provide air quality alerts and predictions across Kigali and Rwanda.</p>
-                <a href="https://huggingface.co/spaces/NSamson1/Rwanda-air-quality-dashboard" target="_blank">Live Demo</a>
-            </div>
-            <div class="project-card">
-                <h3>MyFirstMathFriend</h3>
-                <p>Multilingual math chatbot aligned with Rwanda primary curriculum. Assists students in solving math problems interactively through chat interfaces and provides step-by-step explanations.</p>
-                <a href="https://huggingface.co/spaces/NSamson1/MyFriendMath" target="_blank">Live Demo</a>
-            </div>
-            <div class="project-card">
-                <h3>Credit Risk Assessment Assistant</h3>
-                <p>Credit Risk Assessment Chatbot: Conduct a risk assessment for a loan application. Evaluate the applicant’s financial history, credit score, income stability, and any relevant debt-to-income ratios. Identify potential risks and categorize them into low, medium, or high risk. Provide a conclusion with recommendations either to approve the loan or suggest actions for improvement.</p>
-                <a href="https://huggingface.co/spaces/NSamson1/Risk_assessment_for_a_loan_application" target="_blank">Live Demo</a>
-            </div>
-        </div>
-    </section>
 
-    <!-- --- Experience --- -->
-    <section id="experience">
-        <h2>Professional Experience</h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                <h3>Data Manager - AIMS Research and Innovation Centre</h3>
-                <span>Kigali, Rwanda | 2023–Present</span>
-                <p>Leading data analysis in health and environmental programs. Developing deep learning models for real-time forecasting. Managing collaborative research projects and funding proposals.</p>
+            <div class="form-group">
+                <label for="email">Your Email</label>
+                <input type="email" id="email" name="email" required placeholder="john@example.com">
             </div>
-            <div class="timeline-item">
-                <h3>Data Analyst - Willows International</h3>
-                <span>Kigali, Rwanda | 2021–2022</span>
-                <p>Conducted evaluations for family planning programs. Supported RCT design, monitoring, and evaluation frameworks. Built digital training tools for community health workers.</p>
+
+            <div class="form-group">
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject" required placeholder="Project Inquiry">
             </div>
-        </div>
-    </section>
 
-    <!-- --- Education --- -->
-    <section id="education">
-        <h2>Education</h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                <h3>MSc in Data Science - AIMS</h3>
-                <span>Kigali, Rwanda | 2021–2023</span>
-                <p>Applied ML, environmental time series, and XAI. Thesis: Machine Learning-Based Early Warning System for Air Pollution in Rwanda.</p>
-                <p><a href="https://github.com/samson19977/SamsonWebsite/raw/main/myDoc.pdf" target="_blank">View My Degree & Certificate</a></p>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" required placeholder="Tell me about your project..."></textarea>
             </div>
-            <div class="timeline-item">
-                <h3>BSc in Statistics - University of Rwanda</h3>
-                <span>Rwanda | 2018–2021</span>
-                <p>Undergraduate research on Under-Five Mortality Forecasting using time series techniques.</p>
-            </div>
-        </div>
-    </section>
 
-    <!-- --- Certifications (UPDATED: added MLOA 2025 conference) --- -->
-    <section id="certifications">
-        <h2>Certifications & International Representation</h2>
-        <ul class="cert-list">
-            <li><strong>Machine Learning Optimization in Africa (MLOA) 2025 Conference</strong> – Poster Presentation on Smart Fuel-Saving & Sustainable Urban Mobility</li>
-            <li>Apple AATCE Program – Swift App Development (Sep 2025)</li>
-            <li>Certificate in Business Management (Business & Data Analytics) Aug 2025</li>
-            <li>East-African School for Young Researchers (EASY-ML) Jul 2025</li>
-            <li>Modern Statistics & ML for Global Health Feb 2024</li>
-            <li>Building Your Own Chatbot Workshop Jan 2025</li>
-            <li>Geospatial Analytics using R-INLA Nov-Dec 2023</li>
-            <li>Synthetic Data for Health Research Nov 2023</li>
-            <li>ICDL Data Analytics Jun 2024</li>
-            <li>African Mathematical School & Conference Jun 2023</li>
-            <li>Gender Equality & Global Markets Oct 2024</li>
-            <li><a href="https://github.com/samson19977/SamsonWebsite/raw/main/myDoc.pdf" target="_blank">View My Degree & Certificate</a></li>
-        </ul>
-    </section>
-
-    <!-- --- Publications --- -->
-    <section id="publications">
-        <h2>Publications</h2>
-        <ul class="cert-list">
-            <li><strong>Towards Clean Air:</strong> Predicting PM2.5 in Rwanda Using Advanced Machine Learning Techniques. <a href="https://drive.google.com/file/d/14HkBHyBHu34baOWl2sXB-PbVGP7LgnFf/view?usp=sharing" target="_blank">Download paper</a></li>
-            <li><strong>City-wide space-time patterns of environmental noise pollution in Kigali, Rwanda:</strong> Submitted to Environmental Research Letters. <a href="https://iopscience.iop.org/article/10.1088/1748-9326/ae1f2c" target="_blank">You can see Paper here</a></li>
-        </ul>
-    </section>
-
-    <!-- --- Contact --- -->
-    <section id="contact">
-        <h2>Contact</h2>
-        <p>Email: <a href="mailto:sniyizurugero@aimsric.org">sniyizurugero@aimsric.org</a></p>
-        <p>Phone: <a href="tel:+250784602833">+250 784 602 833</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/samson-niyizurugero-200a19260" target="_blank">/samson-niyizurugero</a></p>
-        <p>GitHub: <a href="https://github.com/samson19977" target="_blank">samson19977</a></p>
-        <p>Portfolio: <a href="https://huggingface.co/NSamson1" target="_blank">huggingface.co/NSamson1</a></p>
-        <p>Website: <a href="https://niyizurugero.netlify.app" target="_blank">niyizurugero.netlify.app</a></p>
-    </section>
-
-</body>
-</html>
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 20px;">
+                <i class="fas fa-paper-plane"></i> Send Message
+            </button>
+        </form>
+    </div>
+</section>
