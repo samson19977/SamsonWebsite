@@ -1,1762 +1,572 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Samson Niyizurugero - Data Scientist & ML Engineer</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary-color: #0066cc;
-            --secondary-color: #00d4ff;
-            --accent-color: #ff6b6b;
-            --dark-bg: #0a0e27;
-            --card-bg: #151a2f;
-            --text-primary: #ffffff;
-            --text-secondary: #b0b8d4;
-            --border-color: #1e2847;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--dark-bg);
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* ==================== NAVIGATION ==================== */
-        nav {
-            position: sticky;
-            top: 0;
-            background: rgba(10, 14, 39, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1rem 0;
-            z-index: 1000;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-
-        .nav-links a:hover {
-            color: var(--secondary-color);
-        }
-
-        .nav-links a.active {
-            color: var(--secondary-color);
-            border-bottom: 2px solid var(--secondary-color);
-            padding-bottom: 0.5rem;
-        }
-
-        /* ==================== HERO SECTION ==================== */
-        .hero {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 6rem 2rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-            min-height: 80vh;
-        }
-
-        .hero-content h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-content .title {
-            font-size: 1.5rem;
-            color: var(--secondary-color);
-            margin-bottom: 1rem;
-        }
-
-        .hero-content p {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            line-height: 1.8;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 0.75rem 1.5rem;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-weight: 600;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0, 102, 204, 0.3);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            border: 2px solid var(--secondary-color);
-            color: var(--secondary-color);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(0, 212, 255, 0.1);
-            transform: translateY(-3px);
-        }
-
-        .hero-image {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .hero-image img {
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            border: 3px solid var(--secondary-color);
-            box-shadow: 0 0 40px rgba(0, 212, 255, 0.2);
-            object-fit: cover;
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .social-icons a {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(0, 212, 255, 0.1);
-            border: 2px solid var(--secondary-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--secondary-color);
-            transition: all 0.3s ease;
-            font-size: 1.2rem;
-        }
-
-        .social-icons a:hover {
-            background: var(--secondary-color);
-            color: var(--dark-bg);
-            transform: translateY(-5px);
-        }
-
-        /* ==================== SECTIONS ==================== */
-        section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-align: center;
-        }
-
-        /* ==================== ABOUT SECTION ==================== */
-        .about {
-            background: rgba(21, 26, 47, 0.5);
-            border-radius: 15px;
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: start;
-        }
-
-        .about-text h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--secondary-color);
-        }
-
-        .about-text p {
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-        }
-
-        .about-highlights {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-        }
-
-        .highlight-card {
-            background: var(--card-bg);
-            padding: 1.5rem;
-            border-radius: 10px;
-            border-left: 4px solid var(--secondary-color);
-        }
-
-        .highlight-card h4 {
-            color: var(--secondary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .highlight-card p {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-
-        /* ==================== EDUCATION SECTION ==================== */
-        .education {
-            background: rgba(21, 26, 47, 0.5);
-            border-radius: 15px;
-        }
-
-        .education-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-        }
-
-        .education-card {
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-            transition: all 0.3s ease;
-        }
-
-        .education-card:hover {
-            border-color: var(--secondary-color);
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.1);
-            transform: translateY(-5px);
-        }
-
-        .education-card .degree {
-            font-size: 1.3rem;
-            color: var(--secondary-color);
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-        }
-
-        .education-card .institution {
-            font-size: 1rem;
-            color: var(--text-primary);
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .education-card .period {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        .education-card .details {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        /* ==================== EXPERIENCE SECTION ==================== */
-        .experience {
-            background: rgba(21, 26, 47, 0.5);
-            border-radius: 15px;
-        }
-
-        .timeline {
-            position: relative;
-            padding: 2rem 0;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 2px;
-            height: 100%;
-            background: var(--border-color);
-        }
-
-        .timeline-item {
-            margin-bottom: 3rem;
-            width: 48%;
-        }
-
-        .timeline-item:nth-child(odd) {
-            margin-left: 0;
-            text-align: right;
-            padding-right: 3rem;
-        }
-
-        .timeline-item:nth-child(even) {
-            margin-left: 52%;
-            padding-left: 3rem;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            width: 15px;
-            height: 15px;
-            background: var(--secondary-color);
-            border: 3px solid var(--dark-bg);
-            border-radius: 50%;
-            left: 50%;
-            transform: translateX(-50%);
-            top: 0;
-        }
-
-        .timeline-content {
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 10px;
-            border: 1px solid var(--border-color);
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .timeline-content:hover {
-            border-color: var(--secondary-color);
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.1);
-        }
-
-        .timeline-title {
-            font-size: 1.2rem;
-            color: var(--secondary-color);
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-        }
-
-        .timeline-company {
-            color: var(--text-primary);
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .timeline-period {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        .timeline-description {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        .timeline-skills {
-            margin-top: 1rem;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .skill-badge {
-            background: rgba(0, 212, 255, 0.1);
-            color: var(--secondary-color);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            border: 1px solid var(--secondary-color);
-        }
-
-        /* ==================== SKILLS SECTION ==================== */
-        .skills {
-            background: rgba(21, 26, 47, 0.5);
-            border-radius: 15px;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .skill-category {
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-            transition: all 0.3s ease;
-        }
-
-        .skill-category:hover {
-            border-color: var(--secondary-color);
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.1);
-            transform: translateY(-5px);
-        }
-
-        .skill-category h3 {
-            color: var(--secondary-color);
-            margin-bottom: 1.5rem;
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .skill-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .skill-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .skill-name {
-            color: var(--text-primary);
-            font-weight: 500;
-        }
-
-        .skill-bar {
-            width: 100%;
-            height: 6px;
-            background: var(--border-color);
-            border-radius: 3px;
-            margin-top: 0.5rem;
-            overflow: hidden;
-        }
-
-        .skill-progress {
-            height: 100%;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-            border-radius: 3px;
-            transition: width 1s ease;
-        }
-
-        /* ==================== PROJECTS SECTION ==================== */
-        .projects {
-            background: rgba(21, 26, 47, 0.5);
-            border-radius: 15px;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .project-card:hover {
-            border-color: var(--secondary-color);
-            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.15);
-            transform: translateY(-10px);
-        }
-
-        .project-image {
-            width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: rgba(255, 255, 255, 0.3);
-        }
-
-        .project-content {
-            padding: 2rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .project-title {
-            font-size: 1.3rem;
-            color: var(--secondary-color);
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-        }
-
-        .project-description {
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-            flex-grow: 1;
-            line-height: 1.6;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .tech-tag {
-            background: rgba(0, 212, 255, 0.1);
-            color: var(--secondary-color);
-            padding: 0.3rem 0.8rem;
-            border-radius: 5px;
-            font-size: 0.8rem;
-            border: 1px solid var(--secondary-color);
-        }
-
-        .project-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: auto;
-        }
-
-        .project-links a {
-            flex: 1;
-            padding: 0.7rem;
-            border: 1px solid var(--secondary-color);
-            border-radius: 6px;
-            color: var(--secondary-color);
-            text-align: center;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-
-        .project-links a:hover {
-            background: var(--secondary-color);
-            color: var(--dark-bg);
-        }
-
-        /* ==================== CERTIFICATES SECTION ==================== */
-        .certificates {
-            background: rgba(21, 26, 47, 0.5);
-            border-radius: 15px;
-        }
-
-        .certificates-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .certificate-card {
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .certificate-card:hover {
-            border-color: var(--secondary-color);
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.1);
-            transform: translateY(-5px);
-        }
-
-        .certificate-icon {
-            font-size: 3rem;
-            color: var(--secondary-color);
-            margin-bottom: 1rem;
-        }
-
-        .certificate-name {
-            font-size: 1.1rem;
-            color: var(--text-primary);
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-        }
-
-        .certificate-issuer {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .certificate-date {
-            color: var(--secondary-color);
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-
-        /* ==================== CONTACT SECTION ==================== */
-        .contact {
-            background: rgba(21, 26, 47, 0.5);
-            border-radius: 15px;
-        }
-
-        .contact-content {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .contact-content > p {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            margin-bottom: 3rem;
-            line-height: 1.8;
-        }
-
-        .contact-methods {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .contact-method {
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 10px;
-            border: 1px solid var(--border-color);
-            transition: all 0.3s ease;
-        }
-
-        .contact-method:hover {
-            border-color: var(--secondary-color);
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.1);
-            transform: translateY(-5px);
-        }
-
-        .contact-method i {
-            font-size: 2rem;
-            color: var(--secondary-color);
-            margin-bottom: 1rem;
-        }
-
-        .contact-method h3 {
-            color: var(--text-primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-method a,
-        .contact-method p {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .contact-method a:hover {
-            color: var(--secondary-color);
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin: 3rem 0;
-        }
-
-        .social-links a {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: rgba(0, 212, 255, 0.1);
-            border: 2px solid var(--secondary-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--secondary-color);
-            transition: all 0.3s ease;
-            font-size: 1.5rem;
-        }
-
-        .social-links a:hover {
-            background: var(--secondary-color);
-            color: var(--dark-bg);
-            transform: translateY(-5px);
-        }
-
-        /* ==================== CONTACT FORM ==================== */
-        .contact-form {
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-            text-align: left;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--text-primary);
-            font-weight: 500;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.75rem;
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            color: var(--text-primary);
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            font-family: inherit;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--secondary-color);
-            box-shadow: 0 0 10px rgba(0, 212, 255, 0.2);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 150px;
-        }
-
-        .form-group button {
-            width: 100%;
-            margin-top: 1rem;
-        }
-
-        /* ==================== FOOTER ==================== */
-        footer {
-            text-align: center;
-            padding: 2rem;
-            border-top: 1px solid var(--border-color);
-            color: var(--text-secondary);
-        }
-
-        /* ==================== RESPONSIVE ==================== */
-        @media (max-width: 768px) {
-            .hero {
-                grid-template-columns: 1fr;
-                padding: 3rem 1rem;
-                min-height: auto;
-            }
-
-            .hero-content h1 {
-                font-size: 2rem;
-            }
-
-            .hero-content .title {
-                font-size: 1.2rem;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-
-            .education-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .timeline {
-                padding: 0;
-            }
-
-            .timeline::before {
-                display: none;
-            }
-
-            .timeline-item,
-            .timeline-item:nth-child(odd),
-            .timeline-item:nth-child(even) {
-                width: 100%;
-                margin-left: 0;
-                margin-bottom: 2rem;
-                padding: 0;
-                text-align: left;
-            }
-
-            .timeline-item::before {
-                display: none;
-            }
-
-            .timeline-content {
-                margin-left: 1rem;
-                border-left: 3px solid var(--secondary-color);
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-            }
-
-            .btn {
-                width: 100%;
-                justify-content: center;
-            }
-
-            section {
-                padding: 2rem 1rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-        }
-
-        /* ==================== ANIMATIONS ==================== */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in {
-            animation: fadeInUp 0.6s ease-out;
-        }
-
-        .skill-progress {
-            animation: fillProgress 1s ease-out forwards;
-        }
-
-        @keyframes fillProgress {
-            from {
-                width: 0;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Samson Niyizurugero - Data Scientist & ML Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root{--bg:#05070f;--bg2:#0a0d1a;--bg3:#0f1425;--card:#111827;--border:#1e2d47;--border2:#243352;--cyan:#00e5ff;--cyan2:#00b4d8;--green:#00ffa3;--orange:#ff6b35;--white:#f0f4ff;--muted:#8899bb;--muted2:#6677aa}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden;line-height:1.6}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--cyan2);border-radius:2px}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2.5rem;display:flex;justify-content:space-between;align-items:center;background:rgba(5,7,15,.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.05rem;color:var(--cyan);letter-spacing:.02em}
+.nav-links{display:flex;gap:1.8rem;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;font-weight:500;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--cyan)}
+.nav-right{display:flex;gap:.6rem}
+.nbtn{padding:.38rem .9rem;border-radius:4px;font-size:.78rem;font-family:'DM Sans',sans-serif;font-weight:500;cursor:pointer;text-decoration:none;transition:all .2s;letter-spacing:.04em}
+.nbtn-o{background:transparent;border:1px solid var(--border2);color:var(--muted)}
+.nbtn-o:hover{border-color:var(--cyan);color:var(--cyan)}
+.nbtn-f{background:var(--cyan);border:1px solid var(--cyan);color:var(--bg)}
+.nbtn-f:hover{background:var(--cyan2)}
+#home{min-height:100vh;display:grid;grid-template-columns:1fr 400px;gap:3rem;align-items:center;padding:8rem 5rem 4rem;max-width:1350px;margin:0 auto}
+.hero-tag{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--cyan);letter-spacing:.14em;text-transform:uppercase;margin-bottom:1.2rem;display:flex;align-items:center;gap:.5rem}
+.hero-tag::before{content:'';width:2rem;height:1px;background:var(--cyan)}
+.hero-h1{font-family:'Syne',sans-serif;font-size:clamp(2.6rem,4.5vw,4.8rem);font-weight:800;line-height:1.0;margin-bottom:1rem;letter-spacing:-.02em}
+.hero-h1 .gr{background:linear-gradient(135deg,var(--cyan),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:1rem;color:var(--muted);max-width:500px;margin-bottom:2rem;line-height:1.85;font-weight:300}
+.hero-stats{display:flex;gap:2rem;margin-bottom:2rem}
+.s-num{font-family:'Syne',sans-serif;font-size:1.9rem;font-weight:800;color:var(--cyan);display:block;line-height:1}
+.s-lbl{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-top:.2rem}
+.hero-btns{display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:1.8rem}
+.btn{padding:.65rem 1.5rem;border-radius:4px;font-size:.88rem;font-family:'DM Sans',sans-serif;font-weight:500;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:.45rem;transition:all .25s;letter-spacing:.02em}
+.btn-c{background:var(--cyan);color:var(--bg);border:1px solid var(--cyan)}
+.btn-c:hover{background:transparent;color:var(--cyan);transform:translateY(-2px)}
+.btn-o{background:transparent;border:1px solid var(--border2);color:var(--white)}
+.btn-o:hover{border-color:var(--cyan);color:var(--cyan);transform:translateY(-2px)}
+.socials{display:flex;gap:.6rem}
+.sl{width:38px;height:38px;border-radius:4px;border:1px solid var(--border);background:var(--bg3);display:flex;align-items:center;justify-content:center;color:var(--muted);text-decoration:none;transition:all .2s;font-size:.85rem}
+.sl:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(0,229,255,.07)}
+.hero-right{display:flex;flex-direction:column;align-items:center;gap:1.2rem}
+.photo-wrap{position:relative;width:260px;height:260px}
+.photo-wrap::before{content:'';position:absolute;inset:-8px;border-radius:50%;border:1px solid rgba(0,229,255,.3);animation:spin 20s linear infinite}
+.photo-wrap::after{content:'';position:absolute;inset:-18px;border-radius:50%;border:1px dashed rgba(0,229,255,.12);animation:spin 30s linear infinite reverse}
+.hero-photo{width:260px;height:260px;border-radius:50%;object-fit:cover;border:2px solid var(--cyan2);position:relative;z-index:1}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hbadge{background:var(--card);border:1px solid var(--border);border-radius:7px;padding:.55rem .9rem;display:flex;align-items:center;gap:.55rem;font-size:.75rem;color:var(--muted);width:100%;max-width:280px}
+.hbadge i{color:var(--cyan);font-size:.85rem;flex-shrink:0}
+.hbadge strong{color:var(--white);font-weight:500}
+.sw{max-width:1300px;margin:0 auto;padding:5rem 3rem}
+.sh{display:flex;align-items:baseline;gap:1rem;margin-bottom:3rem}
+.stag{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--cyan);letter-spacing:.14em;text-transform:uppercase}
+.stitle{font-family:'Syne',sans-serif;font-size:2.1rem;font-weight:800;letter-spacing:-.02em}
+.sline{flex:1;height:1px;background:var(--border);margin-left:1rem}
+#about{background:var(--bg2)}
+.agrid{display:grid;grid-template-columns:1.2fr 1fr;gap:4rem;align-items:start}
+.atext p{color:var(--muted);line-height:1.9;margin-bottom:1.1rem;font-size:.93rem}
+.atext p strong{color:var(--white)}
+.ilist{list-style:none;display:flex;flex-direction:column;gap:.45rem;margin-top:.5rem}
+.ilist li{color:var(--muted);font-size:.87rem;padding:.38rem .65rem;border-left:2px solid var(--cyan);background:rgba(0,229,255,.03)}
+.ilist li i{color:var(--cyan);margin-right:.45rem;width:1rem}
+.acards{display:flex;flex-direction:column;gap:.9rem}
+.acard{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:1.2rem;display:flex;gap:.9rem;align-items:flex-start;transition:border-color .2s}
+.acard:hover{border-color:var(--cyan)}
+.acard-ico{width:38px;height:38px;border-radius:6px;background:rgba(0,229,255,.1);border:1px solid rgba(0,229,255,.2);display:flex;align-items:center;justify-content:center;color:var(--cyan);flex-shrink:0;font-size:.88rem}
+.acard h4{font-family:'Syne',sans-serif;font-size:.88rem;font-weight:700;color:var(--white);margin-bottom:.2rem}
+.acard p{font-size:.8rem;color:var(--muted);line-height:1.5}
+.egrid{display:grid;grid-template-columns:1fr 1fr;gap:1.3rem}
+.ecard{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.8rem;transition:all .25s;position:relative;overflow:hidden}
+.ecard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--cyan),var(--green));transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.ecard:hover{border-color:var(--border2);transform:translateY(-4px)}
+.ecard:hover::before{transform:scaleX(1)}
+.e-deg{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:800;color:var(--cyan);margin-bottom:.25rem}
+.e-field{font-size:.97rem;color:var(--white);font-weight:500;margin-bottom:.2rem}
+.e-inst{font-size:.82rem;color:var(--muted);margin-bottom:.55rem}
+.e-meta{display:flex;gap:.6rem;margin-bottom:.9rem;flex-wrap:wrap}
+.etag{font-family:'JetBrains Mono',monospace;font-size:.68rem;padding:.22rem .55rem;border-radius:3px;background:rgba(0,229,255,.08);color:var(--cyan);border:1px solid rgba(0,229,255,.2)}
+.e-courses{color:var(--muted);font-size:.81rem;line-height:1.7}
+.e-courses strong{color:var(--muted2);display:block;margin-bottom:.25rem;font-size:.75rem;text-transform:uppercase;letter-spacing:.06em}
+#experience{background:var(--bg2)}
+.xtl{position:relative;padding-left:2rem}
+.xtl::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,var(--cyan),transparent)}
+.xi{position:relative;margin-bottom:2.5rem;padding-left:2rem}
+.xdot{position:absolute;left:-2.42rem;top:.3rem;width:11px;height:11px;border-radius:50%;background:var(--cyan);border:2px solid var(--bg2);box-shadow:0 0 12px rgba(0,229,255,.5)}
+.xcard{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.8rem;transition:border-color .2s}
+.xcard:hover{border-color:var(--border2)}
+.xhd{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:.5rem;margin-bottom:.5rem}
+.xtitle{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:800;color:var(--white)}
+.xper{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--cyan);background:rgba(0,229,255,.08);padding:.22rem .65rem;border-radius:3px;border:1px solid rgba(0,229,255,.2)}
+.xco{color:var(--muted);font-size:.85rem;margin-bottom:.9rem}
+.xbody{color:var(--muted);font-size:.85rem;line-height:1.75}
+.xbody ul{margin-left:1rem;margin-top:.4rem}
+.xbody li{margin-bottom:.28rem}
+.xbody strong{color:var(--muted2)}
+.tagrow{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.9rem}
+.tag{font-family:'JetBrains Mono',monospace;font-size:.68rem;padding:.18rem .6rem;border-radius:3px;background:rgba(255,255,255,.04);color:var(--muted);border:1px solid var(--border)}
+.skgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1.3rem}
+.skb{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.5rem;transition:all .25s}
+.skb:hover{border-color:var(--border2);transform:translateY(-3px)}
+.skbh{display:flex;align-items:center;gap:.65rem;margin-bottom:1.3rem}
+.ski{width:34px;height:34px;border-radius:5px;background:rgba(0,229,255,.1);border:1px solid rgba(0,229,255,.2);display:flex;align-items:center;justify-content:center;color:var(--cyan);font-size:.82rem}
+.sktitle{font-family:'Syne',sans-serif;font-size:.9rem;font-weight:700;color:var(--white)}
+.skrow{margin-bottom:.85rem}
+.skrt{display:flex;justify-content:space-between;align-items:center;margin-bottom:.3rem}
+.sknm{font-size:.8rem;color:var(--muted)}
+.skpct{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--cyan2)}
+.skbg{height:3px;background:var(--border);border-radius:2px;overflow:hidden}
+.skfill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--cyan2),var(--cyan));width:0;transition:width 1.2s ease}
+#projects{background:var(--bg2)}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:1.3rem}
+.pcard{background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:all .3s;display:flex;flex-direction:column}
+.pcard:hover{border-color:var(--cyan2);transform:translateY(-6px);box-shadow:0 18px 50px rgba(0,229,255,.07)}
+.phd{padding:1.4rem 1.4rem 0;display:flex;justify-content:space-between;align-items:flex-start}
+.pico{width:46px;height:46px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+.pltop{display:flex;gap:.45rem}
+.pli{width:30px;height:30px;border-radius:4px;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);text-decoration:none;font-size:.75rem;transition:all .2s}
+.pli:hover{border-color:var(--cyan);color:var(--cyan)}
+.pbody{padding:.9rem 1.4rem 1.4rem;flex:1;display:flex;flex-direction:column}
+.pcat{font-family:'JetBrains Mono',monospace;font-size:.66rem;color:var(--cyan);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.35rem}
+.ptitle{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:800;color:var(--white);margin-bottom:.55rem;line-height:1.2}
+.pdesc{font-size:.82rem;color:var(--muted);line-height:1.78;flex:1;margin-bottom:.9rem}
+.ptech{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:1rem}
+.ptag{font-family:'JetBrains Mono',monospace;font-size:.66rem;padding:.18rem .55rem;border-radius:3px;background:rgba(255,255,255,.04);color:var(--muted2);border:1px solid var(--border)}
+.pfoot{display:flex;gap:.5rem;padding-top:.9rem;border-top:1px solid var(--border)}
+.pbtn{flex:1;padding:.5rem;border-radius:4px;text-align:center;text-decoration:none;font-size:.78rem;font-weight:500;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:.35rem}
+.pb-hf{background:rgba(255,163,0,.08);border:1px solid rgba(255,163,0,.2);color:#ffa300}
+.pb-hf:hover{background:rgba(255,163,0,.15)}
+.pb-gh{background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--muted)}
+.pb-gh:hover{border-color:var(--cyan);color:var(--cyan)}
+.pb-dm{background:rgba(0,229,255,.08);border:1px solid rgba(0,229,255,.2);color:var(--cyan)}
+.pb-dm:hover{background:rgba(0,229,255,.15)}
+.chero{background:linear-gradient(135deg,rgba(0,229,255,.05),rgba(0,255,163,.05));border:1px solid var(--border);border-radius:12px;padding:2.3rem;display:flex;justify-content:space-between;align-items:center;margin-bottom:2.5rem;flex-wrap:wrap;gap:1.3rem}
+.chero h3{font-family:'Syne',sans-serif;font-size:1.45rem;font-weight:800;margin-bottom:.35rem}
+.chero p{color:var(--muted);font-size:.88rem;max-width:480px}
+.chero-btns{display:flex;gap:.65rem;flex-wrap:wrap}
+.cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:.9rem}
+.ccard{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:1.2rem;display:flex;gap:.9rem;align-items:flex-start;transition:all .25s}
+.ccard:hover{border-color:var(--border2);background:var(--bg3)}
+.cico{width:40px;height:40px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0}
+.ci-d{background:rgba(0,229,255,.1);border:1px solid rgba(0,229,255,.2);color:var(--cyan)}
+.ci-w{background:rgba(0,255,163,.1);border:1px solid rgba(0,255,163,.2);color:var(--green)}
+.ci-c{background:rgba(255,107,53,.1);border:1px solid rgba(255,107,53,.2);color:var(--orange)}
+.ci-x{background:rgba(180,100,255,.1);border:1px solid rgba(180,100,255,.2);color:#b464ff}
+.cnm{font-size:.86rem;font-weight:500;color:var(--white);line-height:1.3;margin-bottom:.22rem}
+.ciss{font-size:.76rem;color:var(--muted);margin-bottom:.22rem;line-height:1.4}
+.cdt{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--cyan2)}
+#contact{background:var(--bg2)}
+.ctgrid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.ctleft h3{font-family:'Syne',sans-serif;font-size:1.75rem;font-weight:800;margin-bottom:.9rem;letter-spacing:-.02em}
+.ctleft p{color:var(--muted);line-height:1.9;margin-bottom:1.8rem;font-size:.93rem}
+.citems{display:flex;flex-direction:column;gap:.65rem;margin-bottom:1.8rem}
+.ci-link{display:flex;align-items:center;gap:.9rem;padding:.9rem 1.1rem;background:var(--card);border:1px solid var(--border);border-radius:8px;transition:border-color .2s;text-decoration:none}
+.ci-link:hover{border-color:var(--cyan)}
+.ci-link i{color:var(--cyan);width:1rem;text-align:center}
+.ci-lbl{font-size:.7rem;color:var(--muted2);text-transform:uppercase;letter-spacing:.06em;font-weight:500}
+.ci-val{font-size:.86rem;color:var(--white)}
+.ctsoc{display:flex;gap:.55rem;flex-wrap:wrap}
+.ctsocl{width:42px;height:42px;border-radius:6px;border:1px solid var(--border);background:var(--card);display:flex;align-items:center;justify-content:center;color:var(--muted);text-decoration:none;transition:all .2s;font-size:.9rem}
+.ctsocl:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(0,229,255,.07)}
+.cform{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.9rem}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+.fg{margin-bottom:1.1rem}
+.fg label{display:block;font-size:.75rem;color:var(--muted2);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.45rem;font-weight:500}
+.fg input,.fg textarea{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:5px;color:var(--white);font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:300;padding:.65rem .85rem;transition:border-color .2s;outline:none}
+.fg input:focus,.fg textarea:focus{border-color:var(--cyan)}
+.fg textarea{resize:vertical;min-height:125px}
+.fsub{width:100%;padding:.8rem;background:var(--cyan);color:var(--bg);border:none;border-radius:5px;font-family:'Syne',sans-serif;font-size:.92rem;font-weight:700;cursor:pointer;transition:all .25s;display:flex;align-items:center;justify-content:center;gap:.5rem}
+.fsub:hover{background:var(--cyan2);transform:translateY(-2px)}
+footer{border-top:1px solid var(--border);padding:2.3rem 3rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.9rem;max-width:1300px;margin:0 auto}
+footer p{font-size:.8rem;color:var(--muted2)}
+.fdots{display:flex;gap:.4rem}
+.fd{width:5px;height:5px;border-radius:50%;background:var(--cyan);animation:pulse 2s ease-in-out infinite}
+.fd:nth-child(2){animation-delay:.3s;background:var(--green)}
+.fd:nth-child(3){animation-delay:.6s;background:var(--orange)}
+@keyframes pulse{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:1;transform:scale(1.3)}}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.gc{position:fixed;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(0,229,255,.04) 0%,transparent 70%);pointer-events:none;z-index:0;transform:translate(-50%,-50%);transition:left .08s,top .08s}
+@media(max-width:1024px){#home{grid-template-columns:1fr;padding:7rem 2rem 3rem;text-align:center}.hero-btns,.socials,.hero-stats{justify-content:center}.hero-right{margin-top:2rem}.agrid,.ctgrid{grid-template-columns:1fr}.egrid{grid-template-columns:1fr}}
+@media(max-width:768px){.nav-links{display:none}.sw{padding:4rem 1.5rem}.frow{grid-template-columns:1fr}footer{padding:1.5rem}}
+</style>
 </head>
 <body>
-    <!-- ==================== NAVIGATION ==================== -->
-    <nav>
-        <div class="nav-container">
-            <div class="logo">
-                <i class="fas fa-code"></i> Samson Niyizurugero
-            </div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#certificates">Certificates</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+<div class="gc" id="gc"></div>
+<nav>
+  <div class="nav-logo"><i class="fas fa-code" style="margin-right:.4rem"></i>SAMSON.N</div>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#education">Education</a></li>
+    <li><a href="#experience">Experience</a></li><li><a href="#skills">Skills</a></li><li><a href="#projects">Projects</a></li>
+    <li><a href="#certificates">Credentials</a></li><li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="Masters_Degree_and_certificants.pdf" target="_blank" class="nbtn nbtn-o"><i class="fas fa-file-pdf"></i> CV</a>
+    <a href="#contact" class="nbtn nbtn-f">Hire Me</a>
+  </div>
+</nav>
+
+<section id="home">
+  <div>
+    <p class="hero-tag">Available for opportunities</p>
+    <h1 class="hero-h1">Samson<br><span class="gr">Niyizurugero</span></h1>
+    <p class="hero-sub">Data Scientist & ML Engineer building intelligent systems for agriculture, climate, and global health. Specialized in Deep Learning, Agentic AI, and Geospatial Analytics.</p>
+    <div class="hero-stats">
+      <div><span class="s-num">3+</span><span class="s-lbl">Years Exp</span></div>
+      <div><span class="s-num">8+</span><span class="s-lbl">Live Projects</span></div>
+      <div><span class="s-num">16+</span><span class="s-lbl">Certificates</span></div>
+    </div>
+    <div class="hero-btns">
+      <a href="#projects" class="btn btn-c"><i class="fas fa-rocket"></i> View Projects</a>
+      <a href="Masters_Degree_and_certificants.pdf" download class="btn btn-o"><i class="fas fa-download"></i> Download CV</a>
+    </div>
+    <div class="socials">
+      <a href="https://linkedin.com/in/samson-niyizurugero-200a19260" target="_blank" class="sl" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://github.com/samson19977" target="_blank" class="sl" title="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://huggingface.co/NSamson1" target="_blank" class="sl" title="Hugging Face"><i class="fas fa-robot"></i></a>
+      <a href="https://www.facebook.com/niyizurugero.samson/" target="_blank" class="sl" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="mailto:sniyizurugero@aimsric.org" class="sl" title="Email"><i class="fas fa-envelope"></i></a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="photo-wrap"><img src="passport.png" alt="Samson Niyizurugero" class="hero-photo"></div>
+    <div class="hbadge"><i class="fas fa-map-marker-alt"></i><span><strong>Kigali, Rwanda</strong> · AIMS Research & Innovation</span></div>
+    <div class="hbadge"><i class="fas fa-graduation-cap"></i><span><strong>MSc Mathematical Sciences</strong> · AIMS Rwanda 2023</span></div>
+    <div class="hbadge"><i class="fas fa-star"></i><span><strong>Conference Speaker</strong> · MLOA 2025 & SOSCHI 2025</span></div>
+  </div>
+</section>
+
+<section id="about"><div class="sw">
+  <div class="sh reveal"><span class="stag">01</span><h2 class="stitle">About Me</h2><div class="sline"></div></div>
+  <div class="agrid">
+    <div class="atext reveal">
+      <p>I'm a <strong>Data Scientist and ML Engineer</strong> based in Kigali, Rwanda, currently working as Data Manager & Researcher at the <strong>AIMS Research and Innovation Centre</strong>. I hold an MSc in Mathematical Sciences (Data Science) from AIMS Rwanda and a BSc in Mathematics with Statistics from the University of Rwanda.</p>
+      <p>My work sits at the intersection of <strong>machine learning, geospatial analytics, and real-world impact</strong> — from building early warning systems for air pollution to agentic AI tools for Rwandan farmers. I've presented research at international conferences including MLOA 2025 and SOSCHI 2025, and participated in advanced training programs across Africa and Europe.</p>
+      <p>Passionate about:</p>
+      <ul class="ilist">
+        <li><i class="fas fa-robot"></i>Agentic AI & LLM systems (LangChain, RAG, Fine-tuning)</li>
+        <li><i class="fas fa-brain"></i>Deep Learning for Computer Vision & NLP</li>
+        <li><i class="fas fa-map"></i>Geospatial Analytics & Remote Sensing</li>
+        <li><i class="fas fa-cogs"></i>MLOps & Production ML Systems</li>
+        <li><i class="fab fa-apple"></i>iOS App Development with Swift</li>
+        <li><i class="fas fa-leaf"></i>AI for Agriculture, Climate & Global Health</li>
+      </ul>
+    </div>
+    <div class="acards reveal">
+      <div class="acard"><div class="acard-ico"><i class="fas fa-graduation-cap"></i></div><div><h4>Education</h4><p>MSc Mathematical Sciences · AIMS Rwanda<br>BSc Mathematics (Statistics) · Univ. of Rwanda</p></div></div>
+      <div class="acard"><div class="acard-ico"><i class="fas fa-briefcase"></i></div><div><h4>Current Role</h4><p>Data Manager & Researcher<br>AIMS Research & Innovation Centre, Kigali</p></div></div>
+      <div class="acard"><div class="acard-ico"><i class="fas fa-code"></i></div><div><h4>Core Stack</h4><p>Python · R · SQL · Swift · JavaScript · Bash · LaTeX · MATLAB</p></div></div>
+      <div class="acard"><div class="acard-ico"><i class="fas fa-trophy"></i></div><div><h4>Recognition</h4><p>MLOA 2025 · SOSCHI 2025 · AIMS KTT Hackathon Winner 2025</p></div></div>
+      <div class="acard"><div class="acard-ico"><i class="fas fa-globe-africa"></i></div><div><h4>Impact Focus</h4><p>Agriculture · Air Quality · Healthcare · Climate · Education</p></div></div>
+    </div>
+  </div>
+</div></section>
+
+<section id="education"><div class="sw">
+  <div class="sh reveal"><span class="stag">02</span><h2 class="stitle">Education</h2><div class="sline"></div></div>
+  <div class="egrid">
+    <div class="ecard reveal">
+      <div class="e-deg"><i class="fas fa-graduation-cap" style="margin-right:.4rem"></i>Master of Science</div>
+      <div class="e-field">Mathematical Sciences</div>
+      <div class="e-inst">AIMS Rwanda — African Institute for Mathematical Sciences</div>
+      <div class="e-meta"><span class="etag">2021–2023</span><span class="etag">Major: Data Science</span><span class="etag">Good Pass</span><span class="etag">Reg: AIMS222305051</span></div>
+      <div class="e-courses"><strong>Key Modules</strong>Big Data Analytics · Statistical Machine Learning · Database & Data Management · Probability Models · Statistical Regression · Numerical Linear Algebra · Data Driven Optimization · Financial & Actuarial Mathematics · Python Programming · High Performance Computing</div>
+    </div>
+    <div class="ecard reveal">
+      <div class="e-deg"><i class="fas fa-graduation-cap" style="margin-right:.4rem"></i>Bachelor of Science with Honours</div>
+      <div class="e-field">Mathematics — Option: Statistics</div>
+      <div class="e-inst">University of Rwanda — College of Science and Technology</div>
+      <div class="e-meta"><span class="etag">2018–2021</span><span class="etag">Second Class Honours</span><span class="etag">Nov 2022</span><span class="etag">515 CU · GPA 69%</span></div>
+      <div class="e-courses"><strong>Key Courses</strong>Calculus I&II · Linear Algebra · Probability I&II · Statistical Regression · Biostatistics · Econometrics · Survival Analysis · Time Series Forecasting · Stochastic Processes · Computational Statistics (R, MATLAB) · Design of Experiments</div>
+    </div>
+  </div>
+</div></section>
+
+<section id="experience"><div class="sw">
+  <div class="sh reveal"><span class="stag">03</span><h2 class="stitle">Experience</h2><div class="sline"></div></div>
+  <div class="xtl">
+    <div class="xi reveal">
+      <div class="xdot"></div>
+      <div class="xcard">
+        <div class="xhd"><div class="xtitle">Data Manager & Researcher</div><div class="xper">2023 – Present</div></div>
+        <div class="xco"><i class="fas fa-building" style="margin-right:.35rem;color:var(--cyan2)"></i>AIMS Research and Innovation Centre · Kigali, Rwanda</div>
+        <div class="xbody">
+          <strong>Responsibilities:</strong>
+          <ul><li>Design and implement data pipelines for AI/ML research projects</li><li>Develop ML-based Early Warning System for Air Pollution in Rwanda</li><li>Build Agentic AI systems (LangChain, RAG, LLMs) for real-world applications</li><li>Present research at MLOA 2025 and SOSCHI 2025 conferences</li><li>Participate in AIMS KTT Hackathons — multiple track winner</li><li>Mentor junior data scientists and analysts</li></ul>
+          <br><strong>Key Achievements:</strong>
+          <ul><li>8+ live projects deployed on HuggingFace Spaces</li><li>Built FarmSmart Agentic AI serving Rwandan farmers</li><li>Reduced model inference time by 40% through optimization</li></ul>
         </div>
-    </nav>
-
-    <!-- ==================== HERO SECTION ==================== -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h1>Samson Niyizurugero</h1>
-            <p class="title">Data Scientist & ML Engineer</p>
-            <p>I transform raw data into actionable insights and build intelligent systems that solve real-world problems. Specialized in Deep Learning, Agentic AI, and Geospatial Analytics.</p>
-            
-            <div class="hero-buttons">
-                <a href="#projects" class="btn btn-primary">
-                    <i class="fas fa-briefcase"></i> View My Work
-                </a>
-                <a href="#contact" class="btn btn-secondary">
-                    <i class="fas fa-paper-plane"></i> Get In Touch
-                </a>
-            </div>
-
-            <div class="social-icons">
-                <a href="https://linkedin.com/in/samson-niyizurugero-200a19260" target="_blank" title="LinkedIn">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
-                <a href="https://github.com/samson19977" target="_blank" title="GitHub">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://huggingface.co/NSamson1" target="_blank" title="Hugging Face">
-                    <i class="fas fa-robot"></i>
-                </a>
-                <a href="https://twitter.com/samson19977" target="_blank" title="Twitter">
-                    <i class="fab fa-twitter"></i>
-                </a>
-            </div>
+        <div class="tagrow"><span class="tag">Python</span><span class="tag">LangChain</span><span class="tag">ML Engineering</span><span class="tag">Geospatial</span><span class="tag">FastAPI</span><span class="tag">Streamlit</span><span class="tag">Gradio</span><span class="tag">SQL</span></div>
+      </div>
+    </div>
+    <div class="xi reveal">
+      <div class="xdot"></div>
+      <div class="xcard">
+        <div class="xhd"><div class="xtitle">Data Analyst</div><div class="xper">2021 – 2022</div></div>
+        <div class="xco"><i class="fas fa-building" style="margin-right:.35rem;color:var(--cyan2)"></i>Willows International</div>
+        <div class="xbody">
+          <strong>Responsibilities:</strong>
+          <ul><li>Data extraction, cleaning, and transformation (ETL)</li><li>Interactive dashboards with Power BI and Python</li><li>Statistical analysis on business metrics</li><li>Automated 15+ manual reporting processes</li><li>Improved data quality by 35% through validation frameworks</li></ul>
         </div>
+        <div class="tagrow"><span class="tag">SQL</span><span class="tag">Power BI</span><span class="tag">Python</span><span class="tag">Excel</span><span class="tag">Statistics</span><span class="tag">ETL</span></div>
+      </div>
+    </div>
+  </div>
+</div></section>
 
-        <div class="hero-image">
-            <img src="passport.png" alt="Samson Niyizurugero">
+<section id="skills"><div class="sw">
+  <div class="sh reveal"><span class="stag">04</span><h2 class="stitle">Technical Skills</h2><div class="sline"></div></div>
+  <div class="skgrid">
+    <div class="skb reveal"><div class="skbh"><div class="ski"><i class="fas fa-code"></i></div><div class="sktitle">Programming Languages</div></div>
+      <div class="skrow"><div class="skrt"><span class="sknm">Python</span><span class="skpct">95%</span></div><div class="skbg"><div class="skfill" data-w="95"></div></div></div>
+      <div class="skrow"><div class="skrt"><span class="sknm">R</span><span class="skpct">90%</span></div><div class="skbg"><div class="skfill" data-w="90"></div></div></div>
+      <div class="skrow"><div class="skrt"><span class="sknm">SQL</span><span class="skpct">92%</span></div><div class="skbg"><div class="skfill" data-w="92"></div></div></div>
+      <div class="skrow"><div class="skrt"><span class="sknm">Swift (iOS)</span><span class="skpct">78%</span></div><div class="skbg"><div class="skfill" data-w="78"></div></div></div>
+      <div class="skrow"><div class="skrt"><span class="sknm">JavaScript</span><span class="skpct">75%</span></div><div class="skbg"><div class="skfill" data-w="75"></div></div></div>
+      <div class="skrow"><div class="skrt"><span class="sknm">Bash / Shell</span><span class="skpct">80%</span></div><div class="skbg"><div class="skfill" data-w="80"></div></div></div>
+      <div class="skrow"><div class="skrt"><span class="sknm">MATLAB</span><span class="skpct">72%</span></div><div class="skbg"><div class="skfill" data-w="72"></div></div></div>
+      <div class="skrow"><div class="skrt"><span class="sknm">LaTeX</span><span class="skpct">82%</span></div><div class="skbg"><div class="skfill" data-w="82"></div></div></div>
+    </div>
+    <div class="skb reveal"><div class="skbh"><div class="ski"><i class="fas fa-brain"></i></div><div class="sktitle">Machine Learning & AI</div></div>
+      <div class="skrow"><div class="skrt"><span class="sknm">Deep Learning (TF/PyTorch)</span><span class="skpct">93%</span></div><div class="skbg"><div class="skfill" data-w="93"></div></div></div>
+      <div class="skrow"><div class="skrt"><span class="sknm">Scikit-learn & Pandas</span><span class="skpct">95%</span></div><div class="skbg"><div class="skfill" data-w="95"></div></div></div>
+      <div class="skrow"><div class="skrt"><span class="sknm">LLMs & Agentic AI (LangChain)</span><span class="skpct">88%</span></div><div class="skbg"><div class="skfill" data-w="88"></div></div></div>
+      <div class="skrow"><div class="skrt"><span class="sknm">RAG & Fine-tuning LLMs</span><span class="skpct">85%</span></div><div class="skbg"><div class="skfill" data-w="85"></div></div></div>
+      <div class="skrow"><div class="skrt"><span class="sknm">NLP & BERT / Transformers</span><span class="skpct">87%</span></div><div class="skbg"><div class="skfill" data-w="87"></div></div></div>
+      <div class="skrow"><div class="skrt"><span class="sknm">Computer Vision</span><span class="skpct">85%</span></div><div class="skbg"><div class="skfill" data-w="85"></div></div></div>
+      <div class="skrow"><div class="skrt"><span class="sknm">Time Series & LSTM</span><span class="skpct">82%</span></div><div class="skbg"><div class="skfill" data-w="82"></div></div></div>
+      <div class="skrow"><div class="skrt"><span class="sknm">Reinforcement Learning</span><span class="skpct">75%</span></div><div class="skbg"><div class="skfill" data-w="75"></div></div></div>
+    </div>
+    <div class="skb reveal"><div class="skbh"><div class="ski"><i class="fas fa-chart-bar"></i></div><div class="sktitle">Statistics & Mathematics</div></div>
+      <div class="skrow"><div class="skrt"><span class="sknm">Statistical Inference & Regression</span><span class="skpct">93%</span></div><div class="skbg"><div class="skfill" data-w="93"></div></div></div>
+      <div class="skrow"><div class="skrt"><span class="sknm">Probability & Stochastic Processes</span><span class="skpct">90%</span></div><div class="skbg"><div class="skfill" data-w="90"></div></div></div>
+      <div class="skrow"><div class="skrt"><span class="sknm">Bayesian Statistics (R-INLA)</span><span class="skpct">82%</span></div><div class="skbg"><div class="skfill" data-w="82"></div></div></div>
+      <div class="skrow"><div class="skrt"><span class="sknm">Optimization & Optimal Control</span><span class="skpct">78%</span></div><div class="skbg"><div class="skfill" data-w="78"></div></div></div>
+      <div class="skrow"><div class="skrt"><span class="sknm">Biostatistics & Survival Analysis</span><span class="skpct">85%</span></div><div class="skbg"><div class="skfill" data-w="85"></div></div></div>
+      <div class="skrow"><div class="skrt"><span class="sknm">Synthetic Data Generation</span><span class="skpct">78%</span></div><div class="skbg"><div class="skfill" data-w="78"></div></div></div>
+    </div>
+    <div class="skb reveal"><div class="skbh"><div class="ski"><i class="fas fa-database"></i></div><div class="sktitle">Data & Databases</div></div>
+      <div class="skrow"><div class="skrt"><span class="sknm">Data Analysis & Visualization</span><span class="skpct">92%</span></div><div class="skbg"><div class="skfill" data-w="92"></div></div></div>
+      <div class="skrow"><div class="skrt"><span class="sknm">PostgreSQL & MySQL</span><span class="skpct">90%</span></div><div class="skbg"><div class="skfill" data-w="90"></div></div></div>
+      <div class="skrow"><div class="skrt"><span class="sknm">PostgreSQL + PostGIS</span><span class="skpct">85%</span></div><div class="skbg"><div class="skfill" data-w="85"></div></div></div>
+      <div class="skrow"><div class="skrt"><span class="sknm">MongoDB & Firebase</span><span class="skpct">80%</span></div><div class="skbg"><div class="skfill" data-w="80"></div></div></div>
+      <div class="skrow"><div class="skrt"><span class="sknm">ETL & Data Pipelines</span><span class="skpct">88%</span></div><div class="skbg"><div class="skfill" data-w="88"></div></div></div>
+      <div class="skrow"><div class="skrt"><span class="sknm">Big Data (PySpark)</span><span class="skpct">78%</span></div><div class="skbg"><div class="skfill" data-w="78"></div></div></div>
+    </div>
+    <div class="skb reveal"><div class="skbh"><div class="ski"><i class="fas fa-map"></i></div><div class="sktitle">Geospatial & Domain</div></div>
+      <div class="skrow"><div class="skrt"><span class="sknm">Geospatial Analytics (R & R-INLA)</span><span class="skpct">88%</span></div><div class="skbg"><div class="skfill" data-w="88"></div></div></div>
+      <div class="skrow"><div class="skrt"><span class="sknm">Remote Sensing</span><span class="skpct">82%</span></div><div class="skbg"><div class="skfill" data-w="82"></div></div></div>
+      <div class="skrow"><div class="skrt"><span class="sknm">GIS (QGIS, ArcGIS, Folium)</span><span class="skpct">80%</span></div><div class="skbg"><div class="skfill" data-w="80"></div></div></div>
+      <div class="skrow"><div class="skrt"><span class="sknm">Climate & Air Quality Data</span><span class="skpct">87%</span></div><div class="skbg"><div class="skfill" data-w="87"></div></div></div>
+      <div class="skrow"><div class="skrt"><span class="sknm">Deep Learning for Bioacoustics</span><span class="skpct">68%</span></div><div class="skbg"><div class="skfill" data-w="68"></div></div></div>
+    </div>
+    <div class="skb reveal"><div class="skbh"><div class="ski"><i class="fas fa-cogs"></i></div><div class="sktitle">MLOps & DevOps</div></div>
+      <div class="skrow"><div class="skrt"><span class="sknm">Docker & Containerization</span><span class="skpct">85%</span></div><div class="skbg"><div class="skfill" data-w="85"></div></div></div>
+      <div class="skrow"><div class="skrt"><span class="sknm">Git & Version Control</span><span class="skpct">92%</span></div><div class="skbg"><div class="skfill" data-w="92"></div></div></div>
+      <div class="skrow"><div class="skrt"><span class="sknm">CI/CD Pipelines</span><span class="skpct">80%</span></div><div class="skbg"><div class="skfill" data-w="80"></div></div></div>
+      <div class="skrow"><div class="skrt"><span class="sknm">Cloud (AWS, GCP)</span><span class="skpct">75%</span></div><div class="skbg"><div class="skfill" data-w="75"></div></div></div>
+      <div class="skrow"><div class="skrt"><span class="sknm">HuggingFace Spaces Deployment</span><span class="skpct">90%</span></div><div class="skbg"><div class="skfill" data-w="90"></div></div></div>
+    </div>
+    <div class="skb reveal"><div class="skbh"><div class="ski"><i class="fas fa-desktop"></i></div><div class="sktitle">Web & Visualization</div></div>
+      <div class="skrow"><div class="skrt"><span class="sknm">Streamlit & Dash</span><span class="skpct">90%</span></div><div class="skbg"><div class="skfill" data-w="90"></div></div></div>
+      <div class="skrow"><div class="skrt"><span class="sknm">Flask & FastAPI</span><span class="skpct">88%</span></div><div class="skbg"><div class="skfill" data-w="88"></div></div></div>
+      <div class="skrow"><div class="skrt"><span class="sknm">Power BI & Tableau</span><span class="skpct">85%</span></div><div class="skbg"><div class="skfill" data-w="85"></div></div></div>
+      <div class="skrow"><div class="skrt"><span class="sknm">Plotly & Matplotlib</span><span class="skpct">92%</span></div><div class="skbg"><div class="skfill" data-w="92"></div></div></div>
+      <div class="skrow"><div class="skrt"><span class="sknm">Gradio & HF Spaces</span><span class="skpct">88%</span></div><div class="skbg"><div class="skfill" data-w="88"></div></div></div>
+    </div>
+    <div class="skb reveal"><div class="skbh"><div class="ski"><i class="fas fa-briefcase"></i></div><div class="sktitle">Business & Research</div></div>
+      <div class="skrow"><div class="skrt"><span class="sknm">Business Management (ESMT Berlin)</span><span class="skpct">80%</span></div><div class="skbg"><div class="skfill" data-w="80"></div></div></div>
+      <div class="skrow"><div class="skrt"><span class="sknm">Research Methodology & Writing</span><span class="skpct">88%</span></div><div class="skbg"><div class="skfill" data-w="88"></div></div></div>
+      <div class="skrow"><div class="skrt"><span class="sknm">Scientific Presentations</span><span class="skpct">85%</span></div><div class="skbg"><div class="skfill" data-w="85"></div></div></div>
+      <div class="skrow"><div class="skrt"><span class="sknm">Entrepreneurship & Innovation</span><span class="skpct">78%</span></div><div class="skbg"><div class="skfill" data-w="78"></div></div></div>
+    </div>
+  </div>
+</div></section>
+
+<section id="projects"><div class="sw">
+  <div class="sh reveal"><span class="stag">05</span><h2 class="stitle">Live Projects</h2><div class="sline"></div></div>
+  <div class="pgrid">
+
+    <div class="pcard reveal">
+      <div class="phd"><div class="pico" style="background:rgba(255,107,53,.1);border:1px solid rgba(255,107,53,.2)">🌬️</div>
+        <div class="pltop"><a href="https://huggingface.co/spaces/NSamson1/Rwanda-air-quality-dashboard" target="_blank" class="pli" title="HuggingFace"><i class="fas fa-rocket"></i></a><a href="https://github.com/samson19977/Air_quality_in_Rwanda" target="_blank" class="pli" title="GitHub"><i class="fab fa-github"></i></a></div></div>
+      <div class="pbody"><div class="pcat">Climate · Geospatial · Time Series</div><div class="ptitle">Rwanda Air Quality Dashboard</div>
+        <div class="pdesc">Real-time dashboard monitoring air quality across Rwanda. Visualizes PM2.5, NO₂ and pollutants via geospatial maps. LSTM-based forecasting models and health impact analysis for policy makers and researchers.</div>
+        <div class="ptech"><span class="ptag">Streamlit</span><span class="ptag">Folium</span><span class="ptag">LSTM</span><span class="ptag">Python</span><span class="ptag">GeoPandas</span></div>
+        <div class="pfoot">
+          <a href="https://huggingface.co/spaces/NSamson1/Rwanda-air-quality-dashboard" target="_blank" class="pbtn pb-hf"><i class="fas fa-rocket"></i> Live App</a>
+          <a href="https://github.com/samson19977/Air_quality_in_Rwanda" target="_blank" class="pbtn pb-gh"><i class="fab fa-github"></i> Code</a>
+        </div></div></div>
+
+    <div class="pcard reveal">
+      <div class="phd"><div class="pico" style="background:rgba(0,229,255,.1);border:1px solid rgba(0,229,255,.2)">🤖</div>
+        <div class="pltop"><a href="https://huggingface.co/spaces/NSamson1/FarmSmart-Agentic-AI" target="_blank" class="pli" title="HuggingFace"><i class="fas fa-rocket"></i></a><a href="https://nsamson1-farmsmart-agentic-ai.static.hf.space/index.html" target="_blank" class="pli" title="Website"><i class="fas fa-globe"></i></a><a href="https://github.com/samson19977" target="_blank" class="pli" title="GitHub"><i class="fab fa-github"></i></a></div></div>
+      <div class="pbody"><div class="pcat">Agentic AI · Agriculture · LLMs</div><div class="ptitle">FarmSmart Agentic AI</div>
+        <div class="pdesc">AI-powered personalized fertilizer & crop advisory for Rwandan farmers. Recommendations based on district, soil type, and crop. Multilingual support using RAG and LangChain agents with agricultural knowledge bases. Served via static website + Spaces.</div>
+        <div class="ptech"><span class="ptag">LangChain</span><span class="ptag">RAG</span><span class="ptag">LLMs</span><span class="ptag">FastAPI</span><span class="ptag">Python</span></div>
+        <div class="pfoot">
+          <a href="https://huggingface.co/spaces/NSamson1/FarmSmart-Agentic-AI" target="_blank" class="pbtn pb-hf"><i class="fas fa-rocket"></i> Live App</a>
+          <a href="https://nsamson1-farmsmart-agentic-ai.static.hf.space/index.html" target="_blank" class="pbtn pb-dm"><i class="fas fa-globe"></i> Website</a>
+        </div></div></div>
+
+    <div class="pcard reveal">
+      <div class="phd"><div class="pico" style="background:rgba(0,255,163,.1);border:1px solid rgba(0,255,163,.2)">🧮</div>
+        <div class="pltop"><a href="https://huggingface.co/spaces/NSamson1/AI_math" target="_blank" class="pli" title="HuggingFace"><i class="fas fa-rocket"></i></a><a href="https://github.com/samson19977/AI-maths" target="_blank" class="pli" title="GitHub"><i class="fab fa-github"></i></a></div></div>
+      <div class="pbody"><div class="pcat">Education · AI · Multilingual</div><div class="ptitle">AI Math Tutor for Early Learners</div>
+        <div class="pdesc">Adaptive, offline-capable multilingual math tutor for children aged 5–9. Supports Kinyarwanda, Kiswahili, French and English including code-switched speech. Auto-adjusts difficulty by age. Built for the AIMS KTT Hackathon (S2.T3.1, Tier 3).</div>
+        <div class="ptech"><span class="ptag">Python</span><span class="ptag">Gradio</span><span class="ptag">NLP</span><span class="ptag">Multilingual</span><span class="ptag">Offline-capable</span></div>
+        <div class="pfoot">
+          <a href="https://huggingface.co/spaces/NSamson1/AI_math" target="_blank" class="pbtn pb-hf"><i class="fas fa-rocket"></i> Live App</a>
+          <a href="https://github.com/samson19977/AI-maths" target="_blank" class="pbtn pb-gh"><i class="fab fa-github"></i> Code</a>
+        </div></div></div>
+
+    <div class="pcard reveal">
+      <div class="phd"><div class="pico" style="background:rgba(180,100,255,.1);border:1px solid rgba(180,100,255,.2)">🗺️</div>
+        <div class="pltop"><a href="https://huggingface.co/spaces/NSamson1/informal-address-resolver" target="_blank" class="pli" title="HuggingFace"><i class="fas fa-rocket"></i></a><a href="https://github.com/samson19977/informal-address-resolver" target="_blank" class="pli" title="GitHub"><i class="fab fa-github"></i></a></div></div>
+      <div class="pbody"><div class="pcat">Geospatial · NLP · Logistics</div><div class="ptitle">Informal Address Resolver</div>
+        <div class="pdesc">Converts noisy multilingual delivery addresses to GPS coordinates — fully offline, CPU-only, &lt;100ms. Supports English, French, Kinyarwanda. ~65m mean error, 94% within 300m. 64 unit tests. Built for last-mile delivery in East Africa.</div>
+        <div class="ptech"><span class="ptag">NLP</span><span class="ptag">PostGIS</span><span class="ptag">Fuzzy Match</span><span class="ptag">Gradio</span><span class="ptag">Python</span></div>
+        <div class="pfoot">
+          <a href="https://huggingface.co/spaces/NSamson1/informal-address-resolver" target="_blank" class="pbtn pb-hf"><i class="fas fa-rocket"></i> Live App</a>
+          <a href="https://github.com/samson19977/informal-address-resolver" target="_blank" class="pbtn pb-gh"><i class="fab fa-github"></i> Code</a>
+        </div></div></div>
+
+    <div class="pcard reveal">
+      <div class="phd"><div class="pico" style="background:rgba(255,163,0,.1);border:1px solid rgba(255,163,0,.2)">🧾</div>
+        <div class="pltop"><a href="https://huggingface.co/spaces/NSamson1/Tender_Matcher" target="_blank" class="pli" title="HuggingFace"><i class="fas fa-rocket"></i></a><a href="https://github.com/samson19977/Tender-Match2" target="_blank" class="pli" title="GitHub"><i class="fab fa-github"></i></a></div></div>
+      <div class="pbody"><div class="pcat">NLP · Grant Matching · Multilingual</div><div class="ptitle">Tender Matcher — Multilingual Grant & Tender Matcher</div>
+        <div class="pdesc">Hybrid scoring (0.45×TF-IDF + 0.25×sector + 0.20×budget + 0.10×urgency) matching cooperative profiles to grants/tenders in EN/FR. Gradio UI, CLI, and village agent deployment plan for 500 Rwandan cooperatives. AIMS KTT Hackathon — T2.2.</div>
+        <div class="ptech"><span class="ptag">TF-IDF</span><span class="ptag">Gradio</span><span class="ptag">Multilingual</span><span class="ptag">Sklearn</span><span class="ptag">Python</span></div>
+        <div class="pfoot">
+          <a href="https://huggingface.co/spaces/NSamson1/Tender_Matcher" target="_blank" class="pbtn pb-hf"><i class="fas fa-rocket"></i> Live App</a>
+          <a href="https://github.com/samson19977/Tender-Match2" target="_blank" class="pbtn pb-gh"><i class="fab fa-github"></i> Code</a>
+        </div></div></div>
+
+    <div class="pcard reveal">
+      <div class="phd"><div class="pico" style="background:rgba(0,255,163,.1);border:1px solid rgba(0,255,163,.2)">🏔️</div>
+        <div class="pltop"><a href="https://huggingface.co/spaces/NSamson1/Tourist_Guide_AI_Agent" target="_blank" class="pli" title="HuggingFace"><i class="fas fa-rocket"></i></a><a href="https://github.com/samson19977/AI_agentic_reasoning" target="_blank" class="pli" title="GitHub"><i class="fab fa-github"></i></a></div></div>
+      <div class="pbody"><div class="pcat">Agentic AI · Tourism · Reasoning</div><div class="ptitle">Tourist Guide AI Agent</div>
+        <div class="pdesc">Intelligent AI agent for Rwanda tourism using agentic reasoning. Provides personalized recommendations for attractions, accommodations and itineraries using chain-of-thought reasoning for complex Rwanda travel queries.</div>
+        <div class="ptech"><span class="ptag">LangChain</span><span class="ptag">Agentic AI</span><span class="ptag">Gradio</span><span class="ptag">Python</span><span class="ptag">LLMs</span></div>
+        <div class="pfoot">
+          <a href="https://huggingface.co/spaces/NSamson1/Tourist_Guide_AI_Agent" target="_blank" class="pbtn pb-hf"><i class="fas fa-rocket"></i> Live App</a>
+          <a href="https://github.com/samson19977/AI_agentic_reasoning" target="_blank" class="pbtn pb-gh"><i class="fab fa-github"></i> Code</a>
+        </div></div></div>
+
+    <div class="pcard reveal">
+      <div class="phd"><div class="pico" style="background:rgba(255,107,53,.1);border:1px solid rgba(255,107,53,.2)">🌍</div>
+        <div class="pltop"><a href="https://huggingface.co/spaces/NSamson1/Early-Warning-Airquality" target="_blank" class="pli" title="HuggingFace"><i class="fas fa-rocket"></i></a><a href="https://github.com/samson19977/co2-emissions-dashboard" target="_blank" class="pli" title="GitHub"><i class="fab fa-github"></i></a></div></div>
+      <div class="pbody"><div class="pcat">Climate · ML · Research · SOSCHI 2025</div><div class="ptitle">African CO₂ Emissions & Early Warning System</div>
+        <div class="pdesc">Business-grade dashboard for CO₂ emissions across Africa with advanced imputation, per-capita metrics, sector breakdowns and ML forecasting. Includes the ML-based Early Warning System for Air Pollution in Rwanda — presented at SOSCHI Conference, Dec 2025.</div>
+        <div class="ptech"><span class="ptag">Streamlit</span><span class="ptag">Pandas</span><span class="ptag">ML Forecasting</span><span class="ptag">Plotly</span><span class="ptag">Remote Sensing</span></div>
+        <div class="pfoot">
+          <a href="https://huggingface.co/spaces/NSamson1/Early-Warning-Airquality" target="_blank" class="pbtn pb-hf"><i class="fas fa-rocket"></i> Live App</a>
+          <a href="https://github.com/samson19977/co2-emissions-dashboard" target="_blank" class="pbtn pb-gh"><i class="fab fa-github"></i> Code</a>
+        </div></div></div>
+
+    <div class="pcard reveal">
+      <div class="phd"><div class="pico" style="background:rgba(0,229,255,.1);border:1px solid rgba(0,229,255,.2)">💳</div>
+        <div class="pltop"><a href="https://github.com/samson19977" target="_blank" class="pli" title="GitHub"><i class="fab fa-github"></i></a></div></div>
+      <div class="pbody"><div class="pcat">Finance · ML · Interpretability</div><div class="ptitle">Credit Risk Assessment Assistant</div>
+        <div class="pdesc">AI-powered credit risk assessment using XGBoost gradient boosting. Predicts loan default probability with 92% accuracy. SHAP-based interpretability for transparent, auditable decision-making in financial institutions.</div>
+        <div class="ptech"><span class="ptag">XGBoost</span><span class="ptag">SHAP</span><span class="ptag">Streamlit</span><span class="ptag">Python</span><span class="ptag">Sklearn</span></div>
+        <div class="pfoot">
+          <a href="https://github.com/samson19977" target="_blank" class="pbtn pb-gh"><i class="fab fa-github"></i> GitHub</a>
+          <a href="https://github.com/samson19977" target="_blank" class="pbtn pb-dm"><i class="fas fa-eye"></i> More Projects</a>
+        </div></div></div>
+
+  </div>
+</div></section>
+
+<section id="certificates"><div class="sw">
+  <div class="sh reveal"><span class="stag">06</span><h2 class="stitle">Credentials</h2><div class="sline"></div></div>
+  <div class="chero reveal">
+    <div><h3>📄 Verified Degree & Certificate Portfolio</h3><p>All degrees, transcripts, and certificates in one verified PDF — MSc AIMS Rwanda, BSc University of Rwanda, and 16+ professional certificates from Imperial College London, Apple, ESMT Berlin, IFC World Bank and more.</p></div>
+    <div class="chero-btns">
+      <a href="Masters_Degree_and_certificants.pdf" target="_blank" class="btn btn-c"><i class="fas fa-eye"></i> View PDF</a>
+      <a href="Masters_Degree_and_certificants.pdf" download class="btn btn-o"><i class="fas fa-download"></i> Download</a>
+    </div>
+  </div>
+  <div class="cgrid">
+    <div class="ccard reveal"><div class="cico ci-d"><i class="fas fa-graduation-cap"></i></div><div><div class="cnm">MSc Mathematical Sciences (Data Science)</div><div class="ciss">AIMS Rwanda</div><div class="cdt">27 June 2023 · Good Pass</div></div></div>
+    <div class="ccard reveal"><div class="cico ci-d"><i class="fas fa-graduation-cap"></i></div><div><div class="cnm">BSc with Honours in Mathematics (Statistics)</div><div class="ciss">University of Rwanda — College of Science & Technology</div><div class="cdt">18 November 2022 · Second Class Honours</div></div></div>
+    <div class="ccard reveal"><div class="cico ci-w"><i class="fas fa-briefcase"></i></div><div><div class="cnm">Certificate in Business Management</div><div class="ciss">ESMT Berlin · iiAfrica · Harvard Business Publishing · Univ. of Victoria</div><div class="cdt">4 August 2023</div></div></div>
+    <div class="ccard reveal"><div class="cico ci-x"><i class="fas fa-map"></i></div><div><div class="cnm">Geospatial Analytics using R and R-INLA</div><div class="ciss">MRC / Imperial College London / AIMS RIC</div><div class="cdt">27 Nov – 1 Dec 2023</div></div></div>
+    <div class="ccard reveal"><div class="cico ci-x"><i class="fas fa-heartbeat"></i></div><div><div class="cnm">Modern Statistics & ML for Global Health</div><div class="ciss">Imperial College London & AIMS RIC</div><div class="cdt">22–24 February 2024</div></div></div>
+    <div class="ccard reveal"><div class="cico ci-w"><i class="fas fa-database"></i></div><div><div class="cnm">ICDL Profile Certificate — Data Analytics</div><div class="ciss">ICDL Africa · MS Office 2016 · Candidate: RW10003150</div><div class="cdt">12 June 2024</div></div></div>
+    <div class="ccard reveal"><div class="cico ci-x"><i class="fas fa-comments"></i></div><div><div class="cnm">Building Your Own Chatbot Workshop</div><div class="ciss">AIMS RIC (RAG · Fine-tuning LLMs · Model Deployment)</div><div class="cdt">13–17 January 2025</div></div></div>
+    <div class="ccard reveal"><div class="cico ci-x"><i class="fas fa-paw"></i></div><div><div class="cnm">Deep Learning for Wildlife Monitoring</div><div class="ciss">AIMS RIC (Bioacoustics · Deep Learning · Biologging)</div><div class="cdt">24–26 February 2025</div></div></div>
+    <div class="ccard reveal"><div class="cico ci-w"><i class="fab fa-apple"></i></div><div><div class="cnm">App Development with Swift</div><div class="ciss">Apple Authorised Training — Certificate of Achievement</div><div class="cdt">10 September 2025</div></div></div>
+    <div class="ccard reveal"><div class="cico ci-x"><i class="fas fa-sliders-h"></i></div><div><div class="cnm">Optimization, Optimal & Predictive Control</div><div class="ciss">AIMS Rwanda & AIMS RIC</div><div class="cdt">19–30 May 2025</div></div></div>
+    <div class="ccard reveal"><div class="cico ci-x"><i class="fas fa-robot"></i></div><div><div class="cnm">EASY-ML — East-African School on Advanced ML</div><div class="ciss">CNRS / Sorbonne / University of Nairobi, Kenya</div><div class="cdt">9–22 July 2025</div></div></div>
+    <div class="ccard reveal"><div class="cico ci-c"><i class="fas fa-trophy"></i></div><div><div class="cnm">Certificate of Recognition — MLOA 2025 (Poster)</div><div class="ciss">2nd African Conference on ML, Optimization & Applications · AIMS / TU Ilmenau</div><div class="cdt">22–24 September 2025</div></div></div>
+    <div class="ccard reveal"><div class="cico ci-c"><i class="fas fa-lungs"></i></div><div><div class="cnm">Research Presenter — SOSCHI Conference 2025</div><div class="ciss">Climate-Health Statistics · AIMS RIC / UK Office for National Statistics</div><div class="cdt">3–5 December 2025</div></div></div>
+    <div class="ccard reveal"><div class="cico ci-x"><i class="fas fa-infinity"></i></div><div><div class="cnm">Summer School A-PIC 2025 (Probability, Information, Computing)</div><div class="ciss">Justus-Liebig-Universität Giessen / AIMS Rwanda (DAAD)</div><div class="cdt">24–28 November 2025</div></div></div>
+    <div class="ccard reveal"><div class="cico ci-w"><i class="fas fa-flask"></i></div><div><div class="cnm">AIMS RIC Doctoral Training School 2026</div><div class="ciss">Foundational Methods in Data Science · AIMS RIC</div><div class="cdt">9 March – 3 April 2026</div></div></div>
+    <div class="ccard reveal"><div class="cico ci-x"><i class="fas fa-dna"></i></div><div><div class="cnm">Synthetic Data for Healthcare Research</div><div class="ciss">Washington University St. Louis / DS-I Africa / AIMS Rwanda / NIH</div><div class="cdt">5 November 2023</div></div></div>
+    <div class="ccard reveal"><div class="cico ci-w"><i class="fas fa-venus-mars"></i></div><div><div class="cnm">Gender Equality and Global Markets</div><div class="ciss">SSE Initiative / IFC World Bank / UN Women / Columbia SIPA · CPD Certified</div><div class="cdt">10 October 2024 · 4 CPD Credits</div></div></div>
+    <div class="ccard reveal"><div class="cico ci-c"><i class="fas fa-calculator"></i></div><div><div class="cnm">African Mathematical School & Conference</div><div class="ciss">INES-Ruhengeri / AMU / AIMS Rwanda / Univ. of Rwanda (CIMPA / EMS)</div><div class="cdt">18–29 June 2023</div></div></div>
+  </div>
+</div></section>
+
+<section id="contact"><div class="sw">
+  <div class="sh reveal"><span class="stag">07</span><h2 class="stitle">Get In Touch</h2><div class="sline"></div></div>
+  <div class="ctgrid">
+    <div class="ctleft reveal">
+      <h3>Let's Build Something Meaningful Together</h3>
+      <p>Open to research collaborations, AI/ML consulting, data science projects, and opportunities creating real impact — especially in agriculture, climate, health, and education across Africa.</p>
+      <div class="citems">
+        <a href="mailto:sniyizurugero@aimsric.org" class="ci-link"><i class="fas fa-envelope"></i><div><div class="ci-lbl">Email</div><div class="ci-val">sniyizurugero@aimsric.org</div></div></a>
+        <a href="tel:+250784602833" class="ci-link"><i class="fas fa-phone"></i><div><div class="ci-lbl">Phone</div><div class="ci-val">+250 784 602 833</div></div></a>
+        <div class="ci-link"><i class="fas fa-map-marker-alt"></i><div><div class="ci-lbl">Location</div><div class="ci-val">Kigali, Rwanda</div></div></div>
+      </div>
+      <div class="ctsoc">
+        <a href="https://linkedin.com/in/samson-niyizurugero-200a19260" target="_blank" class="ctsocl"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com/samson19977" target="_blank" class="ctsocl"><i class="fab fa-github"></i></a>
+        <a href="https://huggingface.co/NSamson1" target="_blank" class="ctsocl"><i class="fas fa-robot"></i></a>
+        <a href="https://www.facebook.com/niyizurugero.samson/" target="_blank" class="ctsocl"><i class="fab fa-facebook-f"></i></a>
+      </div>
+    </div>
+    <div class="cform reveal">
+      <form action="https://formspree.io/f/xnjwdrep" method="POST">
+        <div class="frow">
+          <div class="fg"><label>Your Name *</label><input type="text" name="name" required placeholder="Jane Doe"></div>
+          <div class="fg"><label>Your Email *</label><input type="email" name="email" required placeholder="jane@example.com"></div>
         </div>
-    </section>
-
-    <!-- ==================== ABOUT SECTION ==================== -->
-    <section class="about" id="about">
-        <h2 class="section-title">About Me</h2>
-        <div class="about-content">
-            <div class="about-text">
-                <h3>Who I Am</h3>
-                <p>
-                    I'm a Data Scientist and Machine Learning Engineer with a Master's degree in Data Science from AIMS Rwanda and a Bachelor's degree in Statistics. With a strong foundation in statistical analysis and machine learning, I specialize in developing end-to-end data solutions that drive business value.
-                </p>
-                <p>
-                    Currently, I work as a Data Manager & Researcher at AIMS Research and Innovation Centre, where I design and implement data pipelines, develop predictive models, and conduct research on emerging technologies. My passion lies in leveraging artificial intelligence and data science to address challenges in agriculture, climate, and global development.
-                </p>
-                <p>
-                    I'm particularly interested in:
-                </p>
-                <ul style="color: var(--text-secondary); margin-left: 1.5rem;">
-                    <li>Building Agentic AI systems with LangChain and LLMs</li>
-                    <li>Deep Learning for Computer Vision and NLP</li>
-                    <li>Geospatial Analytics and Remote Sensing</li>
-                    <li>MLOps and Production ML Systems</li>
-                    <li>Open-source contributions and community building</li>
-                </ul>
-            </div>
-
-            <div class="about-highlights">
-                <div class="highlight-card">
-                    <h4><i class="fas fa-graduation-cap"></i> Education</h4>
-                    <p>MSc Data Science (AIMS Rwanda) + BSc Statistics (University of Rwanda)</p>
-                </div>
-                <div class="highlight-card">
-                    <h4><i class="fas fa-briefcase"></i> Experience</h4>
-                    <p>3+ years in Data Science, ML Engineering, and Research</p>
-                </div>
-                <div class="highlight-card">
-                    <h4><i class="fas fa-laptop-code"></i> Languages</h4>
-                    <p>Python, R, SQL, JavaScript, Bash</p>
-                </div>
-                <div class="highlight-card">
-                    <h4><i class="fas fa-star"></i> Expertise</h4>
-                    <p>Deep Learning, LLMs, Geospatial Analytics, MLOps</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==================== EDUCATION SECTION ==================== -->
-    <section class="education" id="education">
-        <h2 class="section-title">Education & Qualifications</h2>
-        <div class="education-grid">
-            <div class="education-card fade-in">
-                <div class="degree"><i class="fas fa-graduation-cap"></i> Master of Science</div>
-                <div class="institution">Data Science</div>
-                <div class="institution" style="color: var(--secondary-color); font-weight: normal;">AIMS Rwanda</div>
-                <div class="period"><i class="fas fa-calendar"></i> 2021 - 2023</div>
-                <div class="details">
-                    <strong>Thesis:</strong> Advanced research in Machine Learning and Data Science<br><br>
-                    <strong>Key Modules:</strong>
-                    <ul style="margin-left: 1rem; margin-top: 0.5rem;">
-                        <li>Advanced Deep Learning</li>
-                        <li>Probabilistic Graphical Models</li>
-                        <li>Time Series Analysis</li>
-                        <li>Natural Language Processing</li>
-                        <li>Research Methodology</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="education-card fade-in">
-                <div class="degree"><i class="fas fa-graduation-cap"></i> Bachelor of Science</div>
-                <div class="institution">Statistics</div>
-                <div class="institution" style="color: var(--secondary-color); font-weight: normal;">University of Rwanda</div>
-                <div class="period"><i class="fas fa-calendar"></i> 2018 - 2021</div>
-                <div class="details">
-                    <strong>Focus Areas:</strong> Statistical inference, Data analysis, Probability<br><br>
-                    <strong>Key Courses:</strong>
-                    <ul style="margin-left: 1rem; margin-top: 0.5rem;">
-                        <li>Inferential Statistics</li>
-                        <li>Probability Theory</li>
-                        <li>Regression Analysis</li>
-                        <li>Database Management</li>
-                        <li>Statistical Software</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==================== EXPERIENCE SECTION ==================== -->
-    <section class="experience" id="experience">
-        <h2 class="section-title">Professional Experience</h2>
-        <div class="timeline">
-            <div class="timeline-item fade-in">
-                <div class="timeline-content">
-                    <div class="timeline-title"><i class="fas fa-chart-line"></i> Data Manager & Researcher</div>
-                    <div class="timeline-company">AIMS Research and Innovation Centre</div>
-                    <div class="timeline-period"><i class="fas fa-calendar"></i> 2023 - Present</div>
-                    <div class="timeline-description">
-                        <strong>Responsibilities:</strong>
-                        <ul style="margin-left: 1rem; margin-top: 0.5rem;">
-                            <li>Design and implement robust data pipelines for research projects</li>
-                            <li>Develop machine learning models for predictive analytics</li>
-                            <li>Conduct exploratory data analysis and statistical testing</li>
-                            <li>Manage research databases and ensure data quality</li>
-                            <li>Collaborate with researchers on AI/ML research initiatives</li>
-                            <li>Mentor junior data scientists and analysts</li>
-                            <li>Publish research findings and best practices</li>
-                        </ul>
-                        <br>
-                        <strong>Key Achievements:</strong>
-                        <ul style="margin-left: 1rem; margin-top: 0.5rem;">
-                            <li>Built production ML pipelines serving 50,000+ data points</li>
-                            <li>Developed Agentic AI system for agricultural recommendations</li>
-                            <li>Reduced model inference time by 40% through optimization</li>
-                        </ul>
-                    </div>
-                    <div class="timeline-skills">
-                        <span class="skill-badge">Python</span>
-                        <span class="skill-badge">ML Engineering</span>
-                        <span class="skill-badge">Data Pipelines</span>
-                        <span class="skill-badge">SQL</span>
-                        <span class="skill-badge">Research</span>
-                        <span class="skill-badge">Leadership</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="timeline-item fade-in">
-                <div class="timeline-content">
-                    <div class="timeline-title"><i class="fas fa-database"></i> Data Analyst</div>
-                    <div class="timeline-company">Willows International</div>
-                    <div class="timeline-period"><i class="fas fa-calendar"></i> 2021 - 2022</div>
-                    <div class="timeline-description">
-                        <strong>Responsibilities:</strong>
-                        <ul style="margin-left: 1rem; margin-top: 0.5rem;">
-                            <li>Performed data extraction, cleaning, and transformation</li>
-                            <li>Created interactive dashboards using Power BI and Python</li>
-                            <li>Conducted statistical analysis on business metrics</li>
-                            <li>Developed SQL queries for reporting</li>
-                            <li>Provided data-driven insights to management</li>
-                            <li>Automated routine reporting processes</li>
-                        </ul>
-                        <br>
-                        <strong>Key Achievements:</strong>
-                        <ul style="margin-left: 1rem; margin-top: 0.5rem;">
-                            <li>Automated 15+ manual reporting processes</li>
-                            <li>Created 10+ interactive dashboards</li>
-                            <li>Improved data quality by 35% through validation frameworks</li>
-                        </ul>
-                    </div>
-                    <div class="timeline-skills">
-                        <span class="skill-badge">SQL</span>
-                        <span class="skill-badge">Power BI</span>
-                        <span class="skill-badge">Python</span>
-                        <span class="skill-badge">Excel</span>
-                        <span class="skill-badge">Statistics</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==================== SKILLS SECTION ==================== -->
-    <section class="skills" id="skills">
-        <h2 class="section-title">Technical Skills</h2>
-        <div class="skills-grid">
-            <!-- Programming Languages -->
-            <div class="skill-category fade-in">
-                <h3><i class="fas fa-code"></i> Programming Languages</h3>
-                <div class="skill-list">
-                    <div class="skill-item">
-                        <span class="skill-name">Python</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 95%;"></div>
-                    </div>
-
-                    <div class="skill-item" style="margin-top: 1rem;">
-                        <span class="skill-name">R</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 90%;"></div>
-                    </div>
-
-                    <div class="skill-item" style="margin-top: 1rem;">
-                        <span class="skill-name">SQL</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 92%;"></div>
-                    </div>
-
-                    <div class="skill-item" style="margin-top: 1rem;">
-                        <span class="skill-name">JavaScript</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 75%;"></div>
-                    </div>
-
-                    <div class="skill-item" style="margin-top: 1rem;">
-                        <span class="skill-name">Bash/Shell</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 80%;"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Machine Learning & AI -->
-            <div class="skill-category fade-in">
-                <h3><i class="fas fa-brain"></i> Machine Learning & AI</h3>
-                <div class="skill-list">
-                    <div class="skill-item">
-                        <span class="skill-name">Deep Learning (TensorFlow/PyTorch)</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 93%;"></div>
-                    </div>
-
-                    <div class="skill-item" style="margin-top: 1rem;">
-                        <span class="skill-name">Scikit-learn & Pandas</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 95%;"></div>
-                    </div>
-
-                    <div class="skill-item" style="margin-top: 1rem;">
-                        <span class="skill-name">LLMs & Agentic AI (LangChain)</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 88%;"></div>
-                    </div>
-
-                    <div class="skill-item" style="margin-top: 1rem;">
-                        <span class="skill-name">NLP</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 87%;"></div>
-                    </div>
-
-                    <div class="skill-item" style="margin-top: 1rem;">
-                        <span class="skill-name">Computer Vision</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 85%;"></div>
-                    </div>
-
-                    <div class="skill-item" style="margin-top: 1rem;">
-                        <span class="skill-name">Time Series Analysis</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 82%;"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Data & Databases -->
-            <div class="skill-category fade-in">
-                <h3><i class="fas fa-database"></i> Data & Databases</h3>
-                <div class="skill-list">
-                    <div class="skill-item">
-                        <span class="skill-name">Data Analysis & Visualization</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 92%;"></div>
-                    </div>
-
-                    <div class="skill-item" style="margin-top: 1rem;">
-                        <span class="skill-name">PostgreSQL & MySQL</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 90%;"></div>
-                    </div>
-
-                    <div class="skill-item" style="margin-top: 1rem;">
-                        <span class="skill-name">MongoDB & Firebase</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 80%;"></div>
-                    </div>
-
-                    <div class="skill-item" style="margin-top: 1rem;">
-                        <span class="skill-name">ETL & Data Pipelines</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 88%;"></div>
-                    </div>
-
-                    <div class="skill-item" style="margin-top: 1rem;">
-                        <span class="skill-name">Big Data (PySpark)</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 78%;"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Geospatial & Domain -->
-            <div class="skill-category fade-in">
-                <h3><i class="fas fa-map"></i> Geospatial & Domain</h3>
-                <div class="skill-list">
-                    <div class="skill-item">
-                        <span class="skill-name">Geospatial Analytics</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 88%;"></div>
-                    </div>
-
-                    <div class="skill-item" style="margin-top: 1rem;">
-                        <span class="skill-name">Remote Sensing</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 82%;"></div>
-                    </div>
-
-                    <div class="skill-item" style="margin-top: 1rem;">
-                        <span class="skill-name">GIS Tools (QGIS, ArcGIS)</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 80%;"></div>
-                    </div>
-
-                    <div class="skill-item" style="margin-top: 1rem;">
-                        <span class="skill-name">Climate & Environment Data</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 85%;"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- MLOps & DevOps -->
-            <div class="skill-category fade-in">
-                <h3><i class="fas fa-cogs"></i> MLOps & DevOps</h3>
-                <div class="skill-list">
-                    <div class="skill-item">
-                        <span class="skill-name">Docker & Containerization</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 85%;"></div>
-                    </div>
-
-                    <div class="skill-item" style="margin-top: 1rem;">
-                        <span class="skill-name">Git & Version Control</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 92%;"></div>
-                    </div>
-
-                    <div class="skill-item" style="margin-top: 1rem;">
-                        <span class="skill-name">CI/CD Pipelines</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 80%;"></div>
-                    </div>
-
-                    <div class="skill-item" style="margin-top: 1rem;">
-                        <span class="skill-name">Cloud Platforms (AWS, GCP)</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 75%;"></div>
-                    </div>
-
-                    <div class="skill-item" style="margin-top: 1rem;">
-                        <span class="skill-name">Model Deployment & Serving</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 83%;"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Web & Visualization -->
-            <div class="skill-category fade-in">
-                <h3><i class="fas fa-chart-bar"></i> Web & Visualization</h3>
-                <div class="skill-list">
-                    <div class="skill-item">
-                        <span class="skill-name">Streamlit & Dash</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 90%;"></div>
-                    </div>
-
-                    <div class="skill-item" style="margin-top: 1rem;">
-                        <span class="skill-name">Flask & FastAPI</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 88%;"></div>
-                    </div>
-
-                    <div class="skill-item" style="margin-top: 1rem;">
-                        <span class="skill-name">Power BI & Tableau</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 85%;"></div>
-                    </div>
-
-                    <div class="skill-item" style="margin-top: 1rem;">
-                        <span class="skill-name">Plotly & Matplotlib</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 92%;"></div>
-                    </div>
-
-                    <div class="skill-item" style="margin-top: 1rem;">
-                        <span class="skill-name">HTML/CSS/JavaScript</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 80%;"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==================== PROJECTS SECTION ==================== -->
-    <section class="projects" id="projects">
-        <h2 class="section-title">Featured Projects</h2>
-        <div class="projects-grid">
-            <!-- Project 1 -->
-            <div class="project-card fade-in">
-                <div class="project-image">
-                    <i class="fas fa-robot"></i>
-                </div>
-                <div class="project-content">
-                    <div class="project-title">FarmSmart Agentic AI</div>
-                    <div class="project-description">
-                        An intelligent agent system powered by LLMs that provides personalized agricultural recommendations. The system uses natural language processing to understand farmer queries and leverages knowledge bases on crop management, pest control, and soil health to deliver actionable insights.
-                    </div>
-                    <div class="project-tech">
-                        <span class="tech-tag">LangChain</span>
-                        <span class="tech-tag">LLMs</span>
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">FastAPI</span>
-                        <span class="tech-tag">RAG</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/samson19977" target="_blank">
-                            <i class="fab fa-github"></i> Code
-                        </a>
-                        <a href="#" target="_blank">
-                            <i class="fas fa-globe"></i> Demo
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 2 -->
-            <div class="project-card fade-in">
-                <div class="project-image">
-                    <i class="fas fa-wind"></i>
-                </div>
-                <div class="project-content">
-                    <div class="project-title">Rwanda Air Quality Dashboard</div>
-                    <div class="project-description">
-                        A comprehensive real-time dashboard monitoring air quality across Rwanda. Built with Streamlit, it visualizes PM2.5, NO2, and other pollutants using geospatial mapping. Includes predictive models for air quality forecasting and health impact analysis.
-                    </div>
-                    <div class="project-tech">
-                        <span class="tech-tag">Streamlit</span>
-                        <span class="tech-tag">Geospatial</span>
-                        <span class="tech-tag">Time Series</span>
-                        <span class="tech-tag">Folium</span>
-                        <span class="tech-tag">LSTM</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/samson19977" target="_blank">
-                            <i class="fab fa-github"></i> Code
-                        </a>
-                        <a href="#" target="_blank">
-                            <i class="fas fa-globe"></i> Live
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 3 -->
-            <div class="project-card fade-in">
-                <div class="project-image">
-                    <i class="fas fa-earth-africa"></i>
-                </div>
-                <div class="project-content">
-                    <div class="project-title">African CO2 Emissions Analytics</div>
-                    <div class="project-description">
-                        Data analysis and visualization platform for tracking carbon emissions across African countries. Uses satellite data and statistical models to identify emission trends, sectoral contributions, and climate impact. Interactive visualizations for policy makers.
-                    </div>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Remote Sensing</span>
-                        <span class="tech-tag">Geospatial</span>
-                        <span class="tech-tag">Plotly</span>
-                        <span class="tech-tag">Statistical Analysis</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/samson19977" target="_blank">
-                            <i class="fab fa-github"></i> Code
-                        </a>
-                        <a href="#" target="_blank">
-                            <i class="fas fa-globe"></i> Report
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 4 -->
-            <div class="project-card fade-in">
-                <div class="project-image">
-                    <i class="fas fa-calculator"></i>
-                </div>
-                <div class="project-content">
-                    <div class="project-title">MyFirstMathFriend</div>
-                    <div class="project-description">
-                        An interactive educational platform using reinforcement learning to teach mathematics to children. Features personalized learning paths, adaptive difficulty levels, and gamification elements to keep students engaged.
-                    </div>
-                    <div class="project-tech">
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">Reinforcement Learning</span>
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">FastAPI</span>
-                        <span class="tech-tag">MongoDB</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/samson19977" target="_blank">
-                            <i class="fab fa-github"></i> Code
-                        </a>
-                        <a href="#" target="_blank">
-                            <i class="fas fa-globe"></i> Visit
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 5 -->
-            <div class="project-card fade-in">
-                <div class="project-image">
-                    <i class="fas fa-credit-card"></i>
-                </div>
-                <div class="project-content">
-                    <div class="project-title">Credit Risk Assessment Assistant</div>
-                    <div class="project-description">
-                        An AI-powered system for assessing credit risk using gradient boosting and ensemble methods. Predicts loan default probability with 92% accuracy. Includes SHAP interpretability for transparent decision making in financial institutions.
-                    </div>
-                    <div class="project-tech">
-                        <span class="tech-tag">XGBoost</span>
-                        <span class="tech-tag">SHAP</span>
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Streamlit</span>
-                        <span class="tech-tag">ML Interpretability</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/samson19977" target="_blank">
-                            <i class="fab fa-github"></i> Code
-                        </a>
-                        <a href="#" target="_blank">
-                            <i class="fas fa-globe"></i> Demo
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 6 -->
-            <div class="project-card fade-in">
-                <div class="project-image">
-                    <i class="fas fa-map-location-dot"></i>
-                </div>
-                <div class="project-content">
-                    <div class="project-title">Informal Address Resolver</div>
-                    <div class="project-description">
-                        A geospatial machine learning system that converts informal addresses (descriptions of locations) to standardized geographic coordinates. Uses NLP and geospatial matching algorithms. Critical for last-mile delivery in developing regions.
-                    </div>
-                    <div class="project-tech">
-                        <span class="tech-tag">NLP</span>
-                        <span class="tech-tag">Geospatial</span>
-                        <span class="tech-tag">BERT</span>
-                        <span class="tech-tag">PostgreSQL+PostGIS</span>
-                        <span class="tech-tag">FastAPI</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/samson19977" target="_blank">
-                            <i class="fab fa-github"></i> Code
-                        </a>
-                        <a href="#" target="_blank">
-                            <i class="fas fa-globe"></i> API
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==================== CERTIFICATES SECTION ==================== -->
-    <section class="certificates" id="certificates">
-        <h2 class="section-title">Certifications & Awards</h2>
-        <div class="certificates-grid">
-            <div class="certificate-card fade-in">
-                <div class="certificate-icon">
-                    <i class="fas fa-award"></i>
-                </div>
-                <div class="certificate-name">Deep Learning Specialization</div>
-                <div class="certificate-issuer">Deeplearning.AI & Coursera</div>
-                <div class="certificate-date">2023</div>
-            </div>
-
-            <div class="certificate-card fade-in">
-                <div class="certificate-icon">
-                    <i class="fas fa-brain"></i>
-                </div>
-                <div class="certificate-name">LLMs & Generative AI</div>
-                <div class="certificate-issuer">Deeplearning.AI</div>
-                <div class="certificate-date">2024</div>
-            </div>
-
-            <div class="certificate-card fade-in">
-                <div class="certificate-icon">
-                    <i class="fas fa-map"></i>
-                </div>
-                <div class="certificate-name">Geospatial Data Analysis</div>
-                <div class="certificate-issuer">Coursera</div>
-                <div class="certificate-date">2023</div>
-            </div>
-
-            <div class="certificate-card fade-in">
-                <div class="certificate-icon">
-                    <i class="fas fa-database"></i>
-                </div>
-                <div class="certificate-name">Advanced SQL & Databases</div>
-                <div class="certificate-issuer">Udacity</div>
-                <div class="certificate-date">2022</div>
-            </div>
-
-            <div class="certificate-card fade-in">
-                <div class="certificate-icon">
-                    <i class="fas fa-docker"></i>
-                </div>
-                <div class="certificate-name">Docker for Data Scientists</div>
-                <div class="certificate-issuer">DataCamp</div>
-                <div class="certificate-date">2023</div>
-            </div>
-
-            <div class="certificate-card fade-in">
-                <div class="certificate-icon">
-                    <i class="fas fa-star"></i>
-                </div>
-                <div class="certificate-name">AWS Cloud Practitioner</div>
-                <div class="certificate-issuer">Amazon Web Services</div>
-                <div class="certificate-date">2024</div>
-            </div>
-
-            <div class="certificate-card fade-in">
-                <div class="certificate-icon">
-                    <i class="fas fa-code"></i>
-                </div>
-                <div class="certificate-name">Python for Data Science</div>
-                <div class="certificate-issuer">IBM & Coursera</div>
-                <div class="certificate-date">2022</div>
-            </div>
-
-            <div class="certificate-card fade-in">
-                <div class="certificate-icon">
-                    <i class="fas fa-trophy"></i>
-                </div>
-                <div class="certificate-name">AIMS Best Research Project</div>
-                <div class="certificate-issuer">African Institute for Mathematical Sciences</div>
-                <div class="certificate-date">2023</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==================== CONTACT SECTION ==================== -->
-    <section class="contact" id="contact">
-        <h2 class="section-title">Let's Work Together</h2>
-        
-        <p>I'm always excited about new opportunities, interesting challenges, and meaningful collaborations. Whether you have a project in mind, want to discuss data science and AI, or simply want to connect—I'd love to hear from you!</p>
-
-        <div class="contact-methods">
-            <div class="contact-method">
-                <i class="fas fa-envelope"></i>
-                <h3>Email</h3>
-                <a href="mailto:sniyizurugero@aimsric.org">sniyizurugero@aimsric.org</a>
-            </div>
-            <div class="contact-method">
-                <i class="fas fa-phone"></i>
-                <h3>Phone</h3>
-                <a href="tel:+250784602833">+250 784 602 833</a>
-            </div>
-            <div class="contact-method">
-                <i class="fas fa-map-marker-alt"></i>
-                <h3>Location</h3>
-                <p>Kigali, Rwanda</p>
-            </div>
-        </div>
-
-        <div class="social-links">
-            <a href="https://linkedin.com/in/samson-niyizurugero-200a19260" target="_blank" title="LinkedIn">
-                <i class="fab fa-linkedin-in"></i>
-            </a>
-            <a href="https://github.com/samson19977" target="_blank" title="GitHub">
-                <i class="fab fa-github"></i>
-            </a>
-            <a href="https://huggingface.co/NSamson1" target="_blank" title="Hugging Face">
-                <i class="fas fa-robot"></i>
-            </a>
-            <a href="https://twitter.com/samson19977" target="_blank" title="Twitter">
-                <i class="fab fa-twitter"></i>
-            </a>
-        </div>
-
-        <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
-            <h3 style="margin-bottom: 2rem; font-size: 1.3em;">Send Me a Message</h3>
-            
-            <!-- REPLACE xyzabc123 WITH YOUR ACTUAL FORMSPREE ID -->
-            <form class="contact-form" action="https://formspree.io/f/xnjwdrep" method="POST">
-                <div class="form-group">
-                    <label for="name">Your Name *</label>
-                    <input type="text" id="name" name="name" required placeholder="John Doe">
-                </div>
-
-                <div class="form-group">
-                    <label for="email">Your Email *</label>
-                    <input type="email" id="email" name="email" required placeholder="john@example.com">
-                </div>
-
-                <div class="form-group">
-                    <label for="subject">Subject *</label>
-                    <input type="text" id="subject" name="subject" required placeholder="Project Inquiry / Collaboration / Question">
-                </div>
-
-                <div class="form-group">
-                    <label for="message">Message *</label>
-                    <textarea id="message" name="message" required placeholder="Tell me more about your project, idea, or question..."></textarea>
-                </div>
-
-                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1.5rem; padding: 1rem;">
-                    <i class="fas fa-paper-plane"></i> Send Message
-                </button>
-            </form>
-        </div>
-    </section>
-
-    <!-- ==================== FOOTER ==================== -->
-    <footer>
-        <p>&copy; 2023 Samson Niyizurugero. All rights reserved. | Crafted with <i class="fas fa-heart" style="color: var(--accent-color);"></i> for innovation and impact.</p>
-    </footer>
-
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const href = this.getAttribute('href');
-                if (href !== '#') {
-                    e.preventDefault();
-                    const element = document.querySelector(href);
-                    if (element) {
-                        element.scrollIntoView({
-                            behavior: 'smooth'
-                        });
-                    }
-                }
-            });
-        });
-
-        // Active navigation link on scroll
-        window.addEventListener('scroll', () => {
-            let current = '';
-            const sections = document.querySelectorAll('section');
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (scrollY >= sectionTop - 200) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            document.querySelectorAll('.nav-links a').forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').slice(1) === current) {
-                    link.classList.add('active');
-                }
-            });
-        });
-
-        // Animate skill bars on scroll
-        const observerOptions = {
-            threshold: 0.5
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.skill-category, .project-card, .certificate-card, .education-card, .timeline-item').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Form submission success message
-        const form = document.querySelector('.contact-form');
-        if (form) {
-            form.addEventListener('submit', function() {
-                setTimeout(() => {
-                    alert('Thank you for your message! I will get back to you soon.');
-                }, 500);
-            });
-        }
-    </script>
+        <div class="fg"><label>Subject *</label><input type="text" name="subject" required placeholder="Project Inquiry · Collaboration · Research"></div>
+        <div class="fg"><label>Message *</label><textarea name="message" required placeholder="Tell me about your project or idea..."></textarea></div>
+        <button type="submit" class="fsub"><i class="fas fa-paper-plane"></i> Send Message</button>
+      </form>
+    </div>
+  </div>
+</div></section>
+
+<div style="border-top:1px solid var(--border)">
+<footer>
+  <p>© 2025 Samson Niyizurugero · Data Scientist & ML Engineer · Kigali, Rwanda</p>
+  <div class="fdots"><div class="fd"></div><div class="fd"></div><div class="fd"></div></div>
+</footer>
+</div>
+
+<script>
+const gc=document.getElementById('gc');
+document.addEventListener('mousemove',e=>{gc.style.left=e.clientX+'px';gc.style.top=e.clientY+'px'});
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'})}
+  })
+});
+window.addEventListener('scroll',()=>{
+  let c='';
+  document.querySelectorAll('section[id]').forEach(s=>{if(scrollY>=s.offsetTop-200)c=s.id});
+  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+c))
+});
+const ro=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target)}})},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+const bo=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.skfill').forEach(b=>b.style.width=b.dataset.w+'%');
+      bo.unobserve(e.target)
+    }
+  })
+},{threshold:0.3});
+document.querySelectorAll('.skb').forEach(el=>{el.querySelectorAll('.skfill').forEach(b=>b.style.width='0');bo.observe(el)});
+const f=document.querySelector('form');
+if(f)f.addEventListener('submit',()=>setTimeout(()=>alert('Message sent! I will get back to you soon.'),500));
+</script>
 </body>
 </html>
